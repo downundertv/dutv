@@ -168,7 +168,7 @@ def main():
     print('  Building XMLTV...', end=' ', flush=True)
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<\!DOCTYPE tv SYSTEM "xmltv.dtd">',
+        '<!DOCTYPE tv SYSTEM "xmltv.dtd">',
         '<tv generator-info-name="Foxtel EPG (github-actions)">',
     ]
     for ch in channels:
