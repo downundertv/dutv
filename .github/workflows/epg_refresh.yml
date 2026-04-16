@@ -1,0 +1,45 @@
+name: Foxtel EPG Refresh
+
+on:
+  schedule:
+    # Daily at 14:00 UTC = midnight AEST (UTC+10)
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install curl_cffi
+
+      - name: Generate EPG
+        run: python epg_generator.py
+
+      - name: Upload epg.xml to Shockhosting via FTP
+        run: |
+          curl --ftp-create-dirs \
+               --retry 3 \
+               --retry-delay 5 \
+               -T "Foxtel/epg.xml" \
+               "ftp://${{ secrets.FTP_SERVER }}/public_html/Foxtel/epg.xml" \
+               --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}"
+
+      - name: Commit epg.xml to repo (for history / backup)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Foxtel/epg.xml
+          git diff --cached --quiet || git commit -m "EPG refresh $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
