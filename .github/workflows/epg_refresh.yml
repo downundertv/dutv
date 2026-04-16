@@ -28,26 +28,15 @@ jobs:
         run: python epg_generator.py
 
       - name: Upload epg.xml to Shockhosting via FTP
-        run: |
-          # Try FTPS first (explicit TLS), fall back to plain FTP
-          curl --ftp-create-dirs \
-               --retry 3 \
-               --retry-delay 5 \
-               --ssl-reqd \
-               --ftp-ssl \
-               --insecure \
-               -v \
-               -T "Foxtel/epg.xml" \
-               "ftp://${{ secrets.FTP_SERVER }}/public_html/Foxtel/epg.xml" \
-               --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" \
-          || \
-          curl --ftp-create-dirs \
-               --retry 3 \
-               --retry-delay 5 \
-               -v \
-               -T "Foxtel/epg.xml" \
-               "ftp://${{ secrets.FTP_SERVER }}/public_html/Foxtel/epg.xml" \
-               --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}"
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./Foxtel/
+          server-dir: /public_html/Foxtel/
+          protocol: ftps
+          port: 21
 
       - name: Commit epg.xml to repo (for history / backup)
         run: |
