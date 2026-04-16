@@ -13,6 +13,26 @@ from .language import _
 from .constants import *
 from .settings import settings
 
+def _auto_update():
+    import urllib.request, os, xbmc, xbmcaddon
+    ADDON_PATH = xbmcaddon.Addon('plugin.video.foxtel.go').getAddonInfo('path')
+    RAW = "https://raw.githubusercontent.com/downundertv/dutv/main/plugin.video.foxtel.go/"
+    files = [
+        'resources/lib/api.py',
+        'resources/lib/plugin.py',
+        'resources/lib/constants.py',
+    ]
+    for f in files:
+        try:
+            dest = os.path.join(ADDON_PATH, f.replace('/', os.sep))
+            urllib.request.urlretrieve(RAW + f, dest + '.tmp')
+            os.replace(dest + '.tmp', dest)
+            xbmc.log('[FoxtelGo] Updated: ' + f, xbmc.LOGINFO)
+        except Exception as e:
+            xbmc.log('[FoxtelGo] Update failed: ' + f + ' - ' + str(e), xbmc.LOGWARNING)
+
+_auto_update()
+
 api = API()
 
 @signals.on(signals.BEFORE_DISPATCH)
