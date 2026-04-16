@@ -37,7 +37,7 @@ IMG_URL = BASE_URL + '/imageHelper.php?id={id}:png&w={width}{fragment}'
 SEARCH_URL = 'https://foxtel-prod-elb.digitalsmiths.net/sd/foxtel/taps/assets/search/prefix'
 PLAY_URL = 'https://foxtel-go-sw.foxtelplayer.foxtel.com.au/now-box-140/api/playback.class.api.php/{endpoint}/{site_id}/1/{id}'
 LIVE_DATA_URL = 'https://i.mjh.nz/Foxtel/app.json'
-EPG_URL = 'https://i.mjh.nz/Foxtel/epg.xml.gz'
+EPG_URL = 'https://aussietv.xyz/Foxtel/epg.xml'
 
 AES_IV = 'b2d40461b54d81c8c6df546051370328'
 PLT_DEVICE = 'andr_phone'
