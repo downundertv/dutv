@@ -29,16 +29,42 @@ jobs:
       - name: Generate EPG
         run: python epg_generator.py
 
+      - name: Verify EPG file was generated
+        run: |
+          echo "=== EPG file info ==="
+          ls -lh Foxtel/epg.xml
+          echo "=== First 5 lines ==="
+          head -5 Foxtel/epg.xml
+          echo "=== File size (bytes) ==="
+          wc -c < Foxtel/epg.xml
+
       - name: Upload epg.xml to Shockhosting via FTP
         run: |
+          echo "=== Uploading to FTP ==="
           curl --ftp-create-dirs \
                --retry 3 \
                --retry-delay 5 \
                --ssl-reqd \
                --insecure \
+               --fail \
+               -v \
                -T "Foxtel/epg.xml" \
                "ftp://${{ secrets.FTP_SERVER }}/public_html/Foxtel/epg.xml" \
                --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}"
+          echo "=== FTP upload exit code: $? ==="
+
+      - name: Verify EPG is live on web server
+        run: |
+          echo "=== Checking https://aussietv.xyz/Foxtel/epg.xml ==="
+          HTTP_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://aussietv.xyz/Foxtel/epg.xml)
+          echo "HTTP response code: $HTTP_CODE"
+          FILE_SIZE=$(curl -sI https://aussietv.xyz/Foxtel/epg.xml | grep -i content-length | awk '{print $2}')
+          echo "Remote file size: $FILE_SIZE bytes"
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "ERROR: EPG not accessible at expected URL (got HTTP $HTTP_CODE)"
+            exit 1
+          fi
+          echo "SUCCESS: EPG is live and accessible"
 
       - name: Commit epg.xml to repo (for history / backup)
         run: |
