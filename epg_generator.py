@@ -113,10 +113,18 @@ def epoch_ms_to_xmltv(ms):
     dt = datetime.fromtimestamp(ms / 1000.0, tz=AEST)
     return dt.strftime('%Y%m%d%H%M%S +1000')
 
-def fetch_json(url, session):
-    r = session.get(url, headers=HEADERS, impersonate='chrome120', timeout=20)
-    r.raise_for_status()
-    return r.json()
+def fetch_json(url, session, retries=3, delay=15):
+    for attempt in range(1, retries + 1):
+        try:
+            r = session.get(url, headers=HEADERS, impersonate='chrome120', timeout=30)
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            if attempt < retries:
+                print(f'    WARN: attempt {attempt} failed ({e}), retrying in {delay}s...')
+                time.sleep(delay)
+            else:
+                raise
 
 def get_events(slug, date_str, session):
     url = f'{BASE_URL}/channel/{slug}/{date_str}/0000?regionId={REGION}'
