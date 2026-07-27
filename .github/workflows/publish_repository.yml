@@ -1,0 +1,90 @@
+name: Build and publish Kodi repository
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "plugin.*/**"
+      - "repository.*/**"
+      - "script.*/**"
+      - "service.*/**"
+      - "tools/**"
+      - ".github/workflows/publish_repository.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: kodi-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Build Kodi repository
+        run: python tools/build_repository.py
+
+      - name: Create Kodi source page
+        shell: bash
+        run: |
+          repo_zip="$(find public/repository.downundertv \
+            -maxdepth 1 \
+            -type f \
+            -name 'repository.downundertv-*.zip' \
+            | sort -V \
+            | tail -n 1)"
+
+          if [ -z "$repo_zip" ]; then
+            echo "repository.downundertv ZIP was not created"
+            exit 1
+          fi
+
+          repo_zip_name="$(basename "$repo_zip")"
+
+          cat > public/index.html <<EOF
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>DownUnderTV Repository</title>
+          </head>
+          <body>
+            <h1>DownUnderTV Repository</h1>
+            <p>Select the repository ZIP below.</p>
+            <a href="repository.downundertv/${repo_zip_name}">
+              ${repo_zip_name}
+            </a>
+          </body>
+          </html>
+          EOF
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
