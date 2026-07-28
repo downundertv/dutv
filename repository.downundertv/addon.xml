@@ -2,7 +2,7 @@
 <addon
     id="repository.downundertv"
     name="DownUnderTV Repository"
-    version="1.0.1"
+    version="1.0.2"
     provider-name="downundertv">
 
     <extension
@@ -10,9 +10,9 @@
         name="DownUnderTV Repository">
 
         <dir>
-            <info compressed="false">https://downundertv.github.io/dutv/addons.xml</info>
-            <checksum>https://downundertv.github.io/dutv/addons.xml.md5</checksum>
-            <datadir zip="true">https://downundertv.github.io/dutv/</datadir>
+            <info compressed="false">https://dutvaussie.com/kodi/addons.xml</info>
+            <checksum>https://dutvaussie.com/kodi/addons.xml.md5</checksum>
+            <datadir zip="true">https://dutvaussie.com/kodi/</datadir>
         </dir>
     </extension>
 
