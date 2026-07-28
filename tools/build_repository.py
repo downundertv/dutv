@@ -113,6 +113,20 @@ def copy_artwork(addon_folder: Path, addon_id: str) -> None:
             shutil.copy2(source, destination / filename)
 
 
+def create_index_html(destination: Path, addon_id: str, version: str) -> None:
+    """Create an index.html in the addon subdirectory so Kodi can browse it."""
+    zip_filename = f"{addon_id}-{version}.zip"
+    html = f"""<!DOCTYPE html>
+<html>
+<head><title>{addon_id}</title></head>
+<body>
+<a href="{zip_filename}">{zip_filename}</a>
+</body>
+</html>
+"""
+    (destination / "index.html").write_text(html, encoding="utf-8")
+
+
 def create_addons_xml(addons: list[ET.Element]) -> bytes:
     root = ET.Element("addons")
 
@@ -157,6 +171,7 @@ def main() -> None:
         )
 
         copy_artwork(addon_folder, addon_id)
+        create_index_html(PUBLIC_DIR / addon_id, addon_id, version)
         addon_elements.append(addon_element)
 
         print(f"Created {zip_path.relative_to(ROOT)}")
