@@ -38,7 +38,7 @@ jobs:
           echo "=== File size (bytes) ==="
           wc -c < Foxtel/epg.xml
 
-      - name: Upload epg.xml to Shockhosting via FTP
+      - name: Upload epg.xml to aussietv.xyz via FTP
         run: |
           echo "=== Uploading to FTP ==="
           curl --ftp-create-dirs \
@@ -49,8 +49,8 @@ jobs:
                --fail \
                -v \
                -T "Foxtel/epg.xml" \
-               "ftp://${{ secrets.FTP_SERVER }}/public_html/Foxtel/epg.xml" \
-               --user "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}"
+               "ftp://${{ secrets.EPG_FTP_SERVER }}/Foxtel/epg.xml" \
+               --user "${{ secrets.EPG_FTP_USERNAME }}:${{ secrets.EPG_FTP_PASSWORD }}"
           echo "=== FTP upload exit code: $? ==="
 
       - name: Verify EPG is live on web server

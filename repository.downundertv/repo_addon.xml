@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+    id="repository.downundertv"
+    name="DownUnderTV Repository"
+    version="1.0.2"
+    provider-name="downundertv">
+
+    <extension
+        point="xbmc.addon.repository"
+        name="DownUnderTV Repository">
+
+        <dir>
+            <info compressed="false">https://dutvaussie.com/kodi/addons.xml</info>
+            <checksum>https://dutvaussie.com/kodi/addons.xml.md5</checksum>
+            <datadir zip="true">https://dutvaussie.com/kodi/</datadir>
+        </dir>
+    </extension>
+
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">DownUnderTV Kodi addons</summary>
+        <description lang="en_GB">Repository for DownUnderTV Kodi addons including Kayo Sports and Foxtel Go.</description>
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+    </extension>
+</addon>
