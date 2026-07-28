@@ -31,8 +31,11 @@ _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
 
 @signals.on(signals.BEFORE_DISPATCH)
 def before_dispatch():
-    api.new_session()
-    plugin.logged_in = api.logged_in
+    try:
+        api.new_session()
+        plugin.logged_in = api.logged_in
+    except Exception:
+        plugin.logged_in = False
 
 
 # ------------------------------------------------------------------
@@ -365,67 +368,67 @@ def live_events(**kwargs):
     folder = plugin.Folder('Live & Upcoming')
     try:
         evts = api.events()
-    except Exception as e:
-        raise PluginError(str(e))
 
-    now = arrow.utcnow()
+        now = arrow.utcnow()
 
-    live_items     = []
-    upcoming_items = []
+        live_items     = []
+        upcoming_items = []
 
-    for ev in evts:
-        asset_id = ev.get('asset_id', '')
-        if not asset_id:
-            continue
+        for ev in evts:
+            asset_id = ev.get('asset_id', '')
+            if not asset_id:
+                continue
 
-        try:
-            start = arrow.get(ev['time'])
-        except Exception:
-            start = now
+            try:
+                start = arrow.get(ev['time'])
+            except Exception:
+                start = now
 
-        sport      = ev.get('sport', '')
-        channel    = ev.get('channel', '')
-        channel_id = ev.get('channel_id', '')
-        title      = ev.get('title', '')
-        is_live    = ev.get('type') == 'live'
+            sport      = ev.get('sport', '')
+            channel    = ev.get('channel', '')
+            channel_id = ev.get('channel_id', '')
+            title      = ev.get('title', '')
+            is_live    = ev.get('type') == 'live'
 
-        # Channel logo: map channel_id → linear asset_id → logo URL
-        linear_asset = CHANNEL_ID_TO_ASSET.get(channel_id, '')
-        logo = CHANNEL_LOGO_MAP.get(linear_asset, '')
+            # Channel logo: map channel_id → linear asset_id → logo URL
+            linear_asset = CHANNEL_ID_TO_ASSET.get(channel_id, '')
+            logo = CHANNEL_LOGO_MAP.get(linear_asset, '')
 
-        badge = '[COLOR lime][LIVE][/COLOR]  ' if is_live else '[{}]  '.format(
-            start.to('local').format('ddd h:mma')
-        )
-        label = '{}{} — {}'.format(badge, title, channel)
-        if ev.get('is_4k'):
-            label = u'[COLOR cyan][4K][/COLOR]  ' + label
-        plot  = u'{sport}\n{channel}'.format(sport=sport, channel=channel)
-        if ev.get('is_4k'):
-            plot += u'\n[COLOR cyan]4K available[/COLOR]'
+            badge = '[COLOR lime][LIVE][/COLOR]  ' if is_live else '[{}]  '.format(
+                start.to('local').format('ddd h:mma')
+            )
+            label = '{}{} — {}'.format(badge, title, channel)
+            if ev.get('is_4k'):
+                label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            plot  = u'{sport}\n{channel}'.format(sport=sport, channel=channel)
+            if ev.get('is_4k'):
+                plot += u'\n[COLOR cyan]4K available[/COLOR]'
 
-        thumb = ev.get('thumb') or logo
-        if is_live:
-            play_path = plugin.url_for(play, id=asset_id, start_from=1,
-                                       play_type=PLAY_FROM_ASK, _is_live=True)
-        else:
-            play_path = plugin.url_for(play, id=asset_id)
-        item = plugin.Item(
-            label=label,
-            art={'thumb': thumb, 'fanart': ev.get('fanart', ''), 'icon': logo},
-            info={'plot': plot, 'mediatype': 'video'},
-            path=play_path,
-            playable=True,
-        )
+            thumb = ev.get('thumb') or logo
+            if is_live:
+                play_path = plugin.url_for(play, id=asset_id, start_from=1,
+                                           play_type=PLAY_FROM_ASK, _is_live=True)
+            else:
+                play_path = plugin.url_for(play, id=asset_id)
+            item = plugin.Item(
+                label=label,
+                art={'thumb': thumb, 'fanart': ev.get('fanart', ''), 'icon': logo},
+                info={'plot': plot, 'mediatype': 'video'},
+                path=play_path,
+                playable=True,
+            )
 
-        if is_live:
-            live_items.append(item)
-        else:
-            upcoming_items.append((start, item))
+            if is_live:
+                live_items.append(item)
+            else:
+                upcoming_items.append((start, item))
 
-    folder.add_items(live_items)
+        folder.add_items(live_items)
 
-    upcoming_items.sort(key=lambda x: x[0])
-    folder.add_items([i for _, i in upcoming_items])
+        upcoming_items.sort(key=lambda x: x[0])
+        folder.add_items([i for _, i in upcoming_items])
+    except Exception:
+        pass
 
     return folder
 
@@ -732,38 +735,39 @@ def fixtures(**kwargs):
         )
         resp.raise_for_status()
         tiles = resp.json().get('tiles', [])
-    except Exception as e:
-        raise PluginError(u'Could not load fixtures: {}'.format(str(e)))
 
-    now_perth = arrow.utcnow().to('Australia/Perth')
-    today     = now_perth.format('YYYY-MM-DD')
-    tomorrow  = now_perth.shift(days=1).format('YYYY-MM-DD')
+        now_perth = arrow.utcnow().to('Australia/Perth')
+        today     = now_perth.format('YYYY-MM-DD')
+        tomorrow  = now_perth.shift(days=1).format('YYYY-MM-DD')
 
-    from collections import OrderedDict
-    days = OrderedDict()
-    for t in tiles:
-        try:
-            start     = arrow.get(t['start'])
-            day_key   = start.to('Australia/Perth').format('YYYY-MM-DD')
-            day_label = start.to('Australia/Perth').format('dddd D MMM')
-        except Exception:
-            day_key   = t['start'][:10]
-            day_label = day_key
-        if day_key not in days:
-            days[day_key] = (day_label, 0)
-        days[day_key] = (days[day_key][0], days[day_key][1] + 1)
+        from collections import OrderedDict
+        days = OrderedDict()
+        for t in tiles:
+            try:
+                start     = arrow.get(t['start'])
+                day_key   = start.to('Australia/Perth').format('YYYY-MM-DD')
+                day_label = start.to('Australia/Perth').format('dddd D MMM')
+            except Exception:
+                day_key   = t['start'][:10]
+                day_label = day_key
+            if day_key not in days:
+                days[day_key] = (day_label, 0)
+            days[day_key] = (days[day_key][0], days[day_key][1] + 1)
 
-    for day_key, (day_label, count) in days.items():
-        if day_key == today:
-            label = u'[B]Today — {}[/B]  ({} events)'.format(day_label, count)
-        elif day_key == tomorrow:
-            label = u'[B]Tomorrow — {}[/B]  ({} events)'.format(day_label, count)
-        else:
-            label = u'[B]{}[/B]  ({} events)'.format(day_label, count)
-        folder.add_item(
-            label=label,
-            path=plugin.url_for(fixture_day, date=day_key),
-        )
+        for day_key, (day_label, count) in days.items():
+            if day_key == today:
+                label = u'[B]Today — {}[/B]  ({} events)'.format(day_label, count)
+            elif day_key == tomorrow:
+                label = u'[B]Tomorrow — {}[/B]  ({} events)'.format(day_label, count)
+            else:
+                label = u'[B]{}[/B]  ({} events)'.format(day_label, count)
+            folder.add_item(
+                label=label,
+                path=plugin.url_for(fixture_day, date=day_key),
+            )
+    except Exception:
+        pass
+
     return folder
 
 
@@ -976,25 +980,25 @@ def recent_replays_flat(**kwargs):
     folder = plugin.Folder('Recent Replays', cacheToDisc=False)
     try:
         tiles = api.recent_replays()
-    except Exception as e:
-        raise PluginError(str(e))
-    for tile in tiles:
-        title = tile.get('title', '')
-        sport = _normalise_sport(tile)
-        try:
-            ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
-            label = u'[COLOR yellow]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
-        except Exception:
-            label = u'[COLOR yellow]{}[/COLOR]  {}'.format(sport, title)
-        if tile.get('is_4k'):
-            label = u'[COLOR cyan][4K][/COLOR]  ' + label
-        folder.add_item(
-            label=label,
-            art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
-            info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=tile['asset_id']),
-            playable=True,
-        )
+        for tile in tiles:
+            title = tile.get('title', '')
+            sport = _normalise_sport(tile)
+            try:
+                ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
+                label = u'[COLOR yellow]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
+            except Exception:
+                label = u'[COLOR yellow]{}[/COLOR]  {}'.format(sport, title)
+            if tile.get('is_4k'):
+                label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            folder.add_item(
+                label=label,
+                art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
+                info={'plot': tile.get('description') or title, 'mediatype': 'video'},
+                path=plugin.url_for(play, id=tile['asset_id']),
+                playable=True,
+            )
+    except Exception:
+        pass
     return folder
 
 
@@ -1004,25 +1008,25 @@ def recent_minis_flat(**kwargs):
     folder = plugin.Folder('Minis', cacheToDisc=False)
     try:
         tiles = api.recent_replays(tile_type='minis')
-    except Exception as e:
-        raise PluginError(str(e))
-    for tile in tiles:
-        title = tile.get('title', '')
-        sport = _normalise_sport(tile)
-        try:
-            ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
-            label = u'[COLOR orange]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
-        except Exception:
-            label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
-        if tile.get('is_4k'):
-            label = u'[COLOR cyan][4K][/COLOR]  ' + label
-        folder.add_item(
-            label=label,
-            art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
-            info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=tile['asset_id']),
-            playable=True,
-        )
+        for tile in tiles:
+            title = tile.get('title', '')
+            sport = _normalise_sport(tile)
+            try:
+                ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
+                label = u'[COLOR orange]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
+            except Exception:
+                label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
+            if tile.get('is_4k'):
+                label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            folder.add_item(
+                label=label,
+                art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
+                info={'plot': tile.get('description') or title, 'mediatype': 'video'},
+                path=plugin.url_for(play, id=tile['asset_id']),
+                playable=True,
+            )
+    except Exception:
+        pass
     return folder
 
 
@@ -1032,25 +1036,25 @@ def recent_highlights_flat(**kwargs):
     folder = plugin.Folder('Highlights', cacheToDisc=False)
     try:
         tiles = api.recent_replays(tile_type='highlights')
-    except Exception as e:
-        raise PluginError(str(e))
-    for tile in tiles:
-        title = tile.get('title', '')
-        sport = _normalise_sport(tile)
-        try:
-            ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
-            label = u'[COLOR orange]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
-        except Exception:
-            label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
-        if tile.get('is_4k'):
-            label = u'[COLOR cyan][4K][/COLOR]  ' + label
-        folder.add_item(
-            label=label,
-            art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
-            info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=tile['asset_id']),
-            playable=True,
-        )
+        for tile in tiles:
+            title = tile.get('title', '')
+            sport = _normalise_sport(tile)
+            try:
+                ts = arrow.get(tile['start']).to('local').format('ddd D MMM h:mma')
+                label = u'[COLOR orange]{}[/COLOR]  {} [{}]'.format(sport, title, ts)
+            except Exception:
+                label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
+            if tile.get('is_4k'):
+                label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            folder.add_item(
+                label=label,
+                art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
+                info={'plot': tile.get('description') or title, 'mediatype': 'video'},
+                path=plugin.url_for(play, id=tile['asset_id']),
+                playable=True,
+            )
+    except Exception:
+        pass
     return folder
 
 
@@ -1224,10 +1228,12 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
     try:
         stream = api.stream(id, channel_id=kwargs.get('channel_id') or None, upgrade_4k=bool(kwargs.get('upgrade_4k')))
     except Exception as e:
-        raise PluginError(str(e))
+        gui.notification(str(e), heading='Stream Error')
+        return
 
     if not stream.get('manifest_url'):
-        raise PluginError(_.NO_STREAM)
+        gui.notification(_.NO_STREAM, heading='Stream Error')
+        return
 
     headers = {}
     if stream.get('cookie_name') and stream.get('cookie_value'):
@@ -1243,7 +1249,7 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
         inputstream=inputstream.Widevine(
             license_key=stream['license_url'],
             license_headers={'Authorization': 'Bearer {}'.format(stream['dazn_token'])},
-            wv_secure=True,
+            wv_secure=bool(kwargs.get('upgrade_4k')),
         ),
     )
 
