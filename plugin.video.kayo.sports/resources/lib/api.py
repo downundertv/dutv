@@ -372,12 +372,20 @@ class API:
         resp.raise_for_status()
         return resp.json().get('tiles', [])
 
-    def stream(self, asset_id, channel_id=None, upgrade_4k=False):
+    def stream(self, asset_id, channel_id=None, upgrade_4k=False, is_live=False):
         from slyguy import settings as _settings
         force_fhd = _settings.getBool('force_fhd', False)
-        # quality=4k causes DAZN to serve HEVC manifests even for 1080p channels.
-        # Only request 4k when upgrade_4k is explicitly set (real 4K stream).
-        quality   = '4k' if (upgrade_4k and not force_fhd) else 'fhd'
+
+        if force_fhd:
+            quality = 'fhd'
+        elif is_live and not upgrade_4k:
+            # Live non-4K: request FHD only so DAZN omits HEVC capabilities.
+            # Keeps ARM32 HEVC decoder pool clear for channels that don't need it.
+            quality = 'fhd'
+        else:
+            # 4K live, or any VOD: request 4K capabilities so DAZN returns HEVC
+            # when available. DAZN serves AVC for non-HEVC content regardless.
+            quality = '4k'
 
         params = {'id': asset_id, 'quality': quality}
         if channel_id:
@@ -406,7 +414,9 @@ class API:
         cdn_val   = data.get('cdn_val', '')
 
         mpd_url = RELAY_URL + '/mpd_kodi?id=' + asset_id + '&quality=' + quality
-        if not upgrade_4k:
+        # Strip HEVC from the manifest only for live non-4K plays (decoder pool protection).
+        # VOD plays never need stripping — one stream at a time, no pool exhaustion.
+        if is_live and not upgrade_4k:
             mpd_url += '&avc_only=1'
 
         return {

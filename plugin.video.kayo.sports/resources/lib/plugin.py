@@ -1258,7 +1258,9 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
                 return
 
     try:
-        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None, upgrade_4k=bool(kwargs.get('upgrade_4k')))
+        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None,
+                            upgrade_4k=bool(kwargs.get('upgrade_4k')),
+                            is_live=ROUTE_LIVE_TAG in kwargs)
     except Exception as e:
         gui.notification(str(e), heading='Stream Error')
         return
