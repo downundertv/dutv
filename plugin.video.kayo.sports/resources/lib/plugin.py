@@ -315,13 +315,17 @@ def live(**kwargs):
         # Always play via the permanent linear channel slot — DAZN serves UHD
         # quality from this slot when a 4K match is broadcasting, and FHD otherwise.
         # Using the event-specific asset_id would stop playback when the match ends.
-        play_id = ch4k['linear_asset']
+        # Only set upgrade_4k when a live 4K event is actually on — otherwise the
+        # channel is serving its standard 1080p HEVC feed and upgrade_4k causes
+        # wv_secure=True + no HEVC stripping, which crashes MT8696 after one play.
+        play_id    = ch4k['linear_asset']
+        play_extra = {'upgrade_4k': '1'} if ev else {}
 
         folder.add_items(plugin.Item(
             label=label,
             art={'thumb': ch4k['logo']},
             info={'plot': plot, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], upgrade_4k='1', _is_live=True),
+            path=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True, **play_extra),
             playable=True,
         ))
 
