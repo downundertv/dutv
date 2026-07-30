@@ -1,9 +1,7 @@
 import codecs
 import os
-import time as _time
 
 import arrow
-import xbmcgui
 from kodi_six import xbmc
 
 from slyguy import plugin, gui, settings, userdata, signals, inputstream
@@ -27,18 +25,6 @@ api = API()
 _ADDON_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
 
-# MT8696 (Fire TV AFTKA) secure-decoder pool guard.
-# AVC and HEVC use separate hardware codec pools with different slot counts:
-#   OMX.MTK.VIDEO.DECODER.AVC.secure  — ~4 slots
-#   OMX.MTK.VIDEO.DECODER.HEVC.secure — ~3 slots
-# Each list records when a play's decoder began releasing (= moment next play started).
-# Slots not yet released within _DECODER_RELEASE_SECS are still counted against the pool.
-# Lists persist via reuselanguageinvoker=true and reset on Kodi restart.
-_avc_close_times        = []
-_hevc_close_times       = []
-_DECODER_RELEASE_SECS   = 600  # 10-min window; crash evidence shows >2.5 min
-_AVC_RESTART_THRESHOLD  = 3    # restart before 4th AVC allocation (pool ~4)
-_HEVC_RESTART_THRESHOLD = 2    # restart before 3rd HEVC allocation (pool ~3)
 
 
 
@@ -600,11 +586,14 @@ def _render_tile(tile, section=''):
     if tile.get('is_4k'):
         lbl = u'[COLOR cyan][4K][/COLOR]  ' + lbl
 
+    play_kwargs = {'id': asset_id}
+    if tile.get('is_4k'):
+        play_kwargs['upgrade_4k'] = '1'
     return plugin.Item(
         label=lbl,
         art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
         info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-        path=plugin.url_for(play, id=asset_id),
+        path=plugin.url_for(play, **play_kwargs),
         playable=not is_upcoming,
     )
 
@@ -1016,11 +1005,14 @@ def recent_replays_flat(**kwargs):
                 label = u'[COLOR yellow]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            play_kwargs = {'id': tile['asset_id']}
+            if tile.get('is_4k'):
+                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, id=tile['asset_id']),
+                path=plugin.url_for(play, **play_kwargs),
                 playable=True,
             )
     except Exception:
@@ -1045,11 +1037,14 @@ def recent_minis_flat(**kwargs):
                 label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            play_kwargs = {'id': tile['asset_id']}
+            if tile.get('is_4k'):
+                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, id=tile['asset_id']),
+                path=plugin.url_for(play, **play_kwargs),
                 playable=True,
             )
     except Exception:
@@ -1074,11 +1069,14 @@ def recent_highlights_flat(**kwargs):
                 label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
+            play_kwargs = {'id': tile['asset_id']}
+            if tile.get('is_4k'):
+                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, id=tile['asset_id']),
+                path=plugin.url_for(play, **play_kwargs),
                 playable=True,
             )
     except Exception:
@@ -1125,11 +1123,14 @@ def epg_sport(date, sport, **kwargs):
         if tile.get('is_4k'):
             label = u'[COLOR cyan][4K][/COLOR]  ' + label
 
+        play_kwargs = {'id': tile.get('asset_id', '')}
+        if tile.get('is_4k'):
+            play_kwargs['upgrade_4k'] = '1'
         folder.add_item(
             label=label,
             art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
             info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=tile.get('asset_id', '')),
+            path=plugin.url_for(play, **play_kwargs),
             playable=not is_upcoming,
         )
     return folder
@@ -1243,27 +1244,6 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
     if not plugin.logged_in:
         gui.notification('Please login to Kayo Sports', heading='Not Logged In')
         return
-    global _avc_close_times, _hevc_close_times
-    now = _time.time()
-    is_hevc_play = bool(kwargs.get('upgrade_4k'))
-    close_list   = _hevc_close_times if is_hevc_play else _avc_close_times
-    threshold    = _HEVC_RESTART_THRESHOLD if is_hevc_play else _AVC_RESTART_THRESHOLD
-    held = sum(1 for t in close_list if now - t < _DECODER_RELEASE_SECS)
-    if held >= threshold:
-        _avc_close_times  = []
-        _hevc_close_times = []
-        xbmcgui.Dialog().notification(
-            'Kayo Sports',
-            'Restarting player to prevent crash...',
-            xbmcgui.NOTIFICATION_INFO,
-            3000,
-        )
-        xbmc.sleep(2500)
-        xbmc.executebuiltin('RestartApp()')
-        return
-    close_list.append(now)
-    _avc_close_times  = [t for t in _avc_close_times  if now - t < _DECODER_RELEASE_SECS * 2]
-    _hevc_close_times = [t for t in _hevc_close_times if now - t < _DECODER_RELEASE_SECS * 2]
 
     start_from = int(start_from)
     play_type  = int(play_type)
