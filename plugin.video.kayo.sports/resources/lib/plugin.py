@@ -1283,7 +1283,7 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
         inputstream=inputstream.Widevine(
             license_key=stream['license_url'],
             license_headers={'Authorization': 'Bearer {}'.format(stream['dazn_token'])},
-            wv_secure=bool(kwargs.get('upgrade_4k')),
+            wv_secure=(stream.get('quality') == '4k'),
         ),
     )
 

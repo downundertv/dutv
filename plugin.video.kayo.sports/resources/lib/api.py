@@ -425,4 +425,5 @@ class API:
             'cookie_name':  cdn_name,
             'cookie_value': cdn_val,
             'dazn_token':   data.get('dazn_token', self._dazn_token or ''),
+            'quality':      quality,
         }
