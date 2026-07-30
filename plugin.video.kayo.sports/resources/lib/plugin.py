@@ -379,9 +379,10 @@ def live(**kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
-@plugin.login_required()
 def live_events(**kwargs):
     folder = plugin.Folder('Live & Upcoming')
+    if not plugin.logged_in:
+        return folder
     try:
         evts = api.events()
 
@@ -454,22 +455,26 @@ def live_events(**kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
-@plugin.login_required()
 def recent_replays(**kwargs):
     folder = plugin.Folder('Browse by Date')
-    now = arrow.utcnow()
-    for days_ago in range(21):
-        day   = now.shift(days=-days_ago)
-        date  = day.format('YYYY-MM-DD')
-        label = day.to('local').format('ddd D MMM')
-        if days_ago == 0:
-            label = u'Today — {}'.format(label)
-        elif days_ago == 1:
-            label = u'Yesterday — {}'.format(label)
-        folder.add_item(
-            label=label,
-            path=plugin.url_for(epg_day, date=date),
-        )
+    if not plugin.logged_in:
+        return folder
+    try:
+        now = arrow.utcnow()
+        for days_ago in range(21):
+            day   = now.shift(days=-days_ago)
+            date  = day.format('YYYY-MM-DD')
+            label = day.to('local').format('ddd D MMM')
+            if days_ago == 0:
+                label = u'Today — {}'.format(label)
+            elif days_ago == 1:
+                label = u'Yesterday — {}'.format(label)
+            folder.add_item(
+                label=label,
+                path=plugin.url_for(epg_day, date=date),
+            )
+    except Exception:
+        pass
     return folder
 
 
@@ -991,9 +996,10 @@ def epg_day(date, **kwargs):
 
 
 @plugin.route()
-@plugin.login_required()
 def recent_replays_flat(**kwargs):
     folder = plugin.Folder('Recent Replays', cacheToDisc=False)
+    if not plugin.logged_in:
+        return folder
     try:
         tiles = api.recent_replays()
         for tile in tiles:
@@ -1019,9 +1025,10 @@ def recent_replays_flat(**kwargs):
 
 
 @plugin.route()
-@plugin.login_required()
 def recent_minis_flat(**kwargs):
     folder = plugin.Folder('Minis', cacheToDisc=False)
+    if not plugin.logged_in:
+        return folder
     try:
         tiles = api.recent_replays(tile_type='minis')
         for tile in tiles:
@@ -1047,9 +1054,10 @@ def recent_minis_flat(**kwargs):
 
 
 @plugin.route()
-@plugin.login_required()
 def recent_highlights_flat(**kwargs):
     folder = plugin.Folder('Highlights', cacheToDisc=False)
+    if not plugin.logged_in:
+        return folder
     try:
         tiles = api.recent_replays(tile_type='highlights')
         for tile in tiles:
