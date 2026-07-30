@@ -1330,7 +1330,7 @@ def playlist(output, **kwargs):
                 chno=ch4k['chno'],
                 logo=ch4k['logo'],
                 name=ch4k['name'],
-                url=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True),
+                url=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True, upgrade_4k='1'),
             ))
 
         for ch in _get_live_channels():
