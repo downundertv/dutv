@@ -28,17 +28,17 @@ _ADDON_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__
 _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
 
 # MT8696 (Fire TV AFTKA) secure-decoder pool guard.
-# OMX.MTK.VIDEO.DECODER.AVC.secure has ~4 slots that take several minutes to
-# release after a stream closes. If 3 or more decoders are still releasing
-# simultaneously, the next play will exhaust the pool and SIGABRT Kodi.
-# _decoder_close_times records when each previous play's decoder started its
-# release cycle (i.e. when the NEXT play was requested, which is when Kodi
-# stops the old stream). Only slots closed within the last _DECODER_RELEASE_SECS
-# seconds are counted — after that window, assume the hardware released the slot.
-# The list persists via reuselanguageinvoker=true and resets on Kodi restart.
-_decoder_close_times = []
-_DECODER_RELEASE_SECS = 600   # 10-min conservative window; crash evidence shows >2.5 min
-_DRM_RESTART_THRESHOLD = 3    # restart if 3 slots still releasing when a new play starts
+# AVC and HEVC use separate hardware codec pools with different slot counts:
+#   OMX.MTK.VIDEO.DECODER.AVC.secure  — ~4 slots
+#   OMX.MTK.VIDEO.DECODER.HEVC.secure — ~3 slots
+# Each list records when a play's decoder began releasing (= moment next play started).
+# Slots not yet released within _DECODER_RELEASE_SECS are still counted against the pool.
+# Lists persist via reuselanguageinvoker=true and reset on Kodi restart.
+_avc_close_times        = []
+_hevc_close_times       = []
+_DECODER_RELEASE_SECS   = 600  # 10-min window; crash evidence shows >2.5 min
+_AVC_RESTART_THRESHOLD  = 3    # restart before 4th AVC allocation (pool ~4)
+_HEVC_RESTART_THRESHOLD = 2    # restart before 3rd HEVC allocation (pool ~3)
 
 
 
@@ -326,14 +326,12 @@ def live(**kwargs):
                 for e in ch4k['upcoming'][:4]
             ) if ch4k['upcoming'] else u'No 4K events scheduled'
 
-        # Always play via the permanent linear channel slot — DAZN serves UHD
-        # quality from this slot when a 4K match is broadcasting, and FHD otherwise.
-        # Using the event-specific asset_id would stop playback when the match ends.
-        # Only set upgrade_4k when a live 4K event is actually on — otherwise the
-        # channel is serving its standard 1080p HEVC feed and upgrade_4k causes
-        # wv_secure=True + no HEVC stripping, which crashes MT8696 after one play.
+        # Always play via the permanent linear channel slot — DAZN serves 4K/HEVC
+        # when a match is on, 1080p HEVC filler otherwise. upgrade_4k=1 is always
+        # set so the relay requests HEVC capabilities from DAZN; the per-codec
+        # pool guard above handles crash prevention for rapid HEVC channel changes.
         play_id    = ch4k['linear_asset']
-        play_extra = {'upgrade_4k': '1'} if ev else {}
+        play_extra = {'upgrade_4k': '1'}
 
         folder.add_items(plugin.Item(
             label=label,
@@ -1231,14 +1229,15 @@ def search(query, page, **kwargs):
 @plugin.route()
 @plugin.login_required()
 def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
-    global _decoder_close_times
+    global _avc_close_times, _hevc_close_times
     now = _time.time()
-    # Count decoders still likely held (closed within the release window).
-    # Each entry represents when a previous play's decoder started releasing,
-    # which is the moment the next play was requested (Kodi stops the old stream).
-    held = sum(1 for t in _decoder_close_times if now - t < _DECODER_RELEASE_SECS)
-    if held >= _DRM_RESTART_THRESHOLD:
-        _decoder_close_times = []
+    is_hevc_play = bool(kwargs.get('upgrade_4k'))
+    close_list   = _hevc_close_times if is_hevc_play else _avc_close_times
+    threshold    = _HEVC_RESTART_THRESHOLD if is_hevc_play else _AVC_RESTART_THRESHOLD
+    held = sum(1 for t in close_list if now - t < _DECODER_RELEASE_SECS)
+    if held >= threshold:
+        _avc_close_times  = []
+        _hevc_close_times = []
         xbmcgui.Dialog().notification(
             'Kayo Sports',
             'Restarting player to prevent crash...',
@@ -1248,9 +1247,9 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
         xbmc.sleep(2500)
         xbmc.executebuiltin('RestartApp()')
         return
-    # Record that the previous stream's decoder is now closing, then prune old entries.
-    _decoder_close_times.append(now)
-    _decoder_close_times = [t for t in _decoder_close_times if now - t < _DECODER_RELEASE_SECS * 2]
+    close_list.append(now)
+    _avc_close_times  = [t for t in _avc_close_times  if now - t < _DECODER_RELEASE_SECS * 2]
+    _hevc_close_times = [t for t in _hevc_close_times if now - t < _DECODER_RELEASE_SECS * 2]
 
     start_from = int(start_from)
     play_type  = int(play_type)
