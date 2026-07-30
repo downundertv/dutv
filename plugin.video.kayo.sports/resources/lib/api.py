@@ -375,7 +375,9 @@ class API:
     def stream(self, asset_id, channel_id=None, upgrade_4k=False):
         from slyguy import settings as _settings
         force_fhd = _settings.getBool('force_fhd', False)
-        quality   = 'fhd' if force_fhd else '4k'
+        # quality=4k causes DAZN to serve HEVC manifests even for 1080p channels.
+        # Only request 4k when upgrade_4k is explicitly set (real 4K stream).
+        quality   = '4k' if (upgrade_4k and not force_fhd) else 'fhd'
 
         params = {'id': asset_id, 'quality': quality}
         if channel_id:
