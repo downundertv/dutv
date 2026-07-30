@@ -423,8 +423,12 @@ def live_events(**kwargs):
 
             thumb = ev.get('thumb') or logo
             if is_live:
-                play_path = plugin.url_for(play, id=asset_id, start_from=1,
-                                           play_type=PLAY_FROM_ASK, _is_live=True)
+                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_LIVE, '_is_live': True}
+                if channel_id:
+                    play_kwargs['channel_id'] = channel_id
+                if ev.get('is_4k'):
+                    play_kwargs['upgrade_4k'] = '1'
+                play_path = plugin.url_for(play, **play_kwargs)
             else:
                 play_path = plugin.url_for(play, id=asset_id)
             item = plugin.Item(
@@ -1235,8 +1239,10 @@ def search(query, page, **kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
-@plugin.login_required()
 def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
+    if not plugin.logged_in:
+        gui.notification('Please login to Kayo Sports', heading='Not Logged In')
+        return
     global _avc_close_times, _hevc_close_times
     now = _time.time()
     is_hevc_play = bool(kwargs.get('upgrade_4k'))
