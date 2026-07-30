@@ -403,8 +403,12 @@ class API:
         cdn_name  = data.get('cdn_name', '')
         cdn_val   = data.get('cdn_val', '')
 
+        mpd_url = RELAY_URL + '/mpd_kodi?id=' + asset_id + '&quality=' + quality
+        if not upgrade_4k:
+            mpd_url += '&avc_only=1'
+
         return {
-            'manifest_url': RELAY_URL + '/mpd_kodi?id=' + asset_id + '&quality=' + quality,
+            'manifest_url': mpd_url,
             'license_url':  data.get('license_url', ''),
             'cookie_name':  cdn_name,
             'cookie_value': cdn_val,
