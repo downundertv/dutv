@@ -26,6 +26,14 @@ api = API()
 _ADDON_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
 
+# MT8696 (Fire TV AFTKA) secure-decoder pool guard.
+# OMX.MTK.VIDEO.DECODER.AVC.secure has ~4 slots that don't release between
+# sessions; the 5th play causes SIGABRT. Restarting Kodi clears the pool.
+# This counter persists across play() calls because reuselanguageinvoker=true
+# keeps the module alive; it resets to 0 on each Kodi process start.
+_drm_play_count = 0
+_DRM_RESTART_THRESHOLD = 3
+
 
 
 
@@ -1217,6 +1225,20 @@ def search(query, page, **kwargs):
 @plugin.route()
 @plugin.login_required()
 def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
+    global _drm_play_count
+    _drm_play_count += 1
+    if _drm_play_count > _DRM_RESTART_THRESHOLD:
+        _drm_play_count = 0
+        xbmcgui.Dialog().notification(
+            'Kayo Sports',
+            'Restarting player to prevent crash...',
+            xbmcgui.NOTIFICATION_INFO,
+            3000,
+        )
+        xbmc.sleep(2500)
+        xbmc.executebuiltin('RestartApp()')
+        return
+
     start_from = int(start_from)
     play_type  = int(play_type)
     is_live    = ROUTE_LIVE_TAG in kwargs
