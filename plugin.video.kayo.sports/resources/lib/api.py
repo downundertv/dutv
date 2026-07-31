@@ -23,6 +23,7 @@ class API:
         self._dazn_token  = None
         self._dazn_expiry = 0
         self._subscribed  = None
+        self._last_relay_sync = 0  # epoch seconds; avoids hammering relay from concurrent widget threads
 
     @property
     def _session(self):
@@ -41,10 +42,17 @@ class API:
         self._sync_tokens_to_relay()
 
     def _sync_tokens_to_relay(self):
-        kayo_token     = self._kayo_token or ''
-        refresh_token  = userdata.get('kayo_refresh_token', '')
+        kayo_token    = self._kayo_token or ''
+        refresh_token = userdata.get('kayo_refresh_token', '')
         if not kayo_token and not refresh_token:
             return
+        # Debounce: with reuselanguageinvoker=True and 3 simultaneous widget threads,
+        # all three call new_session() at the same time and would each POST to the relay.
+        # One sync per 60 s is plenty — the relay only needs this when tokens rotate.
+        now = time.time()
+        if now - self._last_relay_sync < 60:
+            return
+        self._last_relay_sync = now
         try:
             self._session.post(RELAY_URL + '/set_kayo_token',
                                json={'token': kayo_token, 'refresh_token': refresh_token},

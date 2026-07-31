@@ -1243,7 +1243,9 @@ def search(query, page, **kwargs):
 @plugin.route()
 def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
     if not plugin.logged_in:
-        gui.notification('Please login to Kayo Sports', heading='Not Logged In')
+        # Don't call gui.notification here — play() is fired from background
+        # threads by Aeon Nox Silvo's on-focus prefetch, and any GUI call from
+        # a background CPythonInvoker thread corrupts ARM32 CPython state.
         return
 
     start_from = int(start_from)
@@ -1263,11 +1265,11 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
                             upgrade_4k=bool(kwargs.get('upgrade_4k')),
                             is_live=ROUTE_LIVE_TAG in kwargs)
     except Exception as e:
-        gui.notification(str(e), heading='Stream Error')
+        log.debug('Kayo play error: {}'.format(str(e)))
         return
 
     if not stream.get('manifest_url'):
-        gui.notification(_.NO_STREAM, heading='Stream Error')
+        log.debug('Kayo play: no manifest_url in stream response')
         return
 
     headers = {}
