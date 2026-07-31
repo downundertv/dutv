@@ -1,5 +1,6 @@
 import codecs
 import os
+import time
 
 import arrow
 from kodi_six import xbmc
@@ -366,7 +367,7 @@ def live(**kwargs):
 
 @plugin.route()
 def live_events(**kwargs):
-    folder = plugin.Folder('Live & Upcoming')
+    folder = plugin.Folder('Live & Upcoming', cacheToDisc=False)
     if not plugin.logged_in:
         return folder
     try:
@@ -409,7 +410,7 @@ def live_events(**kwargs):
 
             thumb = ev.get('thumb') or logo
             if is_live:
-                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_LIVE, '_is_live': True}
+                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_ASK, '_is_live': True}
                 if channel_id:
                     play_kwargs['channel_id'] = channel_id
                 if ev.get('is_4k'):

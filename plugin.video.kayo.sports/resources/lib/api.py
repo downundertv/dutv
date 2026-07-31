@@ -3,6 +3,7 @@ import uuid
 import time
 import json
 import base64
+import threading
 
 import requests
 from slyguy import userdata
@@ -17,11 +18,19 @@ class APIError(Error):
 
 class API:
     def __init__(self):
-        self._session = requests.Session()
+        self._local = threading.local()
         self._kayo_token  = None
         self._dazn_token  = None
         self._dazn_expiry = 0
         self._subscribed  = None
+
+    @property
+    def _session(self):
+        s = getattr(self._local, 'session', None)
+        if s is None:
+            s = requests.Session()
+            self._local.session = s
+        return s
 
     def new_session(self):
         self._kayo_token  = userdata.get('kayo_token')
