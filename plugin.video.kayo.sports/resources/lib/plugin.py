@@ -410,7 +410,7 @@ def live_events(**kwargs):
 
             thumb = ev.get('thumb') or logo
             if is_live:
-                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_ASK, '_is_live': True}
+                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_LIVE, '_is_live': True}
                 if channel_id:
                     play_kwargs['channel_id'] = channel_id
                 if ev.get('is_4k'):
