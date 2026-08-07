@@ -42,69 +42,129 @@ HEADERS = {
 }
 
 EPG_ID_MAP = {
-    'AJE': 'AlJazeera.qa@Arabic',
-    'ANI': 'AnimalPlanet.au@SD',
-    'ANT': 'ANT1Pacific.gr@SD',
-    'ARN': 'Arena.au@SD',
-    'AUR': 'AuroraTV.au@SD',
-    'BXS': 'BoxSets.au@SD',
-    'CL2': 'Classics.au@Plus2',
-    'FKC': 'Classics.au@SD',
-    'VH1': 'ClubMTV.au@SD',
-    'CMT': 'CMT.au@SD',
-    'CNB': 'CNBCAustralia.au@SD',
-    'CNN': 'CNNInternational.us@AsiaPacific',
-    'HI2': 'Comedy.au@Plus2',
-    'HIT': 'Comedy.au@SD',
-    'IO2': 'FoxCrime.au@Plus2',
-    'IOI': 'Crime.au@SD',
-    'DS2': 'DiscoveryChannel.au@Plus2',
-    'DIS': 'DiscoveryChannel.au@SD',
-    'DIT': 'DiscoveryTurbo.au@Australia',
-    'DRM': 'DreamWorksChannel.au@SD',
-    'ES2': 'ESPN2.au@SD',
-    'ESP': 'ESPN.au@SD',
-    'EXP': 'ExpoChannel.au@SD',
+    # ── Entertainment ────────────────────────────────────────────────────────
     'FOX': 'Fox8.au@SD',
     'FO2': 'Fox8.au@Plus2',
+    'ARN': 'Arena.au@SD',
+    'AR2': 'Arena.au@Plus2',              # was MISSING
+    'SHC': 'Showcase.au@SD',
+    'SW2': 'Showcase.au@Plus2',
+    'HIT': 'Comedy.au@SD',
+    'HI2': 'Comedy.au@Plus2',
+    'IOI': 'Crime.au@SD',
+    'IO2': 'FoxCrime.au@Plus2',
+    'CIN': 'RealCrime.au@SD',             # was MISSING — Real Crime HD
+    'HAL': 'UniversalTV.au@SD',
+    'RLS': 'RealLife.au@SD',
+    'RL2': 'RealLife.au@Plus2',
+    'BXS': 'BoxSets.au@SD',
+    'FKC': 'Classics.au@SD',
+    'CL2': 'Classics.au@Plus2',
+    'ACS': 'AussieClassics.au@SD',        # was MISSING — Aussie Classics
+    'HAR': 'Seinfeld.au@SD',              # was PLACEHOLDER — Seinfeld channel
+    'TRS': 'Outlander.au@SD',             # was PLACEHOLDER — Outlander channel
+    'PUH': 'PULP.au@SD',                  # was PLACEHOLDER — PULP
+    'NRW': 'Max.au@SD',                   # was PLACEHOLDER — Max (formerly HBO Max)
+    'MTC': 'Retro.au@SD',                 # was MISSING — Retro
+ 
+    # ── British / UK ─────────────────────────────────────────────────────────
+    'UKT': 'BBCUKTV.au@Australia',
+    'UK2': 'BBCUKTV.au@Plus2',            # was MISSING — UKTV+2
+    'FSU': 'British.au@HD',              # was MISSING — British HD
+    'FS2': 'British.au@Plus2',           # was MISSING — British +2
+    'BCS': 'BritishCinema.au@SD',        # was MISSING — British Cinema
+ 
+    # ── Movies ───────────────────────────────────────────────────────────────
+    'SHO': 'MoviesPremiere.au@HD',        # was MISSING — Movies Premiere HD
+    'SH2': 'MoviesPremiere.au@Plus2',     # was MISSING — Movies Premiere +2
+    'MVS': 'MoviesHits.au@HD',            # was MISSING — Movies Hits HD
+    'SHF': 'MoviesFamily.au@HD',          # was MISSING — Movies Family HD
+    'MTF': 'MoviesFamily.au@Plus2',       # was MISSING — Movies Family +2
+    'SHA': 'MoviesAction.au@HD',          # was MISSING — Movies Action HD
+    'MTA': 'MoviesAction.au@Plus2',       # was MISSING — Movies Action +2
+    'SHY': 'MoviesComedy.au@HD',          # was MISSING — Movies Comedy HD
+    'SHD': 'MoviesRomance.au@HD',         # was MISSING — Movies Romance HD
+    'MO6': 'MoviesDrama.au@HD',           # was MISSING — Movies Drama HD
+    'GRR': 'MoviesGreats.au@HD',          # was MISSING — Movies Greats HD
+    'K02': 'Movies4K.au@UHD',             # was MISSING — Movies 4K Ultra HD
+ 
+    # ── Lifestyle ────────────────────────────────────────────────────────────
+    'LST': 'LifeStyle.au@SD',
+    'LS2': 'LifeStyle.au@Plus2',
+    'FOD': 'LifestyleFood.au@SD',
+    'LF2': 'LifestyleFood.au@Plus2',
+    'LHO': 'LifestyleHome.au@SD',
+    'DTA': 'TLC.au@SD',
+    'DT2': 'TLC.au@Plus2',
+ 
+    # ── Documentary / Factual ────────────────────────────────────────────────
+    'DIS': 'DiscoveryChannel.au@SD',
+    'DS2': 'DiscoveryChannel.au@Plus2',
+    'DIT': 'DiscoveryTurbo.au@Australia',
+    'DI2': 'DiscoveryTurbo.au@Plus2',     # was MISSING — Discovery Turbo +2
+    'DID': 'InvestigationDiscovery.au@SD',
+    'HST': 'RealHistory.au@HD',           # was MISSING — Real History HD
+    'DPS': 'DocPlay.au@HD',               # was MISSING — DocPlay HD
+    'ANI': 'AnimalPlanet.au@SD',
+ 
+    # ── Sport ────────────────────────────────────────────────────────────────
     'FS1': 'FoxCricket.au@SD',
-    'FAF': 'FoxFooty.au@SD',
     'SP2': 'FoxLeague.au@SD',
-    'FNC': 'FoxNewsChannel.us@SD',
+    'FAF': 'FoxFooty.au@SD',
     'FS3': 'FoxSports503.au@SD',
     'FSP': 'FoxSports505.au@SD',
     'SPS': 'FoxSports506.au@SD',
+    'FSS': 'FoxSports507.au@SD',          # was MISSING — Fox Sports 507 HD
     'FSN': 'FoxSportsNews.au@SD',
     'F1S': 'FoxtelOne.au@SD',
-    'ACC': 'GOOD.au@SD',
-    'DID': 'InvestigationDiscovery.au@SD',
-    'LS2': 'LifeStyle.au@Plus2',
-    'LF2': 'LifestyleFood.au@Plus2',
-    'FOD': 'LifestyleFood.au@SD',
-    'LHO': 'LifestyleHome.au@SD',
-    'LST': 'LifeStyle.au@SD',
-    'LMS': 'LMN.au@SD',
-    'TMF': 'MTVHits.au@SD',
+    'F12': 'FoxtelOne.au@Plus2',          # was MISSING — Foxtel One +2
+    'ESP': 'ESPN.au@SD',
+    'ES2': 'ESPN2.au@SD',
+    'UFC': 'MainEvent.au@SD',             # was PLACEHOLDER — Main Event UFC
+    'SRA': 'SkyRacing1.au@SD',            # was MISSING — Sky Racing HD
+    'SR2': 'SkyRacing2.au@SD',
+    'SRW': 'SkyThoroughbredCentral.au@SD', # was MISSING — SKY Tbred Cent HD
+    'RTV': 'Racingcom.au@SD',             # was PLACEHOLDER — Racing.com HD
+ 
+    # ── News ─────────────────────────────────────────────────────────────────
+    'FNC': 'FoxNewsChannel.us@SD',
+    'CNN': 'CNNInternational.us@AsiaPacific',
+    'CNB': 'CNBCAustralia.au@SD',
+    'BLM': 'BloombergTV.us@Australia',    # was MISSING — Bloomberg Television
+    'ASP': 'SkyNewsExtra.au@SD',
+    'SKY': 'News24.au@SD',                # was MISSING — News24
+    'FXW': 'News24Weather.au@SD',         # was MISSING — News24 Weather
+    'SUK': 'SkyNewsUK.uk@HD',             # was MISSING — Sky News UK HD
+    'GBN': 'GBNews.uk@SD',                # was MISSING — GB News
+    'NNN': 'NBCNewsNow.us@SD',            # was PLACEHOLDER — NBC NEWS NOW
+    'MSN': 'MSNOW.au@SD',                 # was MISSING — MS NOW
+ 
+    # ── International ────────────────────────────────────────────────────────
+    'AJE': 'AlJazeera.qa@Arabic',
     'NHK': 'NHKWorldJapan.jp@SD',
-    'NMU': 'NickMusic.au@SD',
+    'ANT': 'ANT1Pacific.gr@SD',
     'RAI': 'RaiItalia.it@Australia',
-    'RL2': 'RealLife.au@Plus2',
-    'RLS': 'RealLife.au@SD',
+    'CCC': 'CGTN.cn@SD',                  # was MISSING — CGTN
+    'CCD': 'CGTNDocumentary.cn@SD',       # was MISSING — CGTN-Documentary
+    'SWW': 'SBSWorldWatch.au@Sydney',
     'SBN': 'SBSViceland.au@Sydney',
     'S4B': 'SBSWorldMovies.au@Sydney',
-    'SWW': 'SBSWorldWatch.au@Sydney',
-    'SW2': 'Showcase.au@Plus2',
-    'SHC': 'Showcase.au@SD',
-    'ASP': 'SkyNewsExtra.au@SD',
-    'SR2': 'SkyRacing2.au@SD',
-    'DT2': 'TLC.au@Plus2',
-    'DTA': 'TLC.au@SD',
+    'DAS': 'Daystar.us@SD',               # was MISSING — Daystar
+    'SLT': 'SonLife.us@SD',               # was MISSING — SonLife
+ 
+    # ── Music / Entertainment ────────────────────────────────────────────────
+    'TMF': 'MTVHits.au@SD',
+    'NMU': 'NickMusic.au@SD',
+    'VH1': 'ClubMTV.au@SD',
+    'CMT': 'CMT.au@SD',
+    'DRM': 'DreamWorksChannel.au@SD',
+    'FHT': 'FashionTV.fr@SD',             # was MISSING — Fashion TV
+    'NAP': 'AustralianPlayed.au@SD',      # was PLACEHOLDER — Australian Played
+ 
+    # ── Shopping / Other ────────────────────────────────────────────────────
     'TVS': 'TVSN.au@SD',
-    'UKT': 'BBCUKTV.au@Australia',
-    'HAL': 'UniversalTV.au@SD',
-    'HAR': 'HAR', 'TRS': 'TRS', 'UFC': 'UFC',
-    'RTV': 'RTV', 'NRW': 'NRW', 'NAP': 'NAP',
-    'NNN': 'NNN', 'PUH': 'PUH',
+    'EXP': 'ExpoChannel.au@SD',
+    'ACC': 'GOOD.au@SD',
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
