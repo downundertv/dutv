@@ -1,8 +1,8 @@
 import codecs
 import os
-import time
 
 import arrow
+import xbmcgui
 from kodi_six import xbmc
 
 from slyguy import plugin, gui, settings, userdata, signals, inputstream
@@ -25,7 +25,6 @@ api = API()
 # Addon root path derived from this file's location (resources/lib/plugin.py -> ../../..)
 _ADDON_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
-
 
 
 
@@ -54,7 +53,6 @@ def home(**kwargs):
         folder.add_item(label=u'[B]Fixtures[/B]',         path=plugin.url_for(fixtures))
         folder.add_item(label=u'[B]Shows[/B]',            path=plugin.url_for(dazn_shows))
         folder.add_item(label=u'[B]Sports[/B]',            path=plugin.url_for(sport_index))
-        folder.add_item(label=u'[B]Competitions[/B]',     path=plugin.url_for(competition_index))
         folder.add_item(label=u'[B]Recent Replays[/B]',  path=plugin.url_for(recent_replays_flat))
         folder.add_item(label=u'[B]Minis[/B]',           path=plugin.url_for(recent_minis_flat))
         folder.add_item(label=u'[B]Highlights[/B]',      path=plugin.url_for(recent_highlights_flat))
@@ -313,18 +311,16 @@ def live(**kwargs):
                 for e in ch4k['upcoming'][:4]
             ) if ch4k['upcoming'] else u'No 4K events scheduled'
 
-        # Always play via the permanent linear channel slot — DAZN serves 4K/HEVC
-        # when a match is on, 1080p HEVC filler otherwise. upgrade_4k=1 is always
-        # set so the relay requests HEVC capabilities from DAZN; the per-codec
-        # pool guard above handles crash prevention for rapid HEVC channel changes.
-        play_id    = ch4k['linear_asset']
-        play_extra = {'upgrade_4k': '1'}
+        # Always play via the permanent linear channel slot — DAZN serves UHD
+        # quality from this slot when a 4K match is broadcasting, and FHD otherwise.
+        # Using the event-specific asset_id would stop playback when the match ends.
+        play_id = ch4k['linear_asset']
 
         folder.add_items(plugin.Item(
             label=label,
             art={'thumb': ch4k['logo']},
             info={'plot': plot, 'mediatype': 'video'},
-            path=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True, **play_extra),
+            path=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], upgrade_4k='1', _is_live=True),
             playable=True,
         ))
 
@@ -366,10 +362,9 @@ def live(**kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
+@plugin.login_required()
 def live_events(**kwargs):
-    folder = plugin.Folder('Live & Upcoming', cacheToDisc=False)
-    if not plugin.logged_in:
-        return folder
+    folder = plugin.Folder('Live & Upcoming')
     try:
         evts = api.events()
 
@@ -410,12 +405,8 @@ def live_events(**kwargs):
 
             thumb = ev.get('thumb') or logo
             if is_live:
-                play_kwargs = {'id': asset_id, 'play_type': PLAY_FROM_LIVE, '_is_live': True}
-                if channel_id:
-                    play_kwargs['channel_id'] = channel_id
-                if ev.get('is_4k'):
-                    play_kwargs['upgrade_4k'] = '1'
-                play_path = plugin.url_for(play, **play_kwargs)
+                play_path = plugin.url_for(play, id=asset_id, start_from=1,
+                                           play_type=PLAY_FROM_ASK, _is_live=True)
             else:
                 play_path = plugin.url_for(play, id=asset_id)
             item = plugin.Item(
@@ -446,26 +437,22 @@ def live_events(**kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
+@plugin.login_required()
 def recent_replays(**kwargs):
     folder = plugin.Folder('Browse by Date')
-    if not plugin.logged_in:
-        return folder
-    try:
-        now = arrow.utcnow()
-        for days_ago in range(21):
-            day   = now.shift(days=-days_ago)
-            date  = day.format('YYYY-MM-DD')
-            label = day.to('local').format('ddd D MMM')
-            if days_ago == 0:
-                label = u'Today — {}'.format(label)
-            elif days_ago == 1:
-                label = u'Yesterday — {}'.format(label)
-            folder.add_item(
-                label=label,
-                path=plugin.url_for(epg_day, date=date),
-            )
-    except Exception:
-        pass
+    now = arrow.utcnow()
+    for days_ago in range(21):
+        day   = now.shift(days=-days_ago)
+        date  = day.format('YYYY-MM-DD')
+        label = day.to('local').format('ddd D MMM')
+        if days_ago == 0:
+            label = u'Today — {}'.format(label)
+        elif days_ago == 1:
+            label = u'Yesterday — {}'.format(label)
+        folder.add_item(
+            label=label,
+            path=plugin.url_for(epg_day, date=date),
+        )
     return folder
 
 
@@ -587,14 +574,11 @@ def _render_tile(tile, section=''):
     if tile.get('is_4k'):
         lbl = u'[COLOR cyan][4K][/COLOR]  ' + lbl
 
-    play_kwargs = {'id': asset_id}
-    if tile.get('is_4k'):
-        play_kwargs['upgrade_4k'] = '1'
     return plugin.Item(
         label=lbl,
         art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
         info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-        path=plugin.url_for(play, **play_kwargs),
+        path=plugin.url_for(play, id=asset_id),
         playable=not is_upcoming,
     )
 
@@ -630,8 +614,6 @@ def sport_menu(raw_sport, **kwargs):
     except Exception as e:
         raise PluginError(str(e))
     _section_menu(folder, tiles, sport_section, raw_sport=raw_sport)
-    if SPORT_KAYO_SLUG.get(raw_sport):
-        folder.add_item(label=u'Shows', path=plugin.url_for(sport_shows, raw_sport=raw_sport))
     return folder
 
 
@@ -705,8 +687,6 @@ def competition_menu(sport_title, title, **kwargs):
     except Exception as e:
         raise PluginError(str(e))
     _section_menu(folder, tiles, competition_section, sport_title=sport_title, title=title)
-    if SPORT_KAYO_SLUG.get(sport_title):
-        folder.add_item(label=u'Shows', path=plugin.url_for(sport_shows, raw_sport=sport_title))
     return folder
 
 
@@ -990,10 +970,9 @@ def epg_day(date, **kwargs):
 
 
 @plugin.route()
+@plugin.login_required()
 def recent_replays_flat(**kwargs):
     folder = plugin.Folder('Recent Replays', cacheToDisc=False)
-    if not plugin.logged_in:
-        return folder
     try:
         tiles = api.recent_replays()
         for tile in tiles:
@@ -1006,14 +985,11 @@ def recent_replays_flat(**kwargs):
                 label = u'[COLOR yellow]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
-            play_kwargs = {'id': tile['asset_id']}
-            if tile.get('is_4k'):
-                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, **play_kwargs),
+                path=plugin.url_for(play, id=tile['asset_id']),
                 playable=True,
             )
     except Exception:
@@ -1022,10 +998,9 @@ def recent_replays_flat(**kwargs):
 
 
 @plugin.route()
+@plugin.login_required()
 def recent_minis_flat(**kwargs):
     folder = plugin.Folder('Minis', cacheToDisc=False)
-    if not plugin.logged_in:
-        return folder
     try:
         tiles = api.recent_replays(tile_type='minis')
         for tile in tiles:
@@ -1038,14 +1013,11 @@ def recent_minis_flat(**kwargs):
                 label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
-            play_kwargs = {'id': tile['asset_id']}
-            if tile.get('is_4k'):
-                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, **play_kwargs),
+                path=plugin.url_for(play, id=tile['asset_id']),
                 playable=True,
             )
     except Exception:
@@ -1054,10 +1026,9 @@ def recent_minis_flat(**kwargs):
 
 
 @plugin.route()
+@plugin.login_required()
 def recent_highlights_flat(**kwargs):
     folder = plugin.Folder('Highlights', cacheToDisc=False)
-    if not plugin.logged_in:
-        return folder
     try:
         tiles = api.recent_replays(tile_type='highlights')
         for tile in tiles:
@@ -1070,14 +1041,11 @@ def recent_highlights_flat(**kwargs):
                 label = u'[COLOR orange]{}[/COLOR]  {}'.format(sport, title)
             if tile.get('is_4k'):
                 label = u'[COLOR cyan][4K][/COLOR]  ' + label
-            play_kwargs = {'id': tile['asset_id']}
-            if tile.get('is_4k'):
-                play_kwargs['upgrade_4k'] = '1'
             folder.add_item(
                 label=label,
                 art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
                 info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-                path=plugin.url_for(play, **play_kwargs),
+                path=plugin.url_for(play, id=tile['asset_id']),
                 playable=True,
             )
     except Exception:
@@ -1124,14 +1092,11 @@ def epg_sport(date, sport, **kwargs):
         if tile.get('is_4k'):
             label = u'[COLOR cyan][4K][/COLOR]  ' + label
 
-        play_kwargs = {'id': tile.get('asset_id', '')}
-        if tile.get('is_4k'):
-            play_kwargs['upgrade_4k'] = '1'
         folder.add_item(
             label=label,
             art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
             info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-            path=plugin.url_for(play, **play_kwargs),
+            path=plugin.url_for(play, id=tile.get('asset_id', '')),
             playable=not is_upcoming,
         )
     return folder
@@ -1241,13 +1206,8 @@ def search(query, page, **kwargs):
 # ------------------------------------------------------------------
 
 @plugin.route()
+@plugin.login_required()
 def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
-    if not plugin.logged_in:
-        # Don't call gui.notification here — play() is fired from background
-        # threads by Aeon Nox Silvo's on-focus prefetch, and any GUI call from
-        # a background CPythonInvoker thread corrupts ARM32 CPython state.
-        return
-
     start_from = int(start_from)
     play_type  = int(play_type)
     is_live    = ROUTE_LIVE_TAG in kwargs
@@ -1261,32 +1221,39 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
                 return
 
     try:
-        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None,
-                            upgrade_4k=bool(kwargs.get('upgrade_4k')),
-                            is_live=ROUTE_LIVE_TAG in kwargs)
+        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None, upgrade_4k=bool(kwargs.get('upgrade_4k')))
     except Exception as e:
-        log.debug('Kayo play error: {}'.format(str(e)))
+        gui.notification(str(e), heading='Stream Error')
         return
 
     if not stream.get('manifest_url'):
-        log.debug('Kayo play: no manifest_url in stream response')
+        gui.notification(_.NO_STREAM, heading='Stream Error')
         return
 
     headers = {}
     if stream.get('cookie_name') and stream.get('cookie_value'):
         headers['Cookie'] = '{}={}'.format(stream['cookie_name'], stream['cookie_value'])
 
+    # For non-4K plays, ask the relay to strip HEVC representations from the manifest.
+    # On MT8696 (Fire TV AFTKA), the HEVC decoder doesn't fully release between Kodi
+    # sessions — after 3 plays the decoder pool exhausts and Kodi aborts.
+    # AVC (H.264) uses a completely separate decoder family with no pool issue.
+    manifest_url = stream['manifest_url']
+    if not bool(kwargs.get('upgrade_4k')) and manifest_url:
+        sep = '&' if '?' in manifest_url else '?'
+        manifest_url += sep + 'avc_only=1'
+
     log.debug('Kayo stream: manifest={} cdn={}'.format(
-        stream['manifest_url'][:80], stream['cookie_name'],
+        manifest_url[:80], stream['cookie_name'],
     ))
 
     item = plugin.Item(
-        path=stream['manifest_url'],
+        path=manifest_url,
         headers=headers,
         inputstream=inputstream.Widevine(
             license_key=stream['license_url'],
             license_headers={'Authorization': 'Bearer {}'.format(stream['dazn_token'])},
-            wv_secure=(stream.get('quality') == '4k'),
+            wv_secure=bool(kwargs.get('upgrade_4k')),
         ),
     )
 
@@ -1329,7 +1296,7 @@ def playlist(output, **kwargs):
                 chno=ch4k['chno'],
                 logo=ch4k['logo'],
                 name=ch4k['name'],
-                url=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True, upgrade_4k='1'),
+                url=plugin.url_for(play, id=play_id, channel_id=ch4k['channel_id'], _is_live=True),
             ))
 
         for ch in _get_live_channels():
