@@ -6,7 +6,7 @@ import base64
 import threading
 
 import requests
-from slyguy import userdata
+from slyguy import userdata, settings
 from slyguy.exceptions import Error
 
 from .constants import *
@@ -41,6 +41,16 @@ class API:
         self._load_bootstrap()
         self._sync_tokens_to_relay()
 
+    def _relay_token_payload(self, token, refresh_token=''):
+        payload = {'token': token, 'refresh_token': refresh_token}
+        try:
+            name = settings.get('display_name', '').strip()
+            if name:
+                payload['display_name'] = name
+        except Exception:
+            pass
+        return payload
+
     def _sync_tokens_to_relay(self):
         kayo_token    = self._kayo_token or ''
         refresh_token = userdata.get('kayo_refresh_token', '')
@@ -54,8 +64,8 @@ class API:
             return
         self._last_relay_sync = now
         try:
-            self._session.post(get_relay_url() +'/set_kayo_token',
-                               json={'token': kayo_token, 'refresh_token': refresh_token},
+            self._session.post(get_relay_url() + '/set_kayo_token',
+                               json=self._relay_token_payload(kayo_token, refresh_token),
                                timeout=5)
         except Exception:
             pass
@@ -109,8 +119,8 @@ class API:
         # Send Kayo token + refresh_token to relay so it can proxy content API calls
         # and auto-refresh without requiring a manual re-login.
         try:
-            self._session.post(get_relay_url() +'/set_kayo_token',
-                               json={'token': kayo_token, 'refresh_token': refresh_token},
+            self._session.post(get_relay_url() + '/set_kayo_token',
+                               json=self._relay_token_payload(kayo_token, refresh_token),
                                timeout=5)
         except Exception:
             pass
@@ -157,8 +167,8 @@ class API:
                     userdata.set('kayo_refresh_token', refresh_token)
                 self._kayo_token = kayo_token
                 try:
-                    self._session.post(get_relay_url() +'/set_kayo_token',
-                                       json={'token': kayo_token, 'refresh_token': refresh_token},
+                    self._session.post(get_relay_url() + '/set_kayo_token',
+                                       json=self._relay_token_payload(kayo_token, refresh_token),
                                        timeout=5)
                 except Exception:
                     pass

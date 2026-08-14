@@ -25,6 +25,7 @@
         <setting label="Force FHD (disable 4K HEVC)" id="force_fhd" type="bool" default="false"/>
         <setting label="EPG URL" id="epg_url" type="text" default="http://aussietv.xyz/Kayo/epg.php"/>
         <setting label="Relay URL (leave blank for default)" id="relay_url" type="text" default=""/>
+        <setting label="Your Name (shown on relay dashboard)" id="display_name" type="text" default=""/>
         <setting label="Kiosk Mode (hide Logout, Profile &amp; Settings)" id="kiosk_mode" type="bool" default="false"/>
     </category>
 
