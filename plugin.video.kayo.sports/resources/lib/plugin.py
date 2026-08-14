@@ -405,10 +405,15 @@ def live_events(**kwargs):
 
             thumb = ev.get('thumb') or logo
             if is_live:
-                play_path = plugin.url_for(play, id=asset_id, start_from=1,
-                                           play_type=PLAY_FROM_ASK, _is_live=True)
+                play_kwargs = dict(id=asset_id, start_from=1, play_type=PLAY_FROM_ASK, _is_live=True)
+                if ev.get('is_4k'):
+                    play_kwargs['upgrade_4k'] = '1'
+                play_path = plugin.url_for(play, **play_kwargs)
             else:
-                play_path = plugin.url_for(play, id=asset_id)
+                play_kwargs = dict(id=asset_id)
+                if ev.get('is_4k'):
+                    play_kwargs['upgrade_4k'] = '1'
+                play_path = plugin.url_for(play, **play_kwargs)
             item = plugin.Item(
                 label=label,
                 art={'thumb': thumb, 'fanart': ev.get('fanart', ''), 'icon': logo},
