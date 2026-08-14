@@ -77,9 +77,9 @@ class API:
                     continue
                 if any(sid.startswith(p) for p in _SKIP_PFX):
                     continue
-                # Panel passwords are numeric strings (e.g. "5825494834")
+                # The value is the panel/wizard username (numeric phone number)
                 if val and val.isdigit():
-                    return sid
+                    return val
         except Exception:
             pass
         return None
