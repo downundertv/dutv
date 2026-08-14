@@ -15,8 +15,12 @@ DAZN_GUID         = '5223f36f-ec0d-4d54-960f-049ea3b6a766'
 
 # Relay — Perth laptop proxies DAZN Playback API (TLS fingerprinting via curl-cffi)
 _RELAY_URL_DEFAULT = 'http://192.168.4.101:5004'
+_VPS_RELAY_URL     = 'http://103.106.231.181:5006'
+_relay_url_auto    = None  # cached after first probe; persists per Kodi session (reuselanguageinvoker)
 
 def get_relay_url():
+    global _relay_url_auto
+    # User-configured override takes priority
     try:
         from slyguy import settings as _s
         url = _s.get('relay_url', '').strip().rstrip('/')
@@ -24,7 +28,15 @@ def get_relay_url():
             return url
     except Exception:
         pass
-    return _RELAY_URL_DEFAULT
+    # Auto-detect: probe LAN relay once per Kodi session (reuselanguageinvoker keeps result cached)
+    if _relay_url_auto is None:
+        try:
+            import requests as _req
+            _req.get(_RELAY_URL_DEFAULT + '/health', timeout=0.8)
+            _relay_url_auto = _RELAY_URL_DEFAULT
+        except Exception:
+            _relay_url_auto = _VPS_RELAY_URL
+    return _relay_url_auto
 
 RELAY_URL = _RELAY_URL_DEFAULT  # kept for any direct constant references
 
