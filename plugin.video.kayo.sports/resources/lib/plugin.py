@@ -311,9 +311,9 @@ def live(**kwargs):
                 for e in ch4k['upcoming'][:4]
             ) if ch4k['upcoming'] else u'No 4K events scheduled'
 
-        # Always play via the permanent linear channel slot — DAZN serves UHD
-        # quality from this slot when a 4K match is broadcasting, and FHD otherwise.
-        # Using the event-specific asset_id would stop playback when the match ends.
+        # Always play via the permanent linear channel slot so the stream continues
+        # after the event ends. The relay upgrades to the live 4K event asset_id
+        # transparently via _get_live_4k_event_for_channel when a match is on.
         play_id = ch4k['linear_asset']
 
         folder.add_items(plugin.Item(
