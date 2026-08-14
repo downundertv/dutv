@@ -42,19 +42,24 @@ class API:
         self._sync_tokens_to_relay()
 
     def _get_wizard_username(self):
-        """Read the panel username from plugin.program.duwizard settings.xml.
-        The wizard stores panel credentials as <setting id="USERNAME">PASSWORD</setting>
-        where the setting ID is the panel username and the value is the panel password."""
+        # Return cached value if already found this install
+        cached = userdata.get('panel_username', '')
+        if cached:
+            return cached
         try:
-            import xbmc
-            import xbmcvfs
+            import xbmc, xbmcvfs
             import xml.etree.ElementTree as ET
-            path = xbmc.translatePath(
-                'special://userdata/addon_data/plugin.program.duwizard/settings.xml')
-            if not xbmcvfs.exists(path):
+            # xbmcvfs.translatePath (Kodi 19+) returns a clean filesystem path;
+            # fall back to xbmc.translatePath on older builds
+            _tr = getattr(xbmcvfs, 'translatePath', None) or xbmc.translatePath
+            path = _tr('special://userdata/addon_data/plugin.program.duwizard/settings.xml')
+            # Use os.path + open() — more reliable on Android than xbmcvfs.File
+            if not os.path.isfile(path):
                 return None
-            with xbmcvfs.File(path) as f:
-                content = f.read()
+            with open(path, 'r', encoding='utf-8', errors='replace') as fh:
+                content = fh.read()
+            if not content.strip():
+                return None
             tree = ET.fromstring(content)
             _SKIP = {
                 'buildname','buildversion','buildtheme','latestversion','lastbuildcheck',
@@ -77,12 +82,31 @@ class API:
                     continue
                 if any(sid.startswith(p) for p in _SKIP_PFX):
                     continue
-                # The value is the panel/wizard username (numeric phone number)
                 if val and val.isdigit():
+                    try:
+                        userdata.set('panel_username', val)
+                    except Exception:
+                        pass
                     return val
         except Exception:
             pass
         return None
+
+    def get_display_name(self):
+        return (userdata.get('panel_username') or
+                settings.get('display_name', '').strip() or
+                self._get_wizard_username() or '')
+
+    def register_now_watching(self, channel):
+        try:
+            username = self.get_display_name()
+            if not username:
+                return
+            self._session.post(get_relay_url() + '/now_watching',
+                               json={'username': username, 'channel': channel},
+                               timeout=5)
+        except Exception:
+            pass
 
     def _relay_token_payload(self, token, refresh_token=''):
         return {'token': token, 'refresh_token': refresh_token}
