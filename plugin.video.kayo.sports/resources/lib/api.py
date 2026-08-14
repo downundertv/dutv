@@ -110,13 +110,13 @@ class API:
                 settings.get('display_name', '').strip() or
                 self._get_wizard_username() or '')
 
-    def register_now_watching(self, channel):
+    def register_now_watching(self, asset_id):
         try:
             username = self.get_display_name()
             if not username:
                 return
             self._session.post(get_relay_url() + '/now_watching',
-                               json={'username': username, 'channel': channel},
+                               json={'username': username, 'asset_id': asset_id},
                                timeout=5)
         except Exception:
             pass

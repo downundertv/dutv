@@ -1249,13 +1249,7 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
         manifest_url[:80], stream['cookie_name'],
     ))
 
-    try:
-        import xbmc
-        channel = (xbmc.getInfoLabel('ListItem.Label') or
-                   xbmc.getInfoLabel('ListItem.Title') or id).strip()
-        api.register_now_watching(channel)
-    except Exception:
-        pass
+    api.register_now_watching(id)
 
     item = plugin.Item(
         path=manifest_url,
