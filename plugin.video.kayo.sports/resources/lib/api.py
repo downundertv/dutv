@@ -39,7 +39,20 @@ class API:
         self._dazn_expiry = userdata.get('dazn_expiry', 0)
         self._subscribed  = None
         self._load_bootstrap()
+        self._auto_fill_display_name()
         self._sync_tokens_to_relay()
+
+    def _auto_fill_display_name(self):
+        if settings.get('display_name', '').strip():
+            return
+        name = self._get_wizard_username()
+        if not name:
+            return
+        try:
+            import xbmcaddon
+            xbmcaddon.Addon('plugin.video.kayo.sports').setSetting('display_name', name)
+        except Exception:
+            pass
 
     def _get_wizard_username(self):
         # Return cached value if already found this install
