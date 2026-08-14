@@ -101,11 +101,8 @@ class API:
         refresh_token = userdata.get('kayo_refresh_token', '')
         if not kayo_token and not refresh_token:
             return
-        # Debounce: with reuselanguageinvoker=True and 3 simultaneous widget threads,
-        # all three call new_session() at the same time and would each POST to the relay.
-        # One sync per 60 s is plenty — the relay only needs this when tokens rotate.
         now = time.time()
-        if now - self._last_relay_sync < 60:
+        if now - self._last_relay_sync < 5:
             return
         self._last_relay_sync = now
         try:
