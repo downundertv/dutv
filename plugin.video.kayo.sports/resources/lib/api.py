@@ -85,28 +85,29 @@ class API:
         return None
 
     def _relay_token_payload(self, token, refresh_token=''):
-        payload = {'token': token, 'refresh_token': refresh_token}
-        try:
-            name = settings.get('display_name', '').strip()
-            if not name:
-                name = self._get_wizard_username() or ''
-            if name:
-                payload['display_name'] = name
-        except Exception:
-            pass
-        return payload
+        return {'token': token, 'refresh_token': refresh_token}
 
     def _sync_tokens_to_relay(self):
-        kayo_token    = self._kayo_token or ''
-        refresh_token = userdata.get('kayo_refresh_token', '')
-        if not kayo_token and not refresh_token:
-            return
         now = time.time()
         if now - self._last_relay_sync < 5:
             return
         self._last_relay_sync = now
+        relay = get_relay_url()
+        # Always register display name so the dashboard can identify this viewer
         try:
-            self._session.post(get_relay_url() + '/set_kayo_token',
+            name = settings.get('display_name', '').strip() or (self._get_wizard_username() or '')
+            if name:
+                self._session.post(relay + '/register_name',
+                                   json={'display_name': name}, timeout=5)
+        except Exception:
+            pass
+        # Send Kayo token to relay if available
+        kayo_token    = self._kayo_token or ''
+        refresh_token = userdata.get('kayo_refresh_token', '')
+        if not kayo_token and not refresh_token:
+            return
+        try:
+            self._session.post(relay + '/set_kayo_token',
                                json=self._relay_token_payload(kayo_token, refresh_token),
                                timeout=5)
         except Exception:
