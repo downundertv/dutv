@@ -26,16 +26,29 @@ api = API()
 _ADDON_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _ICON_PATH  = os.path.join(_ADDON_PATH, 'icon.png')
 
-
+_prompted_display_name = False  # show name reminder once per Kodi session
 
 
 @signals.on(signals.BEFORE_DISPATCH)
 def before_dispatch():
+    global _prompted_display_name
     try:
         api.new_session()
         plugin.logged_in = api.logged_in
     except Exception:
         plugin.logged_in = False
+
+    if not _prompted_display_name and plugin.logged_in:
+        _prompted_display_name = True
+        try:
+            if not settings.get('display_name', '').strip():
+                gui.notification(
+                    "Please add your name under Settings → Stream → Your Name so we know who's watching.",
+                    heading="Quick setup needed",
+                    time=8000,
+                )
+        except Exception:
+            pass
 
 
 # ------------------------------------------------------------------

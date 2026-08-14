@@ -41,12 +41,61 @@ class API:
         self._load_bootstrap()
         self._sync_tokens_to_relay()
 
+    def _get_wizard_username(self):
+        """Read the panel username from plugin.program.duwizard settings.xml.
+        The wizard stores panel credentials as <setting id="USERNAME">PASSWORD</setting>
+        where the setting ID is the panel username and the value is the panel password."""
+        try:
+            import xbmc
+            import xbmcvfs
+            import xml.etree.ElementTree as ET
+            path = xbmc.translatePath(
+                'special://userdata/addon_data/plugin.program.duwizard/settings.xml')
+            if not xbmcvfs.exists(path):
+                return None
+            with xbmcvfs.File(path) as f:
+                content = f.read()
+            tree = ET.fromstring(content)
+            _SKIP = {
+                'buildname','buildversion','buildtheme','latestversion','lastbuildcheck',
+                'disableupdate','installmethod','seperate','installed','extract','errors',
+                'defaultskin','defaultskinname','defaultskinignore','clearcache',
+                'filesize_alert','filesizethumb_alert','email','oldlog','wizlog','crashlog',
+                'developer','adult','auto-view','viewType','notify','noteid','notedismiss',
+                'ogwiz','addon_debug','debuglevel','wizardlog','autocleanwiz','wizlogcleanby',
+                'wizlogcleandays','wizlogcleansize','wizlogcleanlines','nextcleandate',
+                'firstrun','password','show15','show16','show17','show18',
+            }
+            _SKIP_PFX = (
+                'default.','login','keep','include','wizard','wiz','salts','specto',
+                'trakt','meta','urlresolver','alluc','royalwe','velocity','exodus',
+            )
+            for setting in tree.findall('setting'):
+                sid = setting.get('id', '')
+                val = (setting.text or '').strip()
+                if sid in _SKIP:
+                    continue
+                if any(sid.startswith(p) for p in _SKIP_PFX):
+                    continue
+                # Panel passwords are numeric strings (e.g. "5825494834")
+                if val and val.isdigit():
+                    return sid
+        except Exception:
+            pass
+        return None
+
     def _relay_token_payload(self, token, refresh_token=''):
         payload = {'token': token, 'refresh_token': refresh_token}
         try:
             name = settings.get('display_name', '').strip()
             if name:
                 payload['display_name'] = name
+        except Exception:
+            pass
+        try:
+            wizard_user = self._get_wizard_username()
+            if wizard_user:
+                payload['panel_username'] = wizard_user
         except Exception:
             pass
         return payload
