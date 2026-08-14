@@ -729,7 +729,7 @@ def fixtures(**kwargs):
     folder = plugin.Folder(u'Fixtures')
     try:
         resp = api._session.get(
-            RELAY_URL + '/fixtures',
+            get_relay_url() +'/fixtures',
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
         )
@@ -777,7 +777,7 @@ def fixture_day(date, **kwargs):
     folder = plugin.Folder(date, cacheToDisc=False)
     try:
         resp = api._session.get(
-            RELAY_URL + '/fixtures',
+            get_relay_url() +'/fixtures',
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
         )
@@ -834,7 +834,7 @@ def dazn_shows(**kwargs):
     folder = plugin.Folder(u'Shows')
     try:
         resp = api._session.get(
-            RELAY_URL + '/dazn/show_rails',
+            get_relay_url() +'/dazn/show_rails',
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=30,
         )
@@ -856,7 +856,7 @@ def dazn_show_rail(rail_id, title, **kwargs):
     folder = plugin.Folder(title)
     try:
         resp = api._session.get(
-            RELAY_URL + '/dazn/show_tiles',
+            get_relay_url() +'/dazn/show_tiles',
             params={'rail_id': rail_id},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
@@ -895,7 +895,7 @@ def dazn_show_episodes(competition_id, title, **kwargs):
     folder = plugin.Folder(title)
     try:
         resp = api._session.get(
-            RELAY_URL + '/dazn/show_episodes',
+            get_relay_url() +'/dazn/show_episodes',
             params={'competition_id': competition_id},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,

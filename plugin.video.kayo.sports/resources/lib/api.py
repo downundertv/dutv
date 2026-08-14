@@ -54,7 +54,7 @@ class API:
             return
         self._last_relay_sync = now
         try:
-            self._session.post(RELAY_URL + '/set_kayo_token',
+            self._session.post(get_relay_url() +'/set_kayo_token',
                                json={'token': kayo_token, 'refresh_token': refresh_token},
                                timeout=5)
         except Exception:
@@ -109,7 +109,7 @@ class API:
         # Send Kayo token + refresh_token to relay so it can proxy content API calls
         # and auto-refresh without requiring a manual re-login.
         try:
-            self._session.post(RELAY_URL + '/set_kayo_token',
+            self._session.post(get_relay_url() +'/set_kayo_token',
                                json={'token': kayo_token, 'refresh_token': refresh_token},
                                timeout=5)
         except Exception:
@@ -157,7 +157,7 @@ class API:
                     userdata.set('kayo_refresh_token', refresh_token)
                 self._kayo_token = kayo_token
                 try:
-                    self._session.post(RELAY_URL + '/set_kayo_token',
+                    self._session.post(get_relay_url() +'/set_kayo_token',
                                        json={'token': kayo_token, 'refresh_token': refresh_token},
                                        timeout=5)
                 except Exception:
@@ -282,7 +282,7 @@ class API:
 
     def events(self):
         resp = self._session.get(
-            RELAY_URL + '/events',
+            get_relay_url() +'/events',
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
         )
@@ -291,7 +291,7 @@ class API:
 
     def sports_list(self):
         resp = self._session.get(
-            RELAY_URL + '/sports',
+            get_relay_url() +'/sports',
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=30,
         )
@@ -300,7 +300,7 @@ class API:
 
     def sport_tiles(self, raw_sport):
         resp = self._session.get(
-            RELAY_URL + '/sport_tiles',
+            get_relay_url() +'/sport_tiles',
             params={'sport': raw_sport},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=30,
@@ -314,7 +314,7 @@ class API:
         if series: params['series'] = series
         if team:   params['team']   = team
         resp = self._session.get(
-            RELAY_URL + '/kayo/landing', params=params,
+            get_relay_url() +'/kayo/landing', params=params,
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=25,
         )
@@ -327,7 +327,7 @@ class API:
         if '/private/' in href and profile_id:
             params['profile'] = profile_id
         resp = self._session.get(
-            RELAY_URL + '/kayo/panel', params=params,
+            get_relay_url() +'/kayo/panel', params=params,
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
         )
@@ -339,7 +339,7 @@ class API:
         if season_id:
             params['season_id'] = season_id
         resp = self._session.get(
-            RELAY_URL + '/kayo/show', params=params,
+            get_relay_url() +'/kayo/show', params=params,
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=25,
         )
@@ -348,7 +348,7 @@ class API:
 
     def competition_tiles(self, sport_title):
         resp = self._session.get(
-            RELAY_URL + '/competition_tiles',
+            get_relay_url() +'/competition_tiles',
             params={'sport': sport_title},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
@@ -358,7 +358,7 @@ class API:
 
     def search(self, query, page=1, size=250):
         resp = self._session.get(
-            RELAY_URL + '/kayo/search',
+            get_relay_url() +'/kayo/search',
             params={'q': query, 'size': size, 'page': page},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
         )
@@ -371,7 +371,7 @@ class API:
 
     def recent_replays(self, tile_type='catchup'):
         resp = self._session.get(
-            RELAY_URL + '/recent_replays',
+            get_relay_url() +'/recent_replays',
             params={'type': tile_type},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=25,
@@ -381,7 +381,7 @@ class API:
 
     def epg(self, date):
         resp = self._session.get(
-            RELAY_URL + '/epg',
+            get_relay_url() +'/epg',
             params={'date': date},
             headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
             timeout=20,
@@ -411,7 +411,7 @@ class API:
             params['upgrade_4k'] = '1'
 
         resp = self._session.get(
-            RELAY_URL + '/token',
+            get_relay_url() +'/token',
             params=params,
             headers={
                 'ngrok-skip-browser-warning': 'true',
@@ -430,7 +430,7 @@ class API:
         cdn_name  = data.get('cdn_name', '')
         cdn_val   = data.get('cdn_val', '')
 
-        mpd_url = RELAY_URL + '/mpd_kodi?id=' + asset_id + '&quality=' + quality
+        mpd_url = get_relay_url() +'/mpd_kodi?id=' + asset_id + '&quality=' + quality
         # Strip HEVC from the manifest only for live non-4K plays (decoder pool protection).
         # VOD plays never need stripping — one stream at a time, no pool exhaustion.
         if is_live and not upgrade_4k:
