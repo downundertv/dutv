@@ -15,7 +15,7 @@ DAZN_GUID         = '5223f36f-ec0d-4d54-960f-049ea3b6a766'
 
 # Relay — Perth laptop proxies DAZN Playback API (TLS fingerprinting via curl-cffi)
 # Update RELAY_URL if the ngrok address changes.
-RELAY_URL = 'https://research-gratuity-overboard.ngrok-free.dev'
+RELAY_URL = 'http://192.168.4.101:5004'
 
 # EPG / channel data (third-party, no auth needed)
 LIVE_DATA_URL = 'https://i.mjh.nz/Kayo/app.json'
