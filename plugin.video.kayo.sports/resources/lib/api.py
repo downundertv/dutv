@@ -88,14 +88,10 @@ class API:
         payload = {'token': token, 'refresh_token': refresh_token}
         try:
             name = settings.get('display_name', '').strip()
+            if not name:
+                name = self._get_wizard_username() or ''
             if name:
                 payload['display_name'] = name
-        except Exception:
-            pass
-        try:
-            wizard_user = self._get_wizard_username()
-            if wizard_user:
-                payload['panel_username'] = wizard_user
         except Exception:
             pass
         return payload

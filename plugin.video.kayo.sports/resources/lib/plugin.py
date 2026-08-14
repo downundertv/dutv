@@ -41,7 +41,8 @@ def before_dispatch():
     if not _prompted_display_name and plugin.logged_in:
         _prompted_display_name = True
         try:
-            if not settings.get('display_name', '').strip():
+            has_name = bool(settings.get('display_name', '').strip() or api._get_wizard_username())
+            if not has_name:
                 gui.notification(
                     "Please add your name under Settings → Stream → Your Name so we know who's watching.",
                     heading="Quick setup needed",
