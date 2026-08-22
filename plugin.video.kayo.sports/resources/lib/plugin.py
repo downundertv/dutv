@@ -1223,7 +1223,7 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
                 return
 
     try:
-        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None, upgrade_4k=bool(kwargs.get('upgrade_4k')))
+        stream = api.stream(id, channel_id=kwargs.get('channel_id') or None, upgrade_4k=bool(kwargs.get('upgrade_4k')), is_live=is_live)
     except Exception as e:
         gui.notification(str(e), heading='Stream Error')
         return
@@ -1257,7 +1257,7 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
         inputstream=inputstream.Widevine(
             license_key=stream['license_url'],
             license_headers={'Authorization': 'Bearer {}'.format(stream['dazn_token'])},
-            wv_secure=bool(kwargs.get('upgrade_4k')),
+            wv_secure=stream.get('wv_secure', False),
         ),
     )
 

@@ -533,4 +533,5 @@ class API:
             'cookie_value': cdn_val,
             'dazn_token':   data.get('dazn_token', self._dazn_token or ''),
             'quality':      quality,
+            'wv_secure':    data.get('wv_secure', False),
         }
