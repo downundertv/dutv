@@ -1236,14 +1236,11 @@ def play(id, start_from=0, play_type=PLAY_FROM_LIVE, **kwargs):
     if stream.get('cookie_name') and stream.get('cookie_value'):
         headers['Cookie'] = '{}={}'.format(stream['cookie_name'], stream['cookie_value'])
 
-    # For non-4K plays, ask the relay to strip HEVC representations from the manifest.
-    # On MT8696 (Fire TV AFTKA), the HEVC decoder doesn't fully release between Kodi
-    # sessions — after 3 plays the decoder pool exhausts and Kodi aborts.
-    # AVC (H.264) uses a completely separate decoder family with no pool issue.
+    # api.stream() already appends avc_only=1 for live non-4K plays.
+    # Do not add it here — that would duplicate it for live non-4K and,
+    # worse, incorrectly strip HEVC from VOD replays (which have upgrade_4k=False
+    # but should still play HEVC at quality=4k).
     manifest_url = stream['manifest_url']
-    if not bool(kwargs.get('upgrade_4k')) and manifest_url:
-        sep = '&' if '?' in manifest_url else '?'
-        manifest_url += sep + 'avc_only=1'
 
     log.debug('Kayo stream: manifest={} cdn={}'.format(
         manifest_url[:80], stream['cookie_name'],
