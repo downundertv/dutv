@@ -14,7 +14,7 @@ DAZN_DEVICE_ID    = '006360b93a'
 DAZN_GUID         = '5223f36f-ec0d-4d54-960f-049ea3b6a766'
 
 # Relay — Perth laptop proxies DAZN Playback API (TLS fingerprinting via curl-cffi)
-_RELAY_URL_DEFAULT = 'http://192.168.4.101:5004'
+_RELAY_URL_DEFAULT = 'http://192.168.4.27:5004'
 _VPS_RELAY_URL     = 'http://103.106.231.181:5006'
 _relay_url_auto    = None  # cached after first probe; persists per Kodi session (reuselanguageinvoker)
 
