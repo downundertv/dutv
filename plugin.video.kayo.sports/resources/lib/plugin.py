@@ -576,11 +576,13 @@ def _render_tile(tile, section=''):
     if tile.get('is_4k'):
         lbl = u'[COLOR cyan][4K][/COLOR]  ' + lbl
 
+    is_live_now = (tile_type == 'Live')
+    play_url = plugin.url_for(play, id=asset_id, **(dict(_is_live=True, start_from=1) if is_live_now else {}))
     return plugin.Item(
         label=lbl,
         art={'thumb': tile.get('thumb', ''), 'fanart': tile.get('fanart', '')},
         info={'plot': tile.get('description') or title, 'mediatype': 'video'},
-        path=plugin.url_for(play, id=asset_id),
+        path=play_url,
         playable=not is_upcoming,
     )
 
