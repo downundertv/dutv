@@ -14,9 +14,12 @@ DAZN_DEVICE_ID    = '006360b93a'
 DAZN_GUID         = '5223f36f-ec0d-4d54-960f-049ea3b6a766'
 
 # Relay — Perth laptop proxies DAZN Playback API (TLS fingerprinting via curl-cffi)
-_RELAY_URL_DEFAULT = 'http://192.168.4.42:5004'
-_VPS_RELAY_URL     = 'http://103.106.231.181:5006'
-_relay_url_auto    = None  # cached after first probe; persists per Kodi session (reuselanguageinvoker)
+# All known LAN IPs for the relay laptop (WiFi + wired). Probed in order; first to
+# respond wins. Add new IPs here if the laptop gets a new address — VPS is last fallback.
+_RELAY_LAN_IPS  = ['192.168.4.42', '192.168.4.46', '192.168.4.27']
+_RELAY_PORT     = 5004
+_VPS_RELAY_URL  = 'http://103.106.231.181:5006'
+_relay_url_auto = None  # cached after first probe; persists per Kodi session (reuselanguageinvoker)
 
 def get_relay_url():
     global _relay_url_auto
@@ -28,13 +31,18 @@ def get_relay_url():
             return url
     except Exception:
         pass
-    # Auto-detect: probe LAN relay once per Kodi session (reuselanguageinvoker keeps result cached)
+    # Auto-detect: probe all known LAN IPs once per Kodi session
     if _relay_url_auto is None:
-        try:
-            import requests as _req
-            _req.get(_RELAY_URL_DEFAULT + '/health', timeout=0.8)
-            _relay_url_auto = _RELAY_URL_DEFAULT
-        except Exception:
+        import requests as _req
+        for _ip in _RELAY_LAN_IPS:
+            _url = 'http://{}:{}'.format(_ip, _RELAY_PORT)
+            try:
+                _req.get(_url + '/health', timeout=0.8)
+                _relay_url_auto = _url
+                break
+            except Exception:
+                pass
+        else:
             _relay_url_auto = _VPS_RELAY_URL
     return _relay_url_auto
 
