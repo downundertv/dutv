@@ -46,8 +46,6 @@ def get_relay_url():
             _relay_url_auto = _VPS_RELAY_URL
     return _relay_url_auto
 
-RELAY_URL = _RELAY_URL_DEFAULT  # kept for any direct constant references
-
 # EPG / channel data (third-party, no auth needed)
 LIVE_DATA_URL = 'https://i.mjh.nz/Kayo/app.json'
 EPG_URL       = 'http://aussietv.xyz/Kayo/epg.php'   # overridden by epg_url setting
