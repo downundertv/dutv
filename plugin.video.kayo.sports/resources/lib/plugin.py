@@ -508,7 +508,7 @@ _SECTIONS = [
 
 def _filter_tiles(tiles, section):
     if section == 'live_upcoming':
-        return [t for t in tiles if t.get('type') == 'UpComing']
+        return [t for t in tiles if t.get('type') in ('UpComing', 'Live')]
     if section == 'replays':
         return [t for t in tiles if t.get('type') == 'CatchUp']
     if section == 'minis':
