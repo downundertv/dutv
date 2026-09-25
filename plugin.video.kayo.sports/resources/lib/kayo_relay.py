@@ -1545,6 +1545,102 @@ def dazn_show_tiles():
         return jsonify({"error": str(e)}), 502
 
 
+COMPETITION_RAILS_CACHE = {}
+COMPETITION_RAILS_TTL   = 1800  # 30 min - the rail list rarely changes
+
+# Rail titles already covered elsewhere in the addon via the DAZN EPG Rail API
+# (Live & Upcoming / Full Replays / Minis / Highlights sections) - skip here to
+# avoid duplicate menu entries. Also skips empty rails (e.g. Match Preview between
+# rounds, Continue Watching with no history) and the page's Hero banner.
+_COMPETITION_RAIL_SKIP_TITLES = {
+    'live & upcoming', 'latest replays', 'latest minis', 'latest bites',
+}
+
+@app.route('/dazn/competition_rails', methods=['GET'])
+def dazn_competition_rails():
+    """Returns the extra curated rails for a sport's competition page
+    (Shows, Playmakers, Grand Final Classics, Kayo Shorts, etc.) that aren't
+    already covered by the EPG-based sections.
+    GET /dazn/competition_rails?competition_id=<id>"""
+    competition_id = request.args.get('competition_id', '')
+    if not competition_id:
+        return jsonify({"error": "competition_id required"}), 400
+    now = time.time()
+    cached = COMPETITION_RAILS_CACHE.get(competition_id)
+    if cached and now < cached['expires']:
+        return Response(cached['body'], status=200, content_type="application/json")
+    try:
+        viewer_id, dazn_id, headers = _dazn_rail_headers()
+        page_params = f"PageType:Competition;ContentType:Competition;ContentId:{competition_id}"
+        r = requests.get(SHOW_RAILS_URL, params={
+            "groupId": "competition", "country": "au",
+            "userEntitlements": "tier_premium_kayo", "brand": "kayo",
+            "params": page_params,
+        }, headers=headers, timeout=15)
+        r.raise_for_status()
+        rail_stubs = r.json().get("Rails", [])
+        rails = []
+        for stub in rail_stubs:
+            if stub.get("Service") != "RulesetRail":
+                continue
+            rail_id = stub["Id"]
+            try:
+                rail = _resolve_rail(rail_id, viewer_id, headers, page_params=page_params, size=3)
+            except Exception:
+                continue
+            title = rail.get("Title") or ""
+            tiles = rail.get("Tiles", [])
+            if not title or not tiles or rail.get("Type") == "Hero":
+                continue
+            if title.strip().lower() in _COMPETITION_RAIL_SKIP_TITLES:
+                continue
+            rails.append({"id": rail_id, "title": title})
+        body = _json.dumps({"rails": rails}).encode("utf-8")
+        COMPETITION_RAILS_CACHE[competition_id] = {'body': body, 'expires': now + COMPETITION_RAILS_TTL}
+        return Response(body, status=200, content_type="application/json")
+    except Exception as e:
+        return jsonify({"error": str(e)}), 502
+
+
+@app.route('/dazn/competition_rail_tiles', methods=['GET'])
+def dazn_competition_rail_tiles():
+    """Returns tiles for one rail on a sport's competition page. Same tile shape
+    as /dazn/show_tiles (playable=False + nav_to='Show' means drill into
+    /dazn/show_episodes with asset_id as the competition_id).
+    GET /dazn/competition_rail_tiles?competition_id=<id>&rail_id=<guid>"""
+    competition_id = request.args.get('competition_id', '')
+    rail_id = request.args.get('rail_id', '')
+    if not competition_id or not rail_id:
+        return jsonify({"error": "competition_id and rail_id required"}), 400
+    try:
+        viewer_id, dazn_id, headers = _dazn_rail_headers()
+        page_params = f"PageType:Competition;ContentType:Competition;ContentId:{competition_id}"
+        rail = _resolve_rail(rail_id, viewer_id, headers, page_params=page_params, size=50)
+        tiles_out = []
+        for t in rail.get("Tiles", []):
+            asset_id = t.get("AssetId", "")
+            if not asset_id:
+                continue
+            nav_to = t.get("NavigateTo") or ""
+            img = t.get("Image") or {}
+            bg  = t.get("BackgroundImage") or img
+            tiles_out.append({
+                "asset_id":    asset_id,
+                "title":       t.get("Title", ""),
+                "description": t.get("Description") or "",
+                "start":       t.get("Start") or "",
+                "end":         t.get("End") or "",
+                "type":        t.get("Type", ""),
+                "nav_to":      nav_to,
+                "thumb":       _dazn_image_url(img.get("Id", "")),
+                "fanart":      _dazn_image_url(bg.get("Id", "")),
+                "playable":    nav_to != "Show",
+            })
+        return jsonify({"rail_id": rail_id, "title": rail.get("Title",""), "tiles": tiles_out})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 502
+
+
 @app.route('/dazn/show_episodes', methods=['GET'])
 def dazn_show_episodes():
     """Returns episodes for a DAZN show using the fixed Episodes rail with ContentId.

@@ -618,6 +618,77 @@ def sport_menu(raw_sport, **kwargs):
     except Exception as e:
         raise PluginError(str(e))
     _section_menu(folder, tiles, sport_section, raw_sport=raw_sport)
+    competition_id = SPORT_COMPETITION_ID.get(raw_sport)
+    if competition_id:
+        folder.add_item(
+            label=u'More — Shows, Playmakers, Grand Final Classics...',
+            path=plugin.url_for(sport_extras, competition_id=competition_id, title=label),
+        )
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def sport_extras(competition_id, title, **kwargs):
+    """Curated rails from a sport's DAZN competition page (Shows, Playmakers,
+    Grand Final Classics, Kayo Shorts, etc.) that aren't covered by the
+    EPG-based Live/Replays/Minis/Highlights sections."""
+    folder = plugin.Folder(title)
+    try:
+        resp = api._session.get(
+            get_relay_url() + '/dazn/competition_rails',
+            params={'competition_id': competition_id},
+            headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        rails = resp.json().get('rails', [])
+    except Exception as e:
+        raise PluginError(u'Could not load {}: {}'.format(title, str(e)))
+    for rail in rails:
+        folder.add_item(
+            label=rail['title'],
+            path=plugin.url_for(sport_extra_rail, competition_id=competition_id,
+                                 rail_id=rail['id'], title=rail['title']),
+        )
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def sport_extra_rail(competition_id, rail_id, title, **kwargs):
+    folder = plugin.Folder(title)
+    try:
+        resp = api._session.get(
+            get_relay_url() + '/dazn/competition_rail_tiles',
+            params={'competition_id': competition_id, 'rail_id': rail_id},
+            headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
+            timeout=20,
+        )
+        resp.raise_for_status()
+        tiles = resp.json().get('tiles', [])
+    except Exception as e:
+        raise PluginError(u'Could not load rail: {}'.format(str(e)))
+    for t in tiles:
+        if t.get('playable'):
+            try:
+                start_str = u'[{}]  '.format(arrow.get(t['start']).to('local').format('ddd D MMM'))
+            except Exception:
+                start_str = u''
+            folder.add_item(
+                label=start_str + t['title'],
+                art={'thumb': t.get('thumb', ''), 'fanart': t.get('fanart', '')},
+                info={'plot': t.get('description') or t['title'], 'mediatype': 'video'},
+                path=plugin.url_for(play, id=t['asset_id']),
+                playable=True,
+            )
+        else:
+            folder.add_item(
+                label=t['title'],
+                art={'thumb': t.get('thumb', ''), 'fanart': t.get('fanart', '')},
+                info={'plot': t.get('description') or t['title']},
+                path=plugin.url_for(dazn_show_episodes, competition_id=t['asset_id'], title=t['title']),
+            )
     return folder
 
 

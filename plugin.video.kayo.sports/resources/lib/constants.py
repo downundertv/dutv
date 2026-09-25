@@ -93,6 +93,14 @@ SPORT_KAYO_SLUG = {
     'Darts':                     'darts',
 }
 
+# Maps DAZN Sport.Title -> DAZN Competition ContentId, used to pull the full set of
+# curated rails for a sport's competition page (Shows, Playmakers, Grand Final Classics,
+# Kayo Shorts, etc.) via the Rail API. Found by inspecting the AFL competition page's
+# network requests (rails.discovery.indazn.com/jp/v9/rails, groupId=competition).
+SPORT_COMPETITION_ID = {
+    'Australian Rules Football': '15bfc447ola7j81cdzpb9ku2w',
+}
+
 # Curated competition list: (display label, DAZN Sport.Title used in EPG tiles).
 # The DAZN EPG API returns a Sport.Title on each tile; these are the known values.
 # To add more: check relay /sport_tiles or /sports for available sport names.
