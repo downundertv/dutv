@@ -138,7 +138,7 @@ def main():
             parts.append(f'    <icon src="{logo}"/>')
         parts.append('  </channel>')
 
-    api_tags = {ch.get('channelTag', '') for ch in channels}
+    api_tags = set(channel_events.keys())
     for uhd_tag, uhd_name, _ in UHD_MIRRORS:
         if uhd_tag in api_tags:
             continue  # already in the API channel list, no need to add
