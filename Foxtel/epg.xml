@@ -425,10 +425,6 @@
     <display-name>Fox Sports UHD 1</display-name>
     <icon src="https://www.foxtel.com.au/content/dam/foxtel/shared/channel/K01/K01_425x243.png"/>
   </channel>
-  <channel id="K02">
-    <display-name>Movies 4K UHD</display-name>
-    <icon src="https://www.foxtel.com.au/content/dam/foxtel/shared/channel/K02/K02_425x243.png"/>
-  </channel>
   <channel id="K03">
     <display-name>Fox Sports UHD 2</display-name>
     <icon src="https://www.foxtel.com.au/content/dam/foxtel/shared/channel/K03/K03_425x243.png"/>
@@ -10149,14 +10145,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/lw6zvb.jpg?maxheight=90&amp;limit=b217ffa33c54d45355734a157ed1657aee1f98ca"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002005424 +1000" stop="20261002012034 +1000" channel="OUT">
-    <title lang="en">The Seahunter</title>
-    <sub-title lang="en">Wild West Part 1</sub-title>
-    <episode-num system="onscreen">S01E01</episode-num>
-    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store1/mount1/TDR/2026/g83q8p.jpg?maxheight=90&amp;limit=9893018f1ed666290930d256f556d2cb2f17ed26"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002012034 +1000" stop="20261002014544 +1000" channel="OUT">
     <title lang="en">Farming The Wild</title>
     <sub-title lang="en">Marinated Muntjac Management</sub-title>
@@ -13401,12 +13389,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8i3e5.jpg?maxheight=90&amp;limit=24e4e1d16638fe22c94bb00c6f336af7e9546f12"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002012500 +1000" channel="FHT">
-    <title lang="en">SWIMWEAR</title>
-    <sub-title lang="en">Friday 2 October 2026, 01:00.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/15003153963694291172_169.jpeg?maxheight=90&amp;limit=84c5d17891544711318229e41e923fda7e03d78a"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002012500 +1000" stop="20261002013000 +1000" channel="FHT">
     <title lang="en">SWIMWEAR</title>
     <sub-title lang="en">Friday 2 October 2026, 01:25.</sub-title>
@@ -13554,6 +13536,7 @@
   <programme start="20261002072500 +1000" stop="20261002073000 +1000" channel="FHT">
     <title lang="en">FLASHBACK</title>
     <sub-title lang="en">Friday 2 October 2026, 07:25.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-16x9-beam.png?maxheight=90&amp;limit=731a6313f1fe5e13a0b0ecef767d49083ed9387c"/>
     <rating system="AUS"><value>MA</value></rating>
   </programme>
   <programme start="20261002073000 +1000" stop="20261002075500 +1000" channel="FHT">
@@ -21100,14 +21083,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/adjfg.jpg?maxheight=90&amp;limit=95a9c13e01ece259d6360cd9beebb99fb639af44"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002010014 +1000" stop="20261002013012 +1000" channel="RL2">
-    <title lang="en">Cops: The One Dollar Shoe</title>
-    <sub-title lang="en">The One Dollar Shoe</sub-title>
-    <episode-num system="onscreen">S27E30</episode-num>
-    <episode-num system="xmltv_ns">26.29.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/911e7s.jpg?maxheight=90&amp;limit=3bbe7c89910c695b8fcfd4ea30f545f14ac8a4e8"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002013012 +1000" stop="20261002020025 +1000" channel="RL2">
     <title lang="en">Highway Patrol: Road Rampage</title>
     <sub-title lang="en">Road Rampage</sub-title>
@@ -21221,6 +21196,7 @@
     <sub-title lang="en">Episode 2</sub-title>
     <episode-num system="onscreen">S01E02</episode-num>
     <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/8ie1r.jpg?maxheight=90&amp;limit=b9a31a9582896f557a64ee604bd2e7663b112e3c"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002102021 +1000" stop="20261002104554 +1000" channel="RL2">
@@ -21760,14 +21736,6 @@
     <episode-num system="xmltv_ns">2.3.0/1</episode-num>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002002500 +1000" stop="20261002012000 +1000" channel="DT2">
-    <title lang="en">Ghost Adventures</title>
-    <sub-title lang="en">Mountain Of Madness Part 1</sub-title>
-    <episode-num system="onscreen">S21E10</episode-num>
-    <episode-num system="xmltv_ns">20.9.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/w2vdy2.jpg?maxheight=90&amp;limit=065194eed441a509eb6e10d257cf7da3c258d175"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002012000 +1000" stop="20261002021500 +1000" channel="DT2">
     <title lang="en">Ghost Adventures</title>
     <sub-title lang="en">Mountain Of Madness Part 2</sub-title>
@@ -22175,14 +22143,6 @@
     <episode-num system="xmltv_ns">1.5.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/anzs3.jpg?maxheight=90&amp;limit=2eb3676d473f64f648d796574d1eb8182290c190"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261002004508 +1000" stop="20261002012117 +1000" channel="LF2">
-    <title lang="en">Mary Berry's Absolute Favourites: The S</title>
-    <sub-title lang="en">The Seaside</sub-title>
-    <episode-num system="onscreen">S01E01</episode-num>
-    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/xw0414.jpg?maxheight=90&amp;limit=a0337735c3054660392d9f8fdbfdf96abc3f931e"/>
-    <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261002012117 +1000" stop="20261002015018 +1000" channel="LF2">
     <title lang="en">Jamie's 30 Minute Meals: Piri Piri Chic</title>
@@ -22664,14 +22624,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/1xhre.jpg?maxheight=90&amp;limit=3e3a4bc2256cca67b141c33e0c9774178dacd05e"/>
     <rating system="AUS"><value>G</value></rating>
   </programme>
-  <programme start="20261002002500 +1000" stop="20261002012000 +1000" channel="DS2">
-    <title lang="en">Hoffman Family Gold</title>
-    <sub-title lang="en">Ice Cold Gold</sub-title>
-    <episode-num system="onscreen">S01E06</episode-num>
-    <episode-num system="xmltv_ns">0.5.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/aufs1.jpg?maxheight=90&amp;limit=f8b8f03205af0da7f08cf2517491e289adf15906"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002012000 +1000" stop="20261002021500 +1000" channel="DS2">
     <title lang="en">Naked And Afraid</title>
     <sub-title lang="en">Curse of the Chiapas</sub-title>
@@ -23079,14 +23031,6 @@
     <episode-num system="xmltv_ns">0.15.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/6280o.png?maxheight=90&amp;limit=3680e95bd6101e75ba378155007bcb365f7637be"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261002002500 +1000" stop="20261002012000 +1000" channel="DI2">
-    <title lang="en">Kindig Customs</title>
-    <sub-title lang="en">The Color Question</sub-title>
-    <episode-num system="onscreen">S10E20</episode-num>
-    <episode-num system="xmltv_ns">9.19.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/hoxwn3.jpg?maxheight=90&amp;limit=da274faa2048409f1511d32f7881d7fdf94ff51a"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002012000 +1000" stop="20261002021500 +1000" channel="DI2">
     <title lang="en">Street Outlaws</title>
@@ -38217,84 +38161,6 @@
   <programme start="20261003182000 +1000" stop="20261003185000 +1000" channel="K01">
     <title lang="en">Live: ODI: India v West Indies G3</title>
     <sub-title lang="en">India v West Indies G3</sub-title>
-  </programme>
-  <programme start="20261002001210 +1000" stop="20261002014350 +1000" channel="K02">
-    <title lang="en">Four Mothers</title>
-  </programme>
-  <programme start="20261002014350 +1000" stop="20261002034644 +1000" channel="K02">
-    <title lang="en">Shoshana</title>
-  </programme>
-  <programme start="20261002034644 +1000" stop="20261002052731 +1000" channel="K02">
-    <title lang="en">The Strangers: Chapter 2</title>
-  </programme>
-  <programme start="20261002052731 +1000" stop="20261002070207 +1000" channel="K02">
-    <title lang="en">The Strangers: Chapter 3</title>
-  </programme>
-  <programme start="20261002070207 +1000" stop="20261002091212 +1000" channel="K02">
-    <title lang="en">Maria</title>
-  </programme>
-  <programme start="20261002091212 +1000" stop="20261002112612 +1000" channel="K02">
-    <title lang="en">Anemone</title>
-  </programme>
-  <programme start="20261002112612 +1000" stop="20261002133521 +1000" channel="K02">
-    <title lang="en">Downton Abbey: The Grand Finale</title>
-  </programme>
-  <programme start="20261002133521 +1000" stop="20261002152120 +1000" channel="K02">
-    <title lang="en">The Ballad Of Wallis Island</title>
-  </programme>
-  <programme start="20261002152120 +1000" stop="20261002165808 +1000" channel="K02">
-    <title lang="en">Sacramento</title>
-  </programme>
-  <programme start="20261002165808 +1000" stop="20261002184317 +1000" channel="K02">
-    <title lang="en">The Plague</title>
-  </programme>
-  <programme start="20261002184317 +1000" stop="20261002203014 +1000" channel="K02">
-    <title lang="en">Lurker</title>
-  </programme>
-  <programme start="20261002203014 +1000" stop="20261002221932 +1000" channel="K02">
-    <title lang="en">The Moment</title>
-  </programme>
-  <programme start="20261002221932 +1000" stop="20261003003613 +1000" channel="K02">
-    <title lang="en">Song Sung Blue</title>
-  </programme>
-  <programme start="20261003003613 +1000" stop="20261003023645 +1000" channel="K02">
-    <title lang="en">Bugonia</title>
-  </programme>
-  <programme start="20261003023645 +1000" stop="20261003041247 +1000" channel="K02">
-    <title lang="en">Black Bag</title>
-  </programme>
-  <programme start="20261003041247 +1000" stop="20261003055443 +1000" channel="K02">
-    <title lang="en">Moss &amp; Freud</title>
-  </programme>
-  <programme start="20261003055443 +1000" stop="20261003074020 +1000" channel="K02">
-    <title lang="en">Prime Minister</title>
-  </programme>
-  <programme start="20261003074020 +1000" stop="20261003091821 +1000" channel="K02">
-    <title lang="en">Don't Be Prey</title>
-  </programme>
-  <programme start="20261003091821 +1000" stop="20261003105428 +1000" channel="K02">
-    <title lang="en">Nobody</title>
-  </programme>
-  <programme start="20261003105428 +1000" stop="20261003123340 +1000" channel="K02">
-    <title lang="en">Nobody 2</title>
-  </programme>
-  <programme start="20261003123340 +1000" stop="20261003144156 +1000" channel="K02">
-    <title lang="en">Bullet Train</title>
-  </programme>
-  <programme start="20261003144156 +1000" stop="20261003161228 +1000" channel="K02">
-    <title lang="en">Gingerbread Miracle</title>
-  </programme>
-  <programme start="20261003161228 +1000" stop="20261003174534 +1000" channel="K02">
-    <title lang="en">Thieves Highway</title>
-  </programme>
-  <programme start="20261003174534 +1000" stop="20261003203000 +1000" channel="K02">
-    <title lang="en">Elvis</title>
-  </programme>
-  <programme start="20261003203000 +1000" stop="20261003221155 +1000" channel="K02">
-    <title lang="en">EPiC: Elvis Presley In Concert</title>
-  </programme>
-  <programme start="20261003221155 +1000" stop="20261003224155 +1000" channel="K02">
-    <title lang="en">Tina</title>
   </programme>
   <programme start="20261002000000 +1000" stop="20261002070000 +1000" channel="K03">
     <title lang="en">Live: USPGA: Utah Championship Round 1</title>
