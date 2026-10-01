@@ -881,14 +881,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8seb2.jpg?maxheight=90&amp;limit=a74ce01ee331932809f196ba01f6a09ab74b40c5"/>
     <rating system="AUS"><value>MA</value></rating>
   </programme>
-  <programme start="20261002010341 +1000" stop="20261002013536 +1000" channel="UKT">
-    <title lang="en">QI: Inland Revenue</title>
-    <sub-title lang="en">Inland Revenue</sub-title>
-    <episode-num system="onscreen">S10E10</episode-num>
-    <episode-num system="xmltv_ns">9.9.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/7kjeu.jpg?maxheight=90&amp;limit=7b2a830de3977d84847f9f916d45f58468939b50"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002013536 +1000" stop="20261002023052 +1000" channel="UKT">
     <title lang="en">Dragons' Den</title>
     <sub-title lang="en">Episode 2</sub-title>
@@ -1632,14 +1624,6 @@
     <episode-num system="xmltv_ns">7.4.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/wv9vap.jpg?maxheight=90&amp;limit=8575adfde471f643d5923041f5ca17bf4a0329c1"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261002011539 +1000" stop="20261002014034 +1000" channel="FOX">
-    <title lang="en">Storage Wars: Spidey Cents</title>
-    <sub-title lang="en">Spidey Cents</sub-title>
-    <episode-num system="onscreen">S13E25</episode-num>
-    <episode-num system="xmltv_ns">12.24.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/7dcpp.jpg?maxheight=90&amp;limit=7a8ff047bcb1f71e99bd9e5c4c328fee4e1e025a"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002014034 +1000" stop="20261002020550 +1000" channel="FOX">
     <title lang="en">Gremlins: Secrets Of The Mogwai: Always</title>
@@ -3200,14 +3184,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/l86a2i.jpg?maxheight=90&amp;limit=f0b45deaf8c043b9ad8f62491fbf6a129684626a"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002005520 +1000" stop="20261002014002 +1000" channel="IOI">
-    <title lang="en">FBI</title>
-    <sub-title lang="en">A New Dawn</sub-title>
-    <episode-num system="onscreen">S01E12</episode-num>
-    <episode-num system="xmltv_ns">0.11.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/al0q8.jpg?maxheight=90&amp;limit=b1b51de3b453bdb3b684e78b97c3d9471fb1bbac"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002014002 +1000" stop="20261002022520 +1000" channel="IOI">
     <title lang="en">FBI: International</title>
     <sub-title lang="en">On These Waters</sub-title>
@@ -4402,14 +4378,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/bcrvh.jpg?maxheight=90&amp;limit=1fb11777e3834d792dd44ba649806b445b85b576"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002010956 +1000" stop="20261002013106 +1000" channel="HAR">
-    <title lang="en">Seinfeld: The Clip Show (Pt 2)</title>
-    <sub-title lang="en">The Clip Show (Pt 2)</sub-title>
-    <episode-num system="onscreen">S09E22</episode-num>
-    <episode-num system="xmltv_ns">8.21.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/7bcvr.jpg?maxheight=90&amp;limit=751074f678f6cb9e2bc51074a0bfcc9b61f7b2c7"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002013106 +1000" stop="20261002015641 +1000" channel="HAR">
     <title lang="en">Seinfeld: The Finale (Pt 1)</title>
     <sub-title lang="en">The Finale (Pt 1)</sub-title>
@@ -5180,14 +5148,6 @@
     <episode-num system="onscreen">S04E22</episode-num>
     <episode-num system="xmltv_ns">3.21.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/6dw38.jpg?maxheight=90&amp;limit=837abe196751a95d78bebf905ef9b48bcbf18dff"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261002003507 +1000" stop="20261002013018 +1000" channel="FKC">
-    <title lang="en">Mission: Impossible: The System</title>
-    <sub-title lang="en">The System</sub-title>
-    <episode-num system="onscreen">S03E15</episode-num>
-    <episode-num system="xmltv_ns">2.14.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/5s35rb.jpg?maxheight=90&amp;limit=1ec6a5e1faf6d865d301e9e122c4a3be389082ad"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002013018 +1000" stop="20261002015549 +1000" channel="FKC">
@@ -6170,14 +6130,6 @@
     <episode-num system="xmltv_ns">0.8.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/s1hp2i.jpg?maxheight=90&amp;limit=83e286c4211c6a8f708de83f43b171b4ecf75b7e"/>
     <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261002003000 +1000" stop="20261002013000 +1000" channel="HAL">
-    <title lang="en">Law &amp; Order</title>
-    <sub-title lang="en">Episode 15</sub-title>
-    <episode-num system="onscreen">S17E15</episode-num>
-    <episode-num system="xmltv_ns">16.14.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/6s07d.jpg?maxheight=90&amp;limit=0ece097beab4d9962943b7433adee11a67df97b5"/>
-    <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002023000 +1000" channel="HAL">
     <title lang="en">New York Undercover</title>
@@ -8565,14 +8517,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store1/mount1/LST/2025/I@094216_L.jpg?maxheight=90&amp;limit=43c890fc7c1558e27191aa65e71cd489e898100d"/>
     <rating system="AUS"><value>G</value></rating>
   </programme>
-  <programme start="20261002010500 +1000" stop="20261002013000 +1000" channel="UP2">
-    <title lang="en">30 Rock</title>
-    <sub-title lang="en">Governor Dunston</sub-title>
-    <episode-num system="onscreen">S07E02</episode-num>
-    <episode-num system="xmltv_ns">6.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/738c8.jpg?maxheight=90&amp;limit=413d254a304c5350f626f0843f038b0841a5b6a0"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002015000 +1000" channel="UP2">
     <title lang="en">30 Rock</title>
     <sub-title lang="en">Stride Of Pride</sub-title>
@@ -8626,6 +8570,7 @@
     <sub-title lang="en">St. Patrick's Day</sub-title>
     <episode-num system="onscreen">S06E12</episode-num>
     <episode-num system="xmltv_ns">5.11.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/apmcl.jpg?maxheight=90&amp;limit=855623af32c2f1be09def2fa94e3b2f76b5332be"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002042000 +1000" stop="20261002044500 +1000" channel="UP2">
@@ -8682,7 +8627,6 @@
     <sub-title lang="en">Governor Dunston</sub-title>
     <episode-num system="onscreen">S07E02</episode-num>
     <episode-num system="xmltv_ns">6.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/738c8.jpg?maxheight=90&amp;limit=413d254a304c5350f626f0843f038b0841a5b6a0"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002080000 +1000" stop="20261002083000 +1000" channel="UP2">
@@ -12049,14 +11993,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/7ygs6.jpg?maxheight=90&amp;limit=6029a9bb2a7808d9c8296332df50d2a73df71274"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002003000 +1000" stop="20261002013000 +1000" channel="ANI">
-    <title lang="en">Tanked</title>
-    <sub-title lang="en">The Winds Of Trade</sub-title>
-    <episode-num system="onscreen">S07E11</episode-num>
-    <episode-num system="xmltv_ns">6.10.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/7j8vy.jpg?maxheight=90&amp;limit=1cb74915b7800e57334b1e2fbd70b4979cd663c8"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002022500 +1000" channel="ANI">
     <title lang="en">Louisiana Law</title>
     <sub-title lang="en">Spotlight Killers</sub-title>
@@ -13389,12 +13325,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8i3e5.jpg?maxheight=90&amp;limit=24e4e1d16638fe22c94bb00c6f336af7e9546f12"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002012500 +1000" stop="20261002013000 +1000" channel="FHT">
-    <title lang="en">SWIMWEAR</title>
-    <sub-title lang="en">Friday 2 October 2026, 01:25.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/15003153963694291172_169.jpeg?maxheight=90&amp;limit=84c5d17891544711318229e41e923fda7e03d78a"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002015500 +1000" channel="FHT">
     <title lang="en">SWIMWEAR</title>
     <sub-title lang="en">Friday 2 October 2026, 01:30.</sub-title>
@@ -13542,6 +13472,7 @@
   <programme start="20261002073000 +1000" stop="20261002075500 +1000" channel="FHT">
     <title lang="en">FASHION &amp; SPORTS</title>
     <sub-title lang="en">Friday 2 October 2026, 07:30.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/16238360200376918453_169.jpeg?maxheight=90&amp;limit=44aed3c82555f758e2b594b2ccf947591643a08d"/>
     <rating system="AUS"><value>MA</value></rating>
   </programme>
   <programme start="20261002075500 +1000" stop="20261002080000 +1000" channel="FHT">
@@ -14374,14 +14305,6 @@
     <sub-title lang="en">Saturday 3 October 2026, 23:55.</sub-title>
     <rating system="AUS"><value>MA</value></rating>
   </programme>
-  <programme start="20261002010500 +1000" stop="20261002013500 +1000" channel="SBN">
-    <title lang="en">The Patient</title>
-    <sub-title lang="en">Issues</sub-title>
-    <episode-num system="onscreen">S01E03</episode-num>
-    <episode-num system="xmltv_ns">0.2.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-16x9-beam.png?maxheight=90&amp;limit=731a6313f1fe5e13a0b0ecef767d49083ed9387c"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002013500 +1000" stop="20261002020500 +1000" channel="SBN">
     <title lang="en">The Patient</title>
     <sub-title lang="en">Company</sub-title>
@@ -14509,6 +14432,7 @@
     <sub-title lang="en">New York - New Jersey</sub-title>
     <episode-num system="onscreen">S2026E16</episode-num>
     <episode-num system="xmltv_ns">2025.15.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-16x9-beam.png?maxheight=90&amp;limit=731a6313f1fe5e13a0b0ecef767d49083ed9387c"/>
     <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261002153500 +1000" stop="20261002154000 +1000" channel="SBN">
@@ -14793,11 +14717,6 @@
     <sub-title lang="en">Episode 2</sub-title>
     <episode-num system="onscreen">S01E02</episode-num>
     <episode-num system="xmltv_ns">0.1.0/1</episode-num>
-    <rating system="AUS"><value>G</value></rating>
-  </programme>
-  <programme start="20261002003000 +1000" stop="20261002013000 +1000" channel="TVS">
-    <title lang="en">TANZANITE Gems: Friday 2 October 2026</title>
-    <sub-title lang="en">Friday 2 October 2026</sub-title>
     <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002023000 +1000" channel="TVS">
@@ -15517,13 +15436,6 @@
     <episode-num system="onscreen">E26</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/b1wrj.jpg?maxheight=90&amp;limit=a3c6a7ec66c6efc18b0aab836fe8417653d7cdb4"/>
     <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="DAS">
-    <title lang="en">Joni Table Talk</title>
-    <sub-title lang="en">A Love Journey with God</sub-title>
-    <episode-num system="onscreen">E2572</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/lrb9ch.jpg?maxheight=90&amp;limit=ad80aa71c8c7f1543f0a7d7536c177a5d843c654"/>
-    <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="DAS">
     <title lang="en">Joel Osteen</title>
@@ -16753,14 +16665,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/jg0i27.jpg?maxheight=90&amp;limit=d534b12d8d481ee16e7bb28cf9edd1d58da5d223"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002004024 +1000" stop="20261002013736 +1000" channel="UK2">
-    <title lang="en">8 Out Of 10 Cats Does Countdown</title>
-    <sub-title lang="en">Episode 2</sub-title>
-    <episode-num system="onscreen">S16E02</episode-num>
-    <episode-num system="xmltv_ns">15.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/2qgyqr.jpg?maxheight=90&amp;limit=d8d1a2ee41af6e6feaac40a04c317777dde3a859"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002013736 +1000" stop="20261002023246 +1000" channel="UK2">
     <title lang="en">8 Out Of 10 Cats Does Countdown</title>
     <sub-title lang="en">Episode 3</sub-title>
@@ -17104,14 +17008,6 @@
     <episode-num system="xmltv_ns">15.3.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/29/36794.jpeg?maxheight=90&amp;limit=9cda8ff1793dfe0f57da64fcd582eb87f10bcab5"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261002003015 +1000" stop="20261002013015 +1000" channel="LS2">
-    <title lang="en">Escape To The Country: Suffolk</title>
-    <sub-title lang="en">Suffolk</sub-title>
-    <episode-num system="onscreen">S32E41</episode-num>
-    <episode-num system="xmltv_ns">31.40.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/coprtx.jpg?maxheight=90&amp;limit=5d1e3591d5177a5134d4d45d6764eb8c8b7be065"/>
-    <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261002013015 +1000" stop="20261002020057 +1000" channel="LS2">
     <title lang="en">Luxury Escapes: World's Best Holidays:</title>
@@ -18009,14 +17905,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/ygq7sz.jpg?maxheight=90&amp;limit=9633d3fab5f94a222c1a665c26fd044ade44204e"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002003021 +1000" stop="20261002013040 +1000" channel="AR2">
-    <title lang="en">Naked Attraction: Ian &amp; Kerry</title>
-    <sub-title lang="en">Ian &amp; Kerry</sub-title>
-    <episode-num system="onscreen">S05E09</episode-num>
-    <episode-num system="xmltv_ns">4.8.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/m5p9ua.jpg?maxheight=90&amp;limit=fbae9ceafd9028a25d5255ef6008b381140f7bd4"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002013040 +1000" stop="20261002022534 +1000" channel="AR2">
     <title lang="en">Botched: Obsessed</title>
     <sub-title lang="en">Obsessed</sub-title>
@@ -18222,6 +18110,7 @@
     <sub-title lang="en">Episode 134</sub-title>
     <episode-num system="onscreen">S22E134</episode-num>
     <episode-num system="xmltv_ns">21.133.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/hrckaa.jpg?maxheight=90&amp;limit=1c6456e1926951fe605737a3e66676e968b56874"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002201529 +1000" stop="20261002204037 +1000" channel="AR2">
@@ -19542,14 +19431,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/rbpfl0.jpg?maxheight=90&amp;limit=f5f576eb410c24c6a5e1c37b6c12ecc2b6a82b61"/>
     <rating system="AUS"><value>MA</value></rating>
   </programme>
-  <programme start="20261002010006 +1000" stop="20261002013025 +1000" channel="HI2">
-    <title lang="en">Cheers: A Kiss Is Still A Kiss</title>
-    <sub-title lang="en">A Kiss Is Still A Kiss</sub-title>
-    <episode-num system="onscreen">S06E10</episode-num>
-    <episode-num system="xmltv_ns">5.9.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/99lrx.jpg?maxheight=90&amp;limit=672b651c85a053326e8b68425821c36fb74215b6"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002013025 +1000" stop="20261002020025 +1000" channel="HI2">
     <title lang="en">Married with Children: Dances With Weez</title>
     <sub-title lang="en">Dances With Weezie</sub-title>
@@ -19670,6 +19551,7 @@
     <sub-title lang="en">Cheating On Sheila</sub-title>
     <episode-num system="onscreen">S06E13</episode-num>
     <episode-num system="xmltv_ns">5.12.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store1/mount1/HIT/2025/I@040299_L.jpg?maxheight=90&amp;limit=ae892f0d2284626bbb5a76d61eb2dea5aa7bc590"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002083031 +1000" stop="20261002090034 +1000" channel="HI2">
@@ -20305,14 +20187,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/iuxbda.jpg?maxheight=90&amp;limit=27c5face4c1432d5a002b560a4c0cdbbf61ffb29"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002004437 +1000" stop="20261002014008 +1000" channel="CL2">
-    <title lang="en">The Twilight Zone: The Incredible World</title>
-    <sub-title lang="en">The Incredible World Of Horace Ford</sub-title>
-    <episode-num system="onscreen">S04E15</episode-num>
-    <episode-num system="xmltv_ns">3.14.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/cnq183.jpg?maxheight=90&amp;limit=e58dad59bdf206c72d1ae730f58139dc4cbafa0f"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002014008 +1000" stop="20261002023507 +1000" channel="CL2">
     <title lang="en">Murder, She Wrote: How To Make A Killin</title>
     <sub-title lang="en">How To Make A Killing Without Really Trying</sub-title>
@@ -20762,14 +20636,6 @@
     <category lang="en">Movie</category>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/w6krdy.jpg?maxheight=110&amp;limit=97be6fd3a4f5cc9a8c06d17d33cca21c34d35f0a"/>
     <rating system="AUS"><value>G</value></rating>
-  </programme>
-  <programme start="20261002004500 +1000" stop="20261002014500 +1000" channel="FS2">
-    <title lang="en">Agatha Christie's Poirot</title>
-    <sub-title lang="en">The Adventure Of The Egyptian Tomb</sub-title>
-    <episode-num system="onscreen">S05E01</episode-num>
-    <episode-num system="xmltv_ns">4.0.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/kr8pv7.jpg?maxheight=90&amp;limit=f253fcb7bf57f8dcaa7902e5034c54feb037c8d0"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002014500 +1000" stop="20261002032000 +1000" channel="FS2">
     <title lang="en">Vera</title>
@@ -23654,12 +23520,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/salo65.png?maxheight=110&amp;limit=244eb894096d06a1e8303bf87bd0998a35573398"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002001210 +1000" stop="20261002014350 +1000" channel="SHO">
-    <title lang="en">Four Mothers</title>
-    <category lang="en">Movie</category>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/be4pmv.jpg?maxheight=110&amp;limit=c4135b49dd34bc3b1e81e0d9bda462ce8a3641b4"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002014350 +1000" stop="20261002034644 +1000" channel="SHO">
     <title lang="en">Shoshana</title>
     <category lang="en">Movie</category>
@@ -23809,12 +23669,6 @@
     <category lang="en">Movie</category>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-2x3-beam.png?maxheight=110&amp;limit=78579c74b1bcfd169439df0083f0c72667cc8bc3"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261001235802 +1000" stop="20261002013839 +1000" channel="MVS">
-    <title lang="en">Land Of The Lost</title>
-    <category lang="en">Movie</category>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/78vds.jpg?maxheight=110&amp;limit=31eea04d06037f93501eade5645cce61f1395a09"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002013839 +1000" stop="20261002030530 +1000" channel="MVS">
     <title lang="en">Curious George</title>
@@ -24158,12 +24012,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/dyed1c.jpg?maxheight=110&amp;limit=0c84decdc19ff16133aa1be166d74aff2800692f"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261001235500 +1000" stop="20261002013901 +1000" channel="SHA">
-    <title lang="en">The Invitation</title>
-    <category lang="en">Movie</category>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/8aayb.jpg?maxheight=110&amp;limit=59ea5e21f83302b036a0cc09d8be6cd3d6b8c31b"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002013901 +1000" stop="20261002031326 +1000" channel="SHA">
     <title lang="en">Tremors</title>
     <category lang="en">Movie</category>
@@ -24300,12 +24148,6 @@
     <title lang="en">Tremors</title>
     <category lang="en">Movie</category>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/1/8ngpa.jpg?maxheight=110&amp;limit=4c1bfa284b215ad52940717d8676e2e48e1f84e1"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261001234536 +1000" stop="20261002013617 +1000" channel="SHY">
-    <title lang="en">Pitch Perfect 2</title>
-    <category lang="en">Movie</category>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/61eb0.jpg?maxheight=110&amp;limit=728e9f829c3f739e2220e75d1381316f593b4fd6"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002013617 +1000" stop="20261002032902 +1000" channel="SHY">
@@ -24631,12 +24473,6 @@
     <category lang="en">Movie</category>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/8hhz0.jpg?maxheight=110&amp;limit=240a8243f854344b0432e6b308f65ba63acaea51"/>
     <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261001235742 +1000" stop="20261002013333 +1000" channel="MO6">
-    <title lang="en">Jesse Stone: Innocents Lost</title>
-    <category lang="en">Movie</category>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/1rngry.jpg?maxheight=110&amp;limit=5ed68b374538db9c9becf67636de0fef04405aa9"/>
-    <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002013333 +1000" stop="20261002032913 +1000" channel="MO6">
     <title lang="en">Tina</title>
@@ -26074,12 +25910,6 @@
     <category lang="en">Movie</category>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-2x3-beam.png?maxheight=110&amp;limit=78579c74b1bcfd169439df0083f0c72667cc8bc3"/>
     <rating system="AUS"><value>MA</value></rating>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="FSN">
-    <title lang="en">FOX SPORTS News</title>
-    <sub-title lang="en">Thursday 1 October 2026</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/okdfp8.jpg?maxheight=90&amp;limit=6712e46814b2148e008272927f49dc7b68c32265"/>
-    <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="FSN">
     <title lang="en">FOX SPORTS News</title>
@@ -27944,12 +27774,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8jjtw.png?maxheight=90&amp;limit=939dccae7b1b2a6e523505ae30dd2e63917ff4f2"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="SPS">
-    <title lang="en">F1 Paddock Uncut: Bahrain</title>
-    <sub-title lang="en">Bahrain</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/jwbp8o.png?maxheight=90&amp;limit=b701ab5f669dd445f95246cfe559fe48beb75440"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002023000 +1000" channel="SPS">
     <title lang="en">MotorRacing 360</title>
     <sub-title lang="en">Episode 30</sub-title>
@@ -29134,14 +28958,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/1/8jo3x.jpg?maxheight=90&amp;limit=bf678e595414605cd3849a8df42b2c3e2e0e1869"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="SRW">
-    <title lang="en">It's Gold Encore</title>
-    <sub-title lang="en">It's Gold Encore</sub-title>
-    <episode-num system="onscreen">S26E03</episode-num>
-    <episode-num system="xmltv_ns">25.2.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/10915435793308388010_169.jpeg?maxheight=90&amp;limit=5ffcab807c14e0eaf82c177ca74fa397d0540dc6"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002023000 +1000" channel="SRW">
     <title lang="en">Finding Winners Encore</title>
     <sub-title lang="en">Finding Winners Encore</sub-title>
@@ -29509,12 +29325,6 @@
     <episode-num system="xmltv_ns">25.275.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-16x9-beam.png?maxheight=90&amp;limit=731a6313f1fe5e13a0b0ecef767d49083ed9387c"/>
     <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="RTV">
-    <title lang="en">Racing Review: Warrnambool</title>
-    <sub-title lang="en">Warrnambool</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/7j38t.jpg?maxheight=90&amp;limit=9efa51b4c6399ef1fc7bbc2faeceff249aeb0ac9"/>
-    <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="RTV">
     <title lang="en">Racing Review: Ballarat</title>
@@ -30152,12 +29962,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/kotc3x.jpg?maxheight=90&amp;limit=6a0c9421c0055f287fd9a25acbbffd7765b8582d"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="FXW">
-    <title lang="en">Across Australia</title>
-    <sub-title lang="en">Friday 2 October 2026, 01:00.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/3xrltm.jpg?maxheight=90&amp;limit=0a9c6fad1656cd233b3e632d819ca1d1e1e954c5"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="FXW">
     <title lang="en">Across Australia</title>
     <sub-title lang="en">Friday 2 October 2026, 01:30.</sub-title>
@@ -30305,6 +30109,7 @@
   <programme start="20261002133000 +1000" stop="20261002140000 +1000" channel="FXW">
     <title lang="en">Your Weather</title>
     <sub-title lang="en">Friday 2 October 2026, 13:30.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/jajf47.jpg?maxheight=90&amp;limit=1fe08965fafbeb1b50fe8196d8812ae07c93d96a"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002140000 +1000" stop="20261002143000 +1000" channel="FXW">
@@ -31172,18 +30977,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/7vam9.jpg?maxheight=90&amp;limit=e833b298257d3607ab0f298238f89e7ebcfe5161"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="BBC">
-    <title lang="en">Live: Verified Live: 01.10.2026 15:00.</title>
-    <sub-title lang="en">01.10.2026 15:00.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/5798014308298567439_169.jpeg?maxheight=90&amp;limit=cf5164cb6198da8c4f52b0ca2f24d8a37938f46f"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
-  <programme start="20261002013000 +1000" stop="20261002014500 +1000" channel="BBC">
-    <title lang="en">Live: Business Today: 01.10.2026 15:30.</title>
-    <sub-title lang="en">01.10.2026 15:30.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/11881722097354758945_169.jpeg?maxheight=90&amp;limit=82870a76c7bebf3ff7449acc43a5137aebb9f7f5"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002014500 +1000" stop="20261002015500 +1000" channel="BBC">
     <title lang="en">Live: Verified Live: 01.10.2026 15:45.</title>
     <sub-title lang="en">01.10.2026 15:45.</sub-title>
@@ -31330,11 +31123,13 @@
   <programme start="20261002120000 +1000" stop="20261002123000 +1000" channel="BBC">
     <title lang="en">Live: Newsday: 02.10.2026 02:00.</title>
     <sub-title lang="en">02.10.2026 02:00.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/15825126177431237731_169.jpeg?maxheight=90&amp;limit=1a368360fc02ec53ca7249e34e70cafa8301cfbe"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002123000 +1000" stop="20261002124500 +1000" channel="BBC">
     <title lang="en">Live: Business Today: 02.10.2026 02:30.</title>
     <sub-title lang="en">02.10.2026 02:30.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/11881722097354758945_169.jpeg?maxheight=90&amp;limit=82870a76c7bebf3ff7449acc43a5137aebb9f7f5"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002124500 +1000" stop="20261002130000 +1000" channel="BBC">
@@ -32034,14 +31829,6 @@
     <sub-title lang="en">Saturday in America</sub-title>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="CNN">
-    <title lang="en">One World</title>
-    <sub-title lang="en">One World</sub-title>
-    <episode-num system="onscreen">S01E40</episode-num>
-    <episode-num system="xmltv_ns">0.39.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/6inoa.png?maxheight=90&amp;limit=a1d1980544998aa6c84cc20a1f6fb9501d446b46"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="CNN">
     <title lang="en">CNN Creators</title>
     <sub-title lang="en">CNN Creators</sub-title>
@@ -32220,6 +32007,7 @@
     <title lang="en">CNN News Central</title>
     <sub-title lang="en">CNN News Central</sub-title>
     <episode-num system="onscreen">E197</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/9732805444893548721_169.jpeg?maxheight=90&amp;limit=bd1b3ef8dd9366909824351360e1fdec850efb58"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002223000 +1000" stop="20261002230000 +1000" channel="CNN">
@@ -33042,12 +32830,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/vj7wbu.jpg?maxheight=90&amp;limit=70fa939a7389005de7db55a2e5fad2983deb16d8"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="CNB">
-    <title lang="en">Squawk On The Street</title>
-    <sub-title lang="en">Squawk On The Street</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/2/6bbhn.jpg?maxheight=90&amp;limit=05f89bf6f9c04f17c7ad4f7a7350783fc4016358"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="CNB">
     <title lang="en">Squawk On The Street</title>
     <sub-title lang="en">Squawk On The Street</sub-title>
@@ -33195,6 +32977,7 @@
   <programme start="20261002150000 +1000" stop="20261002160000 +1000" channel="CNB">
     <title lang="en">U.S. Markets Edition</title>
     <sub-title lang="en">U.S. Markets Edition</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/2043731986296151228_169.jpeg?maxheight=90&amp;limit=b92b1afcc09111cead6792957b97c61745b9f021"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002160000 +1000" stop="20261002163000 +1000" channel="CNB">
@@ -34230,12 +34013,6 @@
     <sub-title lang="en">Saturday 3 October 2026, 23:00.</sub-title>
     <rating system="AUS"><value>G</value></rating>
   </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="CCC">
-    <title lang="en">The World Today</title>
-    <sub-title lang="en">Thursday 1 October 2026, 23:00.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/1734789807373_169.jpeg?maxheight=90&amp;limit=432bd4903932203ca20c541bfc2dbd36fd6815ae"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="CCC">
     <title lang="en">The Vibe</title>
     <sub-title lang="en">Thursday 1 October 2026</sub-title>
@@ -34395,6 +34172,7 @@
   <programme start="20261002160000 +1000" stop="20261002163000 +1000" channel="CCC">
     <title lang="en">The World Today</title>
     <sub-title lang="en">Friday 2 October 2026, 14:00.</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/1734789807373_169.jpeg?maxheight=90&amp;limit=432bd4903932203ca20c541bfc2dbd36fd6815ae"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002163000 +1000" stop="20261002170000 +1000" channel="CCC">
@@ -34715,12 +34493,6 @@
     <sub-title lang="en">Saturday 3 October 2026</sub-title>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/7726783693853502386_169.jpeg?maxheight=90&amp;limit=55dd5a55546427bccd1c4f96d2b67387bc675a34"/>
     <rating system="AUS"><value>G</value></rating>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="CCD">
-    <title lang="en">Humanities and Geography</title>
-    <sub-title lang="en">Humanities and Geography</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/17/placeholder-16x9-beam.png?maxheight=90&amp;limit=731a6313f1fe5e13a0b0ecef767d49083ed9387c"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="CCD">
     <title lang="en">Living China</title>
@@ -35157,12 +34929,6 @@
     <sub-title lang="en">Pixel Collage</sub-title>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/10092067227061186466_169.jpeg?maxheight=90&amp;limit=e4de7a76be43d82b20bc49301a6f4f536e4edf64"/>
     <rating system="AUS"><value>PG</value></rating>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="NHK">
-    <title lang="en">NHK Newsline: Nhk Newsline</title>
-    <sub-title lang="en">Nhk Newsline</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/1/9jr1v.jpg?maxheight=90&amp;limit=10f1b34559aab942604d5a829866d3c09c0381ae"/>
-    <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="NHK">
     <title lang="en">Today's Close Up: Japan's Middle Class</title>
@@ -36080,14 +35846,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/2858982460027020356_169.jpeg?maxheight=90&amp;limit=1a1f94948bb12207efc8c8f0fd6f0cabfcd40809"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002010500 +1000" stop="20261002013000 +1000" channel="DRM">
-    <title lang="en">Voltron: Legendary Defender</title>
-    <sub-title lang="en">Razor's Edge</sub-title>
-    <episode-num system="onscreen">S06E02</episode-num>
-    <episode-num system="xmltv_ns">5.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/7u3bw.jpg?maxheight=90&amp;limit=452a4539094b2b4617bd5112f8ac0f7609d9c864"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002013000 +1000" stop="20261002020000 +1000" channel="DRM">
     <title lang="en">Voltron: Legendary Defender</title>
     <sub-title lang="en">Monsters &amp; Mana</sub-title>
@@ -36165,6 +35923,7 @@
     <sub-title lang="en">Sports Day</sub-title>
     <episode-num system="onscreen">S01E16</episode-num>
     <episode-num system="xmltv_ns">0.15.0/1</episode-num>
+    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/79ysf.jpg?maxheight=90&amp;limit=7198a46f6101b91e496aabc6183f22e5f2a290da"/>
     <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261002060000 +1000" stop="20261002061200 +1000" channel="DRM">
@@ -36261,7 +36020,6 @@
     <sub-title lang="en">Razor's Edge</sub-title>
     <episode-num system="onscreen">S06E02</episode-num>
     <episode-num system="xmltv_ns">5.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/7u3bw.jpg?maxheight=90&amp;limit=452a4539094b2b4617bd5112f8ac0f7609d9c864"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002104500 +1000" stop="20261002111000 +1000" channel="DRM">
@@ -37471,11 +37229,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/hdtx25.jpg?maxheight=90&amp;limit=6b36a9249d94de13834f755606a718520f47bc8f"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261001233000 +1000" stop="20261002014500 +1000" channel="ANT">
-    <title lang="en">To Proino</title>
-    <sub-title lang="en">Breakfast</sub-title>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002014500 +1000" stop="20261002024500 +1000" channel="ANT">
     <title lang="en">Ant1 News - Kentriko Deltio</title>
     <sub-title lang="en">02.10.2026 01:45.</sub-title>
@@ -38431,10 +38184,6 @@
     <title lang="en">Sailing: Racing on the Edge</title>
     <sub-title lang="en">Episode 5</sub-title>
     <episode-num system="onscreen">S2026E05</episode-num>
-  </programme>
-  <programme start="20261002010000 +1000" stop="20261002013000 +1000" channel="K05">
-    <title lang="en">F1 Paddock Uncut: Bahrain</title>
-    <sub-title lang="en">Bahrain</sub-title>
   </programme>
   <programme start="20261002013000 +1000" stop="20261002023000 +1000" channel="K05">
     <title lang="en">MotorRacing 360</title>
