@@ -138,7 +138,10 @@ def main():
             parts.append(f'    <icon src="{logo}"/>')
         parts.append('  </channel>')
 
+    api_tags = {ch.get('channelTag', '') for ch in channels}
     for uhd_tag, uhd_name, _ in UHD_MIRRORS:
+        if uhd_tag in api_tags:
+            continue  # already in the API channel list, no need to add
         logo = _FOXTEL_LOGO.format(c=uhd_tag)
         parts.append(f'  <channel id="{xml_escape(uhd_tag)}">')
         parts.append(f'    <display-name>{xml_escape(uhd_name)}</display-name>')
@@ -184,8 +187,10 @@ def main():
             if img:    parts.append(f'    <icon src="{xml_escape(img)}"/>')
             if rating: parts.append(f'    <rating system="AUS"><value>{xml_escape(rating)}</value></rating>')
             parts.append('  </programme>')
-    # Mirror UHD channels from their HD counterparts
+    # Mirror UHD channels from their HD counterparts (only ones not already in API)
     for uhd_tag, _, src_tag in UHD_MIRRORS:
+        if uhd_tag in api_tags:
+            continue
         src_events = channel_events.get(src_tag, [])
         if not src_events:
             continue
