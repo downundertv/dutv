@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+
+msgctxt "#30003"
+msgid "Login Error"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Live TV"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Playback Error"
+msgstr ""
+
+msgctxt "#30007"
+msgid "No Stream Found"
+msgstr ""
+
+msgctxt "#30010"
+msgid "TV Shows"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Token Error"
+msgstr ""
+
+msgctxt "#30012"
+msgid "Sports"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Movies"
+msgstr ""
+
+msgctxt "#30014"
+msgid "Season {season}"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Episodes"
+msgstr ""
+
+msgctxt "#30017"
+msgid "Kids"
+msgstr ""
+
+msgctxt "#30018"
+msgid "Hide Locked Channels"
+msgstr ""
+
+msgctxt "#30019"
+msgid "Channel"
+msgstr ""
+
+msgctxt "#30020"
+msgid "Locked"
+msgstr ""
+
+msgctxt "#30021"
+msgid "Device Nickname"
+msgstr ""
+
+msgctxt "#30023"
+msgid "Recommended"
+msgstr ""
+
+msgctxt "#30025"
+msgid "Search"
+msgstr ""
+
+msgctxt "#30026"
+msgid "Search for..."
+msgstr ""
+
+msgctxt "#30027"
+msgid "Continue Watching"
+msgstr ""
+
+msgctxt "#30028"
+msgid "Watchlist"
+msgstr ""
+
+msgctxt "#30029"
+msgid "Show EPG Info"
+msgstr ""
+
+msgctxt "#30030"
+msgid "See All"
+msgstr ""
+
+msgctxt "#30031"
+msgid "Email + OTP Login"
+msgstr ""
+
+msgctxt "#30032"
+msgid "Enter OTP Code"
+msgstr ""
+
+msgctxt "#30033"
+msgid "OTP code sent to your email. Enter it below."
+msgstr ""
+
+msgctxt "#30034"
+msgid "News"
+msgstr ""
+
+msgctxt "#30035"
+msgid "Quality"
+msgstr ""
+
+msgctxt "#30036"
+msgid "Relay URL Override (leave blank for auto)"
+msgstr ""

@@ -1,473 +1,336 @@
-import hashlib
 import uuid
-import ctypes
+import time
+import json
+import base64
+import threading
 
-import pyaes
-
-from slyguy import userdata, gui, settings, mem_cache
-from slyguy.session import Session
+import requests
+from slyguy import userdata
 from slyguy.exceptions import Error
-from slyguy.log import log
-from slyguy.util import get_system_arch
 
 from .constants import *
-from .language import _
 
-from .native import get_lib_binary, prepare_body
-from urllib.parse import urlencode, urlparse
-import json
-import os
 
 class APIError(Error):
     pass
 
-class API(object):
+
+class API:
+    def __init__(self):
+        self._local       = threading.local()
+        self._dazn_token  = None
+        self._dazn_expiry = 0
+
+    @property
+    def _session(self):
+        s = getattr(self._local, 'session', None)
+        if s is None:
+            s = requests.Session()
+            s.headers.update(HEADERS)
+            self._local.session = s
+        return s
+
     def new_session(self):
-        self._session = Session(HEADERS, base_url=API_URL, return_json=True, attempts=4, ssl_ciphers=SSL_CIPHERS, ssl_options=SSL_OPTIONS)
-        self.logged_in = userdata.get('token') != None
-        client_dir, client_binary = get_lib_binary()
-        #os.add_dll_directory(client_dir)
-        self.nativeHttpClient = ctypes.CDLL(client_binary)
-        self.nativeHttpClient.init.argtypes = [ctypes.c_char_p]
-        self.nativeHttpClient.init.restype = ctypes.c_void_p
-        
-        self.nativeHttpClient.free_buffer.argtypes = [ctypes.c_char_p]
-        self.nativeHttpClient.free_buffer.restype = ctypes.c_void_p
-        
-        self.nativeHttpClient.get.argtypes = [ctypes.c_void_p, ctypes.c_char_p]
-        self.nativeHttpClient.get.restype = ctypes.c_char_p
-        
-        self.nativeHttpClient.post.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_char_p, ctypes.c_char_p]
-        self.nativeHttpClient.post.restype = ctypes.c_char_p
-    
-    # Clean up this shit code if we don't get blocked
-    def _sessionget(self, url, params):
-        parsed_url = urlparse(url)
-        paramurl = parsed_url.path + '?' + urlencode(params)
-        host = "foxtel-go-sw.foxtelplayer.foxtel.com.au"
-        if parsed_url.hostname:
-            host = parsed_url.hostname
-        else:
-            parsed_url = urlparse(BASE_URL + '/api' + url)
-            paramurl = parsed_url.path + '?' + urlencode(params)
-            host = parsed_url.hostname
-        
-        obj = self.nativeHttpClient.init(bytes("https://" + host, encoding = 'utf-8'))
-        c_buffer = self.nativeHttpClient.get(obj, bytes(paramurl, encoding = 'utf-8'))
-        result = ctypes.string_at(c_buffer).decode('utf-8')
-        if result:
-            return json.loads(result)
-        return
+        self._dazn_token  = userdata.get('dazn_token')
+        self._dazn_expiry = userdata.get('dazn_expiry', 0)
+        self._sync_token_to_relay()
 
-    # Clean up this shit code if we don't get blocked
-    def _sessionpost(self, url, params={}, data={}):
-        parsed_url = urlparse(url)
-        paramurl = parsed_url.path + '?' + urlencode(params) + parsed_url.query
-        host = "https://foxtel-go-sw.foxtelplayer.foxtel.com.au"
-        if parsed_url.hostname:
-            host = "https://" + parsed_url.hostname
-        else:
-            parsed_url = urlparse(BASE_URL + '/api' + url)
-            paramurl = parsed_url.path + '?' + urlencode(params) + parsed_url.query
-            host = "https://" + parsed_url.hostname
-        
-        body, content_type = prepare_body(data)
+    @property
+    def logged_in(self):
+        return bool(self._dazn_token)
 
-        obj = self.nativeHttpClient.init(bytes(host, encoding = 'utf-8'))    
-        c_buffer = self.nativeHttpClient.post(obj, bytes(paramurl, encoding = 'utf-8'), bytes(body, encoding = 'utf-8'), bytes(content_type, encoding = 'utf-8'))
-        result = ctypes.string_at(c_buffer).decode('utf-8')
-        if result:
-            try:
-                return json.loads(result)
-            except:
-                return result
-        return    
+    # ------------------------------------------------------------------
+    # Token helpers
+    # ------------------------------------------------------------------
 
-    def _refresh_token(self):
-        payload = {
-            'username': userdata.get('username'),
-            'loginToken': userdata.get('token'),
-            'deviceId': userdata.get('deviceid'),
-            'accountType': 'foxtel',
-            'format': 'json',
-            'appID': 'GO2',
-            'plt': PLT_DEVICE,
-        }
-
-        password = userdata.get('pswd')
-        if password:
-            log.debug('Using Password Login')
-            payload['password'] = self._hex_password(password, userdata.get('deviceid'))
-            del payload['loginToken']
-        else:
-            log.debug('Using Token Login')
-
-        data = self._sessionpost('/auth.class.api.php/logon/{site_id}'.format(site_id=VOD_SITEID), data=payload)
-
-        response = data['LogonResponse']
-        error = response.get('Error')
-        success = response.get('Success')
-
-        if error:
-            self.logout()
-            raise APIError(_(_.TOKEN_ERROR, msg=error.get('Message')))
-
-        userdata.set('token', success['LoginToken'])
-        userdata.set('deviceid', success['DeviceId'])
-        userdata.set('entitlements', success.get('Entitlements', ''))
-
-        self.logged_in = True
-
-    def login(self, username, password, kickdevice=None):
-        self.logout()
-
-        device_id = settings.get('device_id').strip()
-        if not device_id:
-            device_id = DEFAULT_DEVICEID
-            settings.set('device_id', device_id)
-
-        raw_id = self._format_id(device_id).lower()
-        device_id = hashlib.sha1(raw_id.encode('utf8')).hexdigest()
-
-        log.debug('Raw device id: {}'.format(raw_id))
-        log.debug('Hashed device id: {}'.format(device_id))
-
-        hex_password = self._hex_password(password, device_id)
-
-        payload = {
-            'username': username,
-            'password': hex_password,
-            'deviceId': device_id,
-            'accountType': 'foxtel',
-            'plt': PLT_DEVICE,
-        }
-
-        if kickdevice:
-            payload['deviceToKick'] = kickdevice
-            log.debug('Kicking device: {}'.format(kickdevice))
-
-        data = self._sessionpost('/auth.class.api.php/logon/{site_id}?appID=GO2&format=json'.format(site_id=VOD_SITEID), data=payload)
-
-        response = data['LogonResponse']
-        devices = response.get('CurrentDevices', [])
-        error = response.get('Error')
-        success = response.get('Success')
-
-        if error:
-            if not devices or kickdevice:
-                raise APIError(_(_.LOGIN_ERROR, msg=error.get('Message')))
-
-            options = [d['Nickname'] for d in devices]
-            index = gui.select(_.DEREGISTER_CHOOSE, options)
-            if index < 0:
-                raise APIError(_(_.LOGIN_ERROR, msg=error.get('Message')))
-
-            kickdevice = devices[index]['DeviceID']
-
-            return self.login(username, password, kickdevice=kickdevice)
-
-        userdata.set('token', success['LoginToken'])
-        userdata.set('deviceid', success['DeviceId'])
-        userdata.set('entitlements', success.get('Entitlements', ''))
-
-        if settings.getBool('save_password', False):
-            userdata.set('pswd', password)
-            log.debug('Password Saved')
-
-        self.logged_in = True
-
-    def _format_id(self, string):
+    def _jwt_payload(self, token):
         try:
-            mac_address = uuid.getnode()
-            if mac_address != uuid.getnode():
-                mac_address = ''
-        except:
-            mac_address = ''
-
-        system, arch = get_system_arch()
-
-        return string.replace('{username}', str(userdata.get('username'))).replace('{mac_address}', str(mac_address)).replace('{system}', str(system)).strip()
-
-    def _hex_password(self, password, device_id):
-        nickname = settings.get('device_name').strip()
-        if not nickname:
-            nickname = DEFAULT_NICKNAME
-            settings.set('device_name', nickname)
-
-        nickname = self._format_id(nickname)
-        log.debug('Device nickname: {}'.format(nickname))
-
-        payload = {
-            'deviceId': device_id,
-            'nickName': nickname,
-            'type': 'phone',
-            'versionNumber': '6.0.0.J',
-        }
-
-        secret = self._sessionpost('/auth.class.api.php/prelogin/{site_id}?appID=GO2&format=json'.format(site_id=VOD_SITEID), data=payload)['secret']
-        log.debug('Pass Secret: {}{}'.format(secret[:5], 'x'*len(secret[5:])))
-
-        try:
-            #python3
-            iv = bytes.fromhex(AES_IV)
-        except AttributeError:
-            #python2
-            iv = str(bytearray.fromhex(AES_IV))
-
-        encrypter = pyaes.Encrypter(pyaes.AESModeOfOperationCBC(secret.encode('utf8'), iv))
-
-        ciphertext = encrypter.feed(password)
-        ciphertext += encrypter.feed()
-
-        try:
-            #python3
-            hex_password = ciphertext.hex()
-        except AttributeError:
-            #python2
-            hex_password = ciphertext.encode('hex')
-
-        log.debug('Hex password: {}{}'.format(hex_password[:5], 'x'*len(hex_password[5:])))
-
-        return hex_password
-
-    def assets(self, asset_type, _filter=None, showall=False):
-        params = {
-            'showall': 'true' if showall else 'false',
-            'plt': PLT_DEVICE,
-            'entitlementToken': self._entitlement_token(),
-            'format': 'json',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        if _filter:
-            params['filters'] = _filter
-
-        return self._sessionget('/categoryTree.class.api.php/GOgetAssets/{site_id}/{asset_type}'.format(site_id=VOD_SITEID, asset_type=asset_type), params=params)
-
-    def live_channels(self, _filter=None):
-        params = {
-            'plt': PLT_DEVICE,
-            'entitlementToken': self._entitlement_token(),
-            'format': 'json',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        if _filter:
-            params['filter'] = _filter
-        
-        return self._sessionget('/categoryTree.class.api.php/GOgetLiveChannels/{site_id}'.format(site_id=LIVE_SITEID), params=params)
-
-    def show(self, show_id):
-        params = {
-            'showId': show_id,
-            'plt': PLT_DEVICE,
-            'format': 'json',
-            'dateFormat': 'ISO8601',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        return self._sessionget('/asset.class.api.php/GOgetAssetData/{site_id}/0'.format(site_id=VOD_SITEID), params=params)
-
-    def asset(self, media_type, id):
-        params = {
-            'plt': PLT_DEVICE,
-            'format': 'json',
-            'dateFormat': 'ISO8601',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        if media_type == TYPE_VOD:
-            site_id = VOD_SITEID
-        else:
-            site_id = LIVE_SITEID
-
-        return self._sessionget('/asset.class.api.php/GOgetAssetData/{site_id}/{id}'.format(site_id=site_id, id=id), params=params)
-
-    def bundle(self, mode=''):
-        params = {
-            'plt': PLT_DEVICE,
-            'entitlementToken': self._entitlement_token(),
-            'apiVersion': 2,
-            'filter': '',
-            'mode': mode,
-            'format': 'json',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        return self._sessionget(BUNDLE_URL, params=params)
-
-    def _sync_token(self, site_id, catalog_name):
-        self._refresh_token()
-
-        params = {
-            'serviceID': 'PLAY',
-        }
-
-        payload = {
-            'loginToken': userdata.get('token'),
-            'deviceId': userdata.get('deviceid'),
-            'format': 'json',
-        }
-
-        data = self._sessionpost('/userCatalog.class.api.php/getSyncTokens/{site_id}'.format(site_id=VOD_SITEID), params=params, data=payload)
-
-        for token in data.get('tokens', []):
-            if token['siteId'] == site_id and token['catalogName'] == catalog_name:
-                return token['token']
-
-        return None
-
-    def user_catalog(self, catalog_name, site_id=VOD_SITEID):
-        token = self._sync_token(site_id, catalog_name)
-        if not token:
-            return
-
-        params = {
-            'syncToken': token,
-            'platform': PLT_DEVICE,
-            'limit': 100,
-            'format': 'json',
-            'appID': 'GO2',
-            'serviceID': 'PLAY',
-        }
-
-        return self._sessionget('/userCatalog.class.api.php/getCarousel/{site_id}/{catalog_name}'.format(site_id=site_id, catalog_name=catalog_name), params=params)
-
-    @mem_cache.cached(60*5)
-    def channel_data(self):
-        try:
-            return self._sessionget(LIVE_DATA_URL)
-        except:
+            part = token.split('.')[1]
+            part += '=' * (4 - len(part) % 4)
+            return json.loads(base64.b64decode(part))
+        except Exception:
             return {}
 
-    def search(self, query, _type='VOD'):
-        params = {
-            'prod': 'FOXTELGO',
-            'idm': '04',
-            'BLOCKED': 'YES',
-            'fx': '"{}"'.format(query),
-            'sfx': 'type:{}'.format(_type), #VOD OR LINEAR
-            'limit': 100,
-            'offset': 0,
-            'dpg': 'R18+',
-            'ao': 'N',
-            'dopt': '[F0:11]',
-            'hwid': '_',
-            'REGION': '_',
-            'utcOffset': '+1200',
-            'swver': '3.3.7',
-            'aid': '_',
-            'fxid': '_',
-            'rid': 'SEARCH5',
-        }
+    def _store_token(self, token):
+        exp = self._jwt_payload(token).get('exp', 0)
+        userdata.set('dazn_token',  token)
+        userdata.set('dazn_expiry', exp)
+        self._dazn_token  = token
+        self._dazn_expiry = exp
 
-        return self._sessionget(SEARCH_URL, params=params)
+    def _ensure_token(self):
+        if not self._dazn_token:
+            raise APIError('Not logged in. Please log in first.')
+        now = int(time.time())
+        if self._dazn_expiry > 0 and now >= self._dazn_expiry - 300:
+            try:
+                self._refresh_token()
+            except Exception:
+                pass
+        return self._dazn_token
 
-    def play(self, media_type, id):
-        self._refresh_token()
+    def _refresh_token(self):
+        resp = self._session.post(
+            DAZN_REFRESH_URL,
+            json={'DeviceId': get_device_id()},
+            headers={
+                'Authorization':    'Bearer ' + self._dazn_token,
+                'X-Correlation-Id': str(uuid.uuid4()),
+            },
+        )
+        if resp.status_code != 200:
+            raise APIError('Token refresh failed ({}): {}'.format(resp.status_code, resp.text[:200]))
+        token = resp.json()['AuthToken']['Token']
+        self._store_token(token)
+        self._sync_token_to_relay()
+        return token
 
-        payload = {
-            'deviceId': userdata.get('deviceid'),
-            'loginToken': userdata.get('token'),
-        }
+    def _sync_token_to_relay(self):
+        if not self._dazn_token:
+            return
+        try:
+            requests.post(
+                get_relay_url() + '/set_foxtel_token',
+                json={'token': self._dazn_token, 'device_id': get_device_id()},
+                timeout=3,
+            )
+        except Exception:
+            pass
 
-        if media_type == TYPE_VOD:
-            endpoint = 'GOgetVODConfig'
-            site_id = VOD_SITEID
-        else:
-            endpoint = 'GOgetLiveConfig'
-            site_id = LIVE_SITEID
+    def _auth_headers(self):
+        token = self._ensure_token()
+        return {'Authorization': 'Bearer ' + token, 'X-Correlation-Id': str(uuid.uuid4())}
 
-        params = {
-            'rate': 'WIREDHIGH',
-            'plt': 'ipstb',  # andr_phone can include ssai which breaks playback
-            'appID': 'PLAY2',
-            'deviceCaps': hashlib.md5('TR3V0RwAZH3r3L00kingA7SumStuFF{}'.format('L1').encode('utf8')).hexdigest().lower(),
-            'format': 'json',
-        }
-        data = self._sessionpost(PLAY_URL.format(endpoint=endpoint, site_id=site_id, id=id), params=params, data=payload)
+    # ------------------------------------------------------------------
+    # Login / logout
+    # ------------------------------------------------------------------
 
-        error = data.get('errorMessage')
-        if error:
-            raise APIError(_(_.PLAYBACK_ERROR, msg=error))
+    def login(self, email, password):
+        """Sign in via relay (relay uses curl_cffi to bypass CloudFront WAF)."""
+        resp = requests.post(
+            get_relay_url() + '/foxtel/login',
+            json={'email': email, 'password': password, 'device_id': get_device_id()},
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            try:
+                msg = resp.json().get('message', 'Login failed ({})'.format(resp.status_code))
+            except Exception:
+                msg = 'Login failed ({})'.format(resp.status_code)
+            raise APIError(msg)
+        token = resp.json()['token']
+        self._store_token(token)
+        userdata.set('email', email)
+        # Relay already stored the token in foxtel_dazn_state via /foxtel/login
 
-        streams = sorted(data['media'].get('streams', []), key=lambda s: STREAM_PRIORITY.get(s['profile'].upper(), STREAM_PRIORITY['DEFAULT']), reverse=True)
-        if not streams:
-            raise APIError(_.NO_STREAM_ERROR)
+    def login_otp_request(self, email):
+        """Step 1 of OTP login — send OTP to email via relay."""
+        resp = requests.post(
+            get_relay_url() + '/foxtel/otp/request',
+            json={'email': email, 'device_id': get_device_id()},
+            timeout=20,
+        )
+        if resp.status_code not in (200, 201, 204):
+            try:
+                msg = resp.json().get('message', 'OTP request failed ({})'.format(resp.status_code))
+            except Exception:
+                msg = 'OTP request failed ({})'.format(resp.status_code)
+            raise APIError(msg)
 
-        playback_url = streams[0]['url']
-        playback_url = playback_url.replace('cm=yes&', '')  # removes ad injection which breaks playback
-
-        # Try to get license URL from the first call's response (same DRM session)
-        license_url = data.get('fullLicenceUrl')
-
-        if not license_url:
-            log.debug('fullLicenceUrl not in first response, making separate license call with matching session params')
-            # Use same plt and appID as the stream call to keep DRM session consistent
-            license_params = {
-                'rate': 'WIREDHIGH',
-                'plt': 'ipstb',
-                'appID': 'PLAY2',
-                'deviceCaps': hashlib.md5('TR3V0RwAZH3r3L00kingA7SumStuFF{}'.format('L1').encode('utf8')).hexdigest().lower(),
-                'format': 'json',
-            }
-            license_data = self._sessionpost('/playback.class.api.php/{endpoint}/{site_id}/1/{id}'.format(endpoint=endpoint, site_id=site_id, id=id), params=license_params, data=payload)
-            license_url = license_data['fullLicenceUrl']
-            # Use license_data for session update since it has the session info
-            data = license_data
-
-        params = {
-            'sessionId': data['general']['sessionID'],
-            'deviceId': userdata.get('deviceid'),
-            'loginToken': userdata.get('token'),
-            'sessionStatus': 'FINISHED',
-            'appID': 'GO2',
-            'serviceID': 'GO',
-            'format': 'json',
-        }
-
-        url = '/playback.class.api.php/GOupdateSession/{}/{}'.format(data['general']['siteID'], data['general']['assetID'])
-        self._sessionget(url, params=params)
-
-        return playback_url, license_url
-
-    def asset_for_program(self, show_id, program_id):
-        show = self.show(show_id)
-
-        if show.get('programId') == program_id:
-            return show
-
-        if 'childAssets' not in show:
-            return None
-
-        for child in show['childAssets']['items']:
-            if child.get('programId') == program_id:
-                return child
-
-            if 'childAssets' not in child:
-                return None
-
-            for subchild in child['childAssets']['items']:
-                if subchild.get('programId') == program_id:
-                    return subchild
-
-        return None
-
-    def _entitlement_token(self):
-        entitlements = userdata.get('entitlements')
-        if not entitlements:
-            return None
-
-        return hashlib.md5(entitlements.encode('utf8')).hexdigest()
+    def login_otp_validate(self, email, otp_code):
+        """Step 2 of OTP login — validate the code received by email via relay."""
+        resp = requests.post(
+            get_relay_url() + '/foxtel/otp/validate',
+            json={'email': email, 'otp_code': otp_code, 'device_id': get_device_id()},
+            timeout=20,
+        )
+        if resp.status_code != 200:
+            try:
+                msg = resp.json().get('message', 'OTP validation failed ({})'.format(resp.status_code))
+            except Exception:
+                msg = 'OTP validation failed ({})'.format(resp.status_code)
+            raise APIError(msg)
+        token = resp.json()['token']
+        self._store_token(token)
+        userdata.set('email', email)
+        # Relay already stored the token via /foxtel/otp/validate
 
     def logout(self):
-        userdata.delete('token')
-        userdata.delete('deviceid')
-        userdata.delete('pswd')
-        userdata.delete('entitlements')
-        self.new_session()
+        for key in ('dazn_token', 'dazn_expiry', 'email'):
+            userdata.delete(key)
+        self._dazn_token  = None
+        self._dazn_expiry = 0
+
+    # ------------------------------------------------------------------
+    # Live channel data (no auth, from mjh.nz)
+    # ------------------------------------------------------------------
+
+    def channel_data(self):
+        try:
+            data = self._session.get(LIVE_DATA_URL, timeout=10).json()
+        except Exception:
+            data = {}
+        for code, ch in data.items():
+            ch['name'] = CHANNEL_NAMES.get(code, code)
+            ch['logo'] = channel_logo(code)
+        for code, ch in EXTRA_CHANNELS.items():
+            if code not in data:
+                data[code] = dict(ch)
+        return data
+
+    # ------------------------------------------------------------------
+    # DAZN EPG (auth required)
+    # ------------------------------------------------------------------
+
+    def epg(self, date=None):
+        """Fetch DAZN EPG for a given date (YYYY-MM-DD). Returns raw response JSON."""
+        import datetime
+        if date is None:
+            date = datetime.date.today().isoformat()
+        resp = self._session.get(
+            DAZN_EPG_URL,
+            params={'Date': date, 'Evaluate': 5, 'Brand': FOXTEL_BRAND},
+            headers=self._auth_headers(),
+            timeout=20,
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    # ------------------------------------------------------------------
+    # Rails (content browsing)
+    # ------------------------------------------------------------------
+
+    def rail(self, rail_id, page_type=None, raw_params=None):
+        """Fetch a single DAZN content rail by ID."""
+        params = {
+            'id':           rail_id,
+            'platform':     'web',
+            'brand':        FOXTEL_BRAND,
+            'country':      'au',
+            'languageCode': 'en',
+        }
+        if raw_params:
+            params['params'] = raw_params
+        elif page_type:
+            params['params'] = 'PageType:{};'.format(page_type)
+        resp = self._session.get(
+            DAZN_RAIL_URL,
+            params=params,
+            headers=self._auth_headers(),
+            timeout=20,
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    def rails_page(self, group_id, content_type=None, raw_params=None):
+        """Fetch a page's rail sections via the multi-rails endpoint.
+
+        Returns a list of dicts, each with 'id', 'title', and 'params'.
+        Rail titles are resolved by fetching each rail concurrently.
+        """
+        p = {
+            'groupId':          group_id,
+            'country':          'au',
+            'brand':            FOXTEL_BRAND,
+            'openBrowse':       'false',
+            'userEntitlements': self._get_entitlement_tier(),
+        }
+        if raw_params:
+            p['params'] = raw_params
+        elif content_type:
+            p['params'] = 'PageType:{};ContentType:{}'.format(content_type, content_type)
+        resp = self._session.get(
+            DAZN_RAILS_URL,
+            params=p,
+            headers=self._auth_headers(),
+            timeout=20,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+
+        stubs = []
+        for item in (data.get('Rails') or data.get('rails') or []):
+            rid    = item.get('Id') or item.get('id') or item.get('RailId') or ''
+            rparams = item.get('Params') or item.get('params') or ''
+            if rid:
+                stubs.append({'id': rid, 'params': rparams})
+
+        if not stubs:
+            return []
+
+        sections = []
+        for stub in stubs:
+            try:
+                rdata = self.rail(stub['id'], raw_params=stub['params'] or None)
+                title = rdata.get('Title') or rdata.get('title') or stub['id']
+            except Exception:
+                title = stub['id']
+            sections.append({'id': stub['id'], 'title': title, 'params': stub['params']})
+
+        return sections
+
+    def _get_entitlement_tier(self):
+        """Extract the primary entitlement tier ID from the stored JWT."""
+        try:
+            import base64 as _b64, json as _json
+            token = self._dazn_token or ''
+            part = token.split('.')[1]
+            part += '=' * (4 - len(part) % 4)
+            payload = _json.loads(_b64.b64decode(part))
+            sets = payload.get('entitlements', {}).get('entitlementSets', [])
+            if sets:
+                return sets[0].get('id', 'tv_base_platinum')
+        except Exception:
+            pass
+        return 'tv_base_platinum'
+
+    # ------------------------------------------------------------------
+    # Search
+    # ------------------------------------------------------------------
+
+    def search(self, query, page=1, size=50):
+        resp = self._session.get(
+            DAZN_SEARCH_URL,
+            params={'q': query, 'size': size, 'page': page, 'Brand': FOXTEL_BRAND, 'Market': 'au'},
+            headers=self._auth_headers(),
+            timeout=20,
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    # ------------------------------------------------------------------
+    # Playback (via relay — relay handles DAZN TLS fingerprinting)
+    # ------------------------------------------------------------------
+
+    def stream(self, asset_id, quality='4k', is_live=False):
+        """Get stream info for an asset via the relay.
+
+        The relay calls api.playback.indazn.com/v5/Playback using the
+        Foxtel DAZN token that was synced via /set_foxtel_token.
+        Returns a dict with manifest_url, license_url, cdn cookie info.
+        """
+        params = {'id': asset_id, 'quality': quality}
+        resp = self._session.get(
+            get_relay_url() + '/foxtel/token',
+            params=params,
+            headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
+            timeout=25,
+        )
+        if resp.status_code != 200:
+            raise APIError('Relay error ({}): {}'.format(resp.status_code, resp.text[:300]))
+        data = resp.json()
+        if data.get('status') != 'success':
+            raise APIError('Relay: ' + data.get('message', 'unknown error'))
+
+        mpd_url = '{}/foxtel/mpd_kodi?id={}&quality={}'.format(
+            get_relay_url(), asset_id, quality)
+        if is_live:
+            mpd_url += '&avc_only=1'
+
+        return {
+            'manifest_url': mpd_url,
+            'license_url':  data.get('license_url', ''),
+            'cdn_name':     data.get('cdn_name', ''),
+            'cdn_value':    data.get('cdn_val', ''),
+            'wv_secure':    data.get('wv_secure', False),
+        }

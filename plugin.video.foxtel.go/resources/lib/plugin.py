@@ -1,502 +1,474 @@
-import codecs
-
 import arrow
-from kodi_six import xbmcplugin
-from six.moves.urllib_parse import quote
 
-from slyguy import plugin, gui, userdata, signals, inputstream
-from slyguy.log import log
-from slyguy.util import get_url_headers
+from slyguy import plugin, gui, settings, userdata, signals, inputstream
+from slyguy.exceptions import PluginError
+from slyguy.constants import LIVE_HEAD
 
 from .api import API
 from .language import _
 from .constants import *
-from .settings import settings
-
-def _auto_update():
-    import urllib.request, os, xbmc, xbmcaddon
-    ADDON_PATH = xbmcaddon.Addon('plugin.video.foxtel.go').getAddonInfo('path')
-    RAW = "https://raw.githubusercontent.com/downundertv/dutv/main/plugin.video.foxtel.go/"
-    files = [
-        'resources/lib/api.py',
-        'resources/lib/plugin.py',
-        'resources/lib/constants.py',
-    ]
-    for f in files:
-        try:
-            dest = os.path.join(ADDON_PATH, f.replace('/', os.sep))
-            urllib.request.urlretrieve(RAW + f, dest + '.tmp')
-            os.replace(dest + '.tmp', dest)
-            xbmc.log('[FoxtelGo] Updated: ' + f, xbmc.LOGINFO)
-        except Exception as e:
-            xbmc.log('[FoxtelGo] Update failed: ' + f + ' - ' + str(e), xbmc.LOGWARNING)
-
-_auto_update()
 
 api = API()
 
+
 @signals.on(signals.BEFORE_DISPATCH)
 def before_dispatch():
-    api.new_session()
-    plugin.logged_in = api.logged_in
+    try:
+        api.new_session()
+        plugin.logged_in = api.logged_in
+    except Exception:
+        plugin.logged_in = False
+
+
+# ------------------------------------------------------------------
+# Home
+# ------------------------------------------------------------------
 
 @plugin.route('')
-def index(**kwargs):
+def home(**kwargs):
     folder = plugin.Folder(cacheToDisc=False)
 
     if not api.logged_in:
-        folder.add_item(label=_(_.LOGIN, _bold=True),  path=plugin.url_for(login), bookmark=False)
+        folder.add_item(label=_(_.LOGIN, _bold=True), path=plugin.url_for(login), bookmark=False)
     else:
-        folder.add_item(label=_(_.LIVE_TV, _bold=True), path=plugin.url_for(live_tv))
-        folder.add_item(label=_(_.TV_SHOWS, _bold=True), path=plugin.url_for(assets, title=_.TV_SHOWS, asset_type=ASSET_TVSHOW))
-        folder.add_item(label=_(_.MOVIES, _bold=True), path=plugin.url_for(assets, title=_.MOVIES, asset_type=ASSET_MOVIE))
-        folder.add_item(label=_(_.SPORTS, _bold=True), path=plugin.url_for(assets, title=_.SPORTS, _filter=5))
-        folder.add_item(label=_(_.KIDS, _bold=True), path=plugin.url_for(kids))
-        folder.add_item(label=_(_.RECOMMENDED, _bold=True), path=plugin.url_for(recommended))
-        folder.add_item(label=_(_.CONTINUE_WATCHING, _bold=True), path=plugin.url_for(user_catalog, catalog_name='continue-watching'))
-        folder.add_item(label=_(_.WATCHLIST, _bold=True), path=plugin.url_for(user_catalog, catalog_name='watchlist'))
-        folder.add_item(label=_(_.SEARCH, _bold=True), path=plugin.url_for(search))
+        folder.add_item(label=_(_.LIVE_TV,           _bold=True), path=plugin.url_for(live))
+        folder.add_item(label=_(_.TV_SHOWS,          _bold=True), path=plugin.url_for(tv_shows))
+        folder.add_item(label=_(_.MOVIES,            _bold=True), path=plugin.url_for(movies))
+        folder.add_item(label=_(_.SPORTS,            _bold=True), path=plugin.url_for(sports))
+        folder.add_item(label=_(_.SEARCH,            _bold=True), path=plugin.url_for(search))
 
         if settings.getBool('bookmarks', True):
-            folder.add_item(label=_(_.BOOKMARKS, _bold=True),  path=plugin.url_for(plugin.ROUTE_BOOKMARKS), bookmark=False)
+            folder.add_item(label=_(_.BOOKMARKS, _bold=True),
+                            path=plugin.url_for(plugin.ROUTE_BOOKMARKS), bookmark=False)
 
-        folder.add_item(label=_.LOGOUT, path=plugin.url_for(logout), _kiosk=False, bookmark=False)
-
-    folder.add_item(label=_.SETTINGS, path=plugin.url_for(plugin.ROUTE_SETTINGS), _kiosk=False, bookmark=False)
-
-    return folder
-
-@plugin.route()
-def recommended(**kwargs):
-    folder = plugin.Folder(_.RECOMMENDED)
-    _bundle(folder)
-    return folder
-
-@plugin.route()
-def user_catalog(catalog_name, **kwargs):
-    data = api.user_catalog(catalog_name)
-    if not data:
-        return plugin.Folder()
-
-    folder = plugin.Folder(data['name'])
-
-    items = _parse_elements(data['assets'], from_menu=True)
-    folder.add_items(items)
+        folder.add_item(label=_(_.LOGOUT,   _bold=False), path=plugin.url_for(logout),          bookmark=False)
+        folder.add_item(label=_(_.SETTINGS, _bold=False), path=plugin.url_for(plugin.ROUTE_SETTINGS), bookmark=False)
 
     return folder
 
-@plugin.route()
-@plugin.search()
-def search(query, page, **kwargs):
-    data = api.search(query)
-    hide_locked = settings.getBool('hide_locked')
 
-    #total_results = data['groupCount'] #pagination
-    entitlements = _get_entitlements()
-
-    items = []
-    for group in sorted(data['groups'], key=lambda d: d['score'], reverse=True):
-        hitcount = int(group['hitCount'])
-
-        for hit in group['hits']:
-            meta = hit['metadata']
-
-            try:
-                channelTag = hit['relevantSchedules'][0]['feature']['channelTag']
-            except:
-                try:
-                    channelTag = hit['relevantSchedules'][0]['channelTag']
-                except:
-                    channelTag = None
-
-            meta['locked'] = entitlements and channelTag and channelTag not in entitlements
-            if meta['locked'] and hide_locked:
-                continue
-
-            season = int(meta.get('seasonNumber', 0))
-            episode = int(meta.get('episodeNumber', 0))
-
-            if meta['contentType'].upper() == 'MOVIE':
-                items.append(plugin.Item(
-                    label = _(_.LOCKED, label=meta['title']) if meta['locked'] else meta['title'],
-                    info  = {
-                        'plot': meta.get('shortSynopsis'),
-                    #    'duration': int(elem.get('duration') or 0),
-                        'year': int(meta.get('yearOfRelease') or 0),
-                        'mediatype': 'movie',
-                    },
-                    art = {'thumb': 'https://images1.resources.foxtel.com.au/{}?w=400'.format(hit['images']['title']['portrait'][0]['URI']), 'fanart':'https://images1.resources.foxtel.com.au/{}?w=800'.format(hit['images']['title']['landscape'][0]['URI'])},
-                    playable = True,
-                    path = plugin.url_for(play_program, show_id=meta['titleId'], program_id=hit['id']),
-                ))
-            elif hitcount <= 1 and season > 0 and episode > 0:
-                label = _(_.EPISODE_MENU_TITLE, title=meta['title'], season=season, episode=episode)
-                go_to_show = plugin.url_for(show, show_id=meta['titleId'])
-
-                items.append(plugin.Item(
-                    label = _(_.LOCKED, label=label) if meta['locked'] else label,
-                    info  = {
-                            'plot': 'S{} EP{} - {}\n\n{}'.format(season, episode, meta.get('episodeTitle', meta['title']), meta.get('shortSynopsis')),
-                            'episode': episode,
-                            'season': season,
-                            'tvshowtitle': meta['title'],
-                        #  'duration': int(elem.get('duration') or 0),
-                            'year': int(meta.get('yearOfRelease') or 0),
-                            'mediatype': 'episode',
-                    },
-                    art = {'thumb': 'https://images1.resources.foxtel.com.au/{}?w=400'.format(hit['images']['episode']['landscape'][0]['URI']), 'fanart': 'https://images1.resources.foxtel.com.au/{}?w=800'.format(hit['images']['episode']['landscape'][0]['URI'])},
-                    playable = True,
-                    path = plugin.url_for(play_program, show_id=meta['titleId'], program_id=hit['id']),
-                    context = [(_(_.GO_TO_SHOW_CONTEXT, title=meta['title']), "Container.Update({})".format(go_to_show))],
-                ))
-            else:
-                items.append(plugin.Item(
-                    label = _(_.LOCKED, label=meta['title']) if meta['locked'] else meta['title'],
-                    info  = {
-                        'tvshowtitle': meta['title'],
-                        'year': int(meta.get('yearOfRelease') or 0),
-                        'mediatype': 'tvshow',
-                    },
-                    art = {'thumb': 'https://images1.resources.foxtel.com.au/{}?w=400'.format(hit['images']['default']['landscape'][0]['URI']), 'fanart': 'https://images1.resources.foxtel.com.au/{}?w=800'.format(hit['images']['default']['landscape'][0]['URI'])},
-                    path = plugin.url_for(show, show_id=meta['titleId']),
-                ))
-
-    return items, False
-
-@plugin.route()
-def kids(**kwargs):
-    folder = plugin.Folder(_.KIDS)
-    _bundle(folder, mode='kids')
-    return folder
-
-def _bundle(folder, mode=''):
-    data = api.bundle(mode=mode)
-
-    for block in data['blocks']:
-        if 'data' not in block:
-            continue
-
-        folder.add_item(
-            label = block['name'],
-            path = plugin.url_for(assets, title=block['name'], _filter=block['data'], menu=0),
-        )
-
-@plugin.route()
-def assets(title, asset_type=ASSET_BOTH, _filter=None, menu=1, showall=0, **kwargs):
-    menu = int(menu)
-    showall = int(showall)
-    folder = plugin.Folder(title)
-
-    if menu:
-        data = api.assets(asset_type, _filter, showall=showall)
-
-        def _add_menu(menuitem):
-            item = plugin.Item(
-                label = menuitem['text'],
-                path = plugin.url_for(assets, title=title, asset_type=asset_type, _filter=menuitem['data'], menu=int(len(menuitem.get('menuItem', [])) > 0)),
-            )
-
-            folder.add_items([item])
-
-        if not _filter:
-            for menuitem in data['menu']['menuItem']:
-                _add_menu(menuitem)
-        else:
-            for row in data['content'].get('contentGroup', []):
-                item = plugin.Item(
-                    label = row['name'],
-                    path = plugin.url_for(assets, title=title, asset_type=asset_type, _filter=row['data'], menu=0),
-                )
-
-                folder.add_items([item])
-    else:
-        data = api.assets(asset_type, _filter, showall=showall)
-
-        total_count = 0
-        elements = []
-        for e in data['content'].get('contentGroup', []):
-            elements.extend(e.get('items', []))
-            total_count += int(e.get('totalCount', '0').split(' ')[0])
-
-        items = _parse_elements(elements, from_menu=True)
-        folder.add_items(items)
-
-        if not showall and len(elements) < total_count:
-            folder.add_item(label=_(_.SEE_ALL, _bold=True), path=plugin.url_for(assets, title=title, asset_type=asset_type, _filter=_filter, menu=menu, showall=1), specialsort='bottom')
-
-    return folder
-
-def _parse_elements(elements, from_menu=False):
-    entitlements = _get_entitlements()
-
-    items = []
-    for elem in elements:
-        elem['locked'] = entitlements and elem['channelCode'] not in entitlements
-
-        if elem['locked'] and settings.getBool('hide_locked'):
-            continue
-
-        if elem['type'] == 'movie':
-            item = _parse_movie(elem)
-
-        elif elem['type'] == 'episode':
-            item = _parse_episode(elem, from_menu=from_menu)
-
-        elif elem['type'] == 'show':
-            item = _parse_show(elem)
-
-        elif elem['type']  == 'series':
-            log.debug('Series! You should no longer see this. Let me know if you do...')
-            continue
-
-        else:
-            continue
-
-        items.append(item)
-
-    return items
-
-def _parse_movie(elem):
-    return plugin.Item(
-        label = _(_.LOCKED, label=elem['title']) if elem['locked'] else elem['title'],
-        art   = {'thumb': _image(elem['image']), 'fanart': _image(elem.get('widescreenImage', elem['image']), 600)},
-        info  = {
-            'plot': elem.get('synopsis'),
-            'duration': int(elem.get('duration') or 0),
-            'year': int(elem.get('year') or 0),
-            'mediatype': 'movie',
-        },
-        path  = plugin.url_for(play, media_type=TYPE_VOD, id=elem.get('mediaId', elem['id'])),
-        playable = True,
-    )
-
-def _parse_show(elem):
-    return plugin.Item(
-        label = _(_.LOCKED, label=elem['title']) if elem['locked'] else elem['title'],
-        art   = {'thumb': _image(elem['image']), 'fanart': _image(elem.get('widescreenImage', elem['image']), 600)},
-        info  = {
-            'plot': elem.get('synopsis'),
-            'tvshowtitle': elem['title'],
-            'year': int(elem.get('year') or 0),
-            'mediatype': 'tvshow',
-        },
-        path  = plugin.url_for(show, show_id=elem['showId']),
-    )
-
-def _parse_episode(elem, from_menu=False):
-    context = []
-
-    art = {'thumb': _image(elem['image'])}
-
-    if from_menu:
-        if 'subtitle'in elem:
-            label = _(_.EPISODE_SUBTITLE, title=elem['title'], subtitle=elem['subtitle'].rsplit('-')[0].strip())
-        elif 'season' in elem and 'episodeNumber' in elem:
-            label = _(_.EPISODE_MENU_TITLE, title=elem['title'], season=elem['season'], episode=elem['episodeNumber'])
-        else:
-            label = elem['title'] or elem['episodeTitle']
-
-        go_to_show = plugin.url_for(show, show_id=elem['showId'])
-        context.append((_(_.GO_TO_SHOW_CONTEXT, title=elem['title']), "Container.Update({})".format(go_to_show)))
-
-        art['fanart'] = _image(elem.get('widescreenImage', elem['image']), 600)
-    else:
-        label = elem['episodeTitle'] or elem['title']
-
-    if elem['locked']:
-        label = _(_.LOCKED, label=label)
-
-    return plugin.Item(
-        label = label,
-        art   = art,
-        info  = {
-            'plot': elem.get('synopsis'),
-            'episode': int(elem.get('episodeNumber') or 0),
-            'season': int(elem.get('season') or 0),
-            'tvshowtitle': elem['title'],
-            'duration': int(elem.get('duration') or 0),
-            'year': int(elem.get('year') or 0),
-            'mediatype': 'episode',
-        },
-        path     = plugin.url_for(play, media_type=TYPE_VOD, id=elem.get('mediaId', elem['id'])),
-        context  = context,
-        playable = True,
-    )
-
-@plugin.route()
-def show(show_id, season=None, **kwargs):
-    season = season
-    data   = api.show(show_id)
-    folder = plugin.Folder(data['title'], fanart=_image(data.get('widescreenImage', data['image']), 600), sort_methods=[xbmcplugin.SORT_METHOD_EPISODE, xbmcplugin.SORT_METHOD_UNSORTED, xbmcplugin.SORT_METHOD_LABEL, xbmcplugin.SORT_METHOD_DATEADDED])
-
-    flatten = False
-    seasons = data['childAssets']['items']
-    if len(seasons) == 1 and len(seasons[0]['childAssets']['items']) == 1:
-        flatten = True
-
-    if season == None and not flatten:
-        for item in seasons:
-            folder.add_item(
-                label =  _(_.SEASON, season_number=item['season']),
-                info = {
-                    'tvshowtitle': data['title'],
-                    'mediatype': 'season',
-                },
-                path = plugin.url_for(show, show_id=show_id, season=item['season']),
-                art = {'thumb': _image(data['image'])},
-            )
-    else:
-        for item in seasons:
-            if season and int(item['season']) != int(season):
-                continue
-
-            items = _parse_elements(item['childAssets']['items'])
-            folder.add_items(items)
-
-    return folder
-
-def _get_entitlements():
-    entitlements = userdata.get('entitlements')
-    if not entitlements:
-        return []
-
-    return entitlements.split(',')
-
-def _image(id, width=400, fragment=''):
-    if fragment:
-        fragment = '#{}'.format(quote(fragment))
-    return IMG_URL.format(id=id, width=width, fragment=fragment) + '|' + get_url_headers(HEADERS)
-
-@plugin.route()
-def live_tv(_filter=None, **kwargs):
-    folder = plugin.Folder(_.LIVE_TV)
-
-    data = api.live_channels(_filter)
-
-    if not _filter:
-        for genre in data['genres']['items']:
-            folder.add_item(
-                label = genre['title'],
-                path  = plugin.url_for(live_tv, _filter=genre['data']),
-            )
-    else:
-        entitlements = _get_entitlements()
-
-        show_epg = settings.getBool('show_epg', True)
-        if show_epg:
-            now = arrow.utcnow()
-            channel_data = api.channel_data()
-
-        channels = []
-        codes = []
-        for elem in sorted(data['liveChannel'], key=lambda e: e['channelId']):
-            elem['locked'] = entitlements and elem['channelCode'] not in entitlements
-
-            if elem['locked'] and settings.getBool('hide_locked'):
-                continue
-            else:
-                channels.append(elem)
-                codes.append(elem['channelCode'])
-
-        for elem in channels:
-            plot = u''
-            count = 0
-            if show_epg and elem['channelCode'] in channel_data:
-                for index, row in enumerate(channel_data[elem['channelCode']].get('epg', [])):
-                    start = arrow.get(row[0])
-                    try: stop = arrow.get(channel['epg'][index+1][0])
-                    except: stop = start.shift(hours=1)
-
-                    if (now > start and now < stop) or start > now:
-                        plot += u'[{}] {}\n'.format(start.to('local').format('h:mma'), row[1])
-                        count += 1
-                        if count == EPG_EVENTS_COUNT:
-                            break
-
-            label = _(_.CHANNEL, channel=elem['channelId'], title=elem['title'])
-            if elem['locked']:
-                label = _(_.LOCKED, label=label)
-
-            folder.add_item(
-                label = label,
-                art = {'thumb': _image('{id}:{site_id}:CHANNEL:IMAGE'.format(id=elem['id'], site_id=LIVE_SITEID, name=elem['title']), fragment=elem['title'])},
-                info = {
-                    'plot': plot,
-                },
-                path = plugin.url_for(play, media_type=TYPE_LIVE, id=elem['id'], _is_live=True),
-                playable = True,
-            )
-
-    return folder
-
-@plugin.route()
-@plugin.login_required()
-def play_program(show_id, program_id, **kwargs):
-    elem = api.asset_for_program(show_id, program_id)
-    return _play(TYPE_VOD, elem['id'])
-
-@plugin.route()
-@plugin.login_required()
-def play(media_type, id, **kwargs):
-    return _play(media_type, id)
-
-def _play(media_type, id):
-    url, license_url = api.play(media_type, id)
-
-    item = plugin.Item(
-        inputstream = inputstream.Widevine(license_key=license_url),
-        path = url,
-        headers = HEADERS,
-    )
-
-    if media_type == TYPE_LIVE:
-        item.inputstream.properties['manifest_update_parameter'] = 'full'
-
-    return item
+# ------------------------------------------------------------------
+# Login
+# ------------------------------------------------------------------
 
 @plugin.route()
 def login(**kwargs):
-    username = gui.input(_.ASK_EMAIL, default=userdata.get('username', '')).strip()
-    if not username:
+    options = [
+        [u'Email + Password', _login_password],
+        [u'Email + OTP Code', _login_otp],
+    ]
+    index = gui.context_menu([x[0] for x in options])
+    if index == -1:
         return
+    if options[index][1]():
+        gui.refresh()
 
-    userdata.set('username', username)
 
+def _login_password():
+    email = gui.input(_.ASK_EMAIL, default=userdata.get('email', '')).strip()
+    if not email:
+        return False
     password = gui.input(_.ASK_PASSWORD, hide_input=True).strip()
     if not password:
-        return
+        return False
 
-    api.login(username=username, password=password)
-    gui.refresh()
+    nickname = gui.input(_(_.DEVICE_NICKNAME) + u' (shared name = shared device slot)',
+                         default=settings.get('device_nickname', 'Kodi')).strip()
+    if nickname:
+        try:
+            import xbmcaddon
+            xbmcaddon.Addon('plugin.video.foxtel.go').setSetting('device_nickname', nickname)
+        except Exception:
+            pass
+
+    try:
+        api.login(email=email, password=password)
+    except Exception as e:
+        raise PluginError(str(e))
+    return True
+
+
+def _login_otp():
+    email = gui.input(_.ASK_EMAIL, default=userdata.get('email', '')).strip()
+    if not email:
+        return False
+
+    nickname = gui.input(_(_.DEVICE_NICKNAME) + u' (shared name = shared device slot)',
+                         default=settings.get('device_nickname', 'Kodi')).strip()
+    if nickname:
+        try:
+            import xbmcaddon
+            xbmcaddon.Addon('plugin.video.foxtel.go').setSetting('device_nickname', nickname)
+        except Exception:
+            pass
+
+    try:
+        api.login_otp_request(email)
+    except Exception as e:
+        raise PluginError(str(e))
+
+    gui.ok(_(_.OTP_SENT))
+
+    code = gui.input(_(_.OTP_CODE)).strip()
+    if not code:
+        return False
+
+    try:
+        api.login_otp_validate(email, code)
+    except Exception as e:
+        raise PluginError(str(e))
+    return True
+
 
 @plugin.route()
 @plugin.login_required()
 def logout(**kwargs):
     if not gui.yes_no(_.LOGOUT_YES_NO):
         return
-
     api.logout()
     gui.refresh()
+
+
+# ------------------------------------------------------------------
+# Live TV
+# ------------------------------------------------------------------
+
+@plugin.route()
+@plugin.login_required()
+def live(**kwargs):
+    folder    = plugin.Folder(_.LIVE_TV)
+    show_epg  = settings.getBool('show_epg', True)
+    hide_lock = settings.getBool('hide_locked', False)
+
+    channel_data = api.channel_data()
+    if not channel_data:
+        folder.add_item(label='[No channel data — check connection]')
+        return folder
+
+    now = arrow.now()
+
+    for ch_code, ch in sorted(channel_data.items(), key=lambda x: x[1].get('chno', 999)):
+        chno = ch.get('chno')
+        epg  = ch.get('epg', [])
+        logo = ch.get('logo', '')
+        name = ch.get('name', ch_code)
+
+        label = u'[{}] {}'.format(chno, name) if chno else name
+
+        plot = u''
+        if show_epg and epg:
+            count = 0
+            for index, row in enumerate(epg):
+                start = arrow.get(row[0])
+                try:
+                    stop = arrow.get(epg[index + 1][0])
+                except Exception:
+                    stop = start.shift(hours=1)
+                if now < stop:
+                    plot += u'[{}] {}\n'.format(start.to('local').format('h:mma'), row[1])
+                    count += 1
+                    if count >= EPG_EVENTS_COUNT:
+                        break
+
+        folder.add_items(plugin.Item(
+            label=label,
+            art={'thumb': logo},
+            info={'plot': plot.strip(), 'mediatype': 'video'},
+            path=plugin.url_for(play_live, channel=ch_code, _is_live=True),
+            playable=True,
+        ))
+
+    return folder
+
+
+# ------------------------------------------------------------------
+# VOD browsing (Rail-based)
+# ------------------------------------------------------------------
+
+@plugin.route()
+@plugin.login_required()
+def tv_shows(**kwargs):
+    return _rail_folder(_.TV_SHOWS, rail_id='AllGenreShows', page_type='Show')
+
+
+@plugin.route()
+@plugin.login_required()
+def movies(**kwargs):
+    return _rail_folder(_.MOVIES, rail_id='AllGenreMovies', page_type='Movie')
+
+
+@plugin.route()
+@plugin.login_required()
+def sports(**kwargs):
+    return _rails_page_folder(_.SPORTS, group_id='sports', content_type='sports')
+
+
+
+def _rails_page_folder(title, group_id, content_type=None, raw_params=None):
+    """Fetch a page's section list via multi-rails and display as a folder."""
+    folder = plugin.Folder(title)
+    try:
+        sections = api.rails_page(group_id, content_type=content_type, raw_params=raw_params)
+    except Exception as e:
+        folder.add_item(label=u'[Error loading sections: {}]'.format(str(e)[:80]))
+        return folder
+
+    if not sections:
+        folder.add_item(label=u'[No sections found]')
+        return folder
+
+    for sec in sections:
+        p = _parse_rail_params(sec.get('params', ''))
+        folder.add_item(
+            label=sec['title'],
+            path=plugin.url_for(rail,
+                                rail_id=sec['id'],
+                                page_type=p.get('PageType', ''),
+                                content_type=p.get('ContentType', ''),
+                                content_id=p.get('ContentId', ''),
+                                title=sec['title']),
+        )
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def genre_rails(navigate_to, content_id='', title='', **kwargs):
+    """Show rails for a genre/category (e.g. Action movies, Crime shows)."""
+    raw_params = _build_rail_params(navigate_to, 'Genre', content_id)
+    return _rails_page_folder(title or navigate_to, group_id=navigate_to, raw_params=raw_params)
+
+
+def _parse_rail_params(params_str):
+    """Parse 'PageType:X;ContentType:Y;ContentId:Z' into a dict."""
+    result = {}
+    for part in (params_str or '').split(';'):
+        if ':' in part:
+            k, v = part.split(':', 1)
+            result[k.strip()] = v.strip()
+    return result
+
+
+def _build_rail_params(page_type='', content_type='', content_id=''):
+    """Build a DAZN params string from safe URL-friendly components."""
+    parts = []
+    if page_type:
+        parts.append('PageType:{}'.format(page_type))
+    if content_type:
+        parts.append('ContentType:{}'.format(content_type))
+    if content_id:
+        parts.append('ContentId:{}'.format(content_id))
+    return ';'.join(parts)
+
+
+def _extract_tiles(data):
+    """Return the tiles list from a Rail API response regardless of wrapper."""
+    if 'Rail' in data or 'rail' in data:
+        rail_data = data.get('Rail') or data.get('rail') or {}
+        return rail_data.get('Tiles') or rail_data.get('tiles') or []
+    return data.get('Tiles') or data.get('tiles') or []
+
+
+def _rail_folder(title, rail_id, page_type=None):
+    """Fetch and display a DAZN content rail."""
+    folder = plugin.Folder(title)
+    try:
+        data = api.rail(rail_id, page_type=page_type)
+    except Exception as e:
+        folder.add_item(label=u'[Error loading content: {}]'.format(str(e)[:80]))
+        return folder
+
+    for tile in _extract_tiles(data):
+        item = _tile_to_item(tile)
+        if item:
+            folder.add_items(item)
+
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwargs):
+    """Generic rail browser — navigable from within the plugin."""
+    folder = plugin.Folder(title or rail_id)
+    raw_params = _build_rail_params(page_type, content_type, content_id) or None
+    try:
+        data = api.rail(rail_id, raw_params=raw_params)
+    except Exception as e:
+        folder.add_item(label=u'[Error: {}]'.format(str(e)[:80]))
+        return folder
+
+    for tile in _extract_tiles(data):
+        item = _tile_to_item(tile)
+        if item:
+            folder.add_items(item)
+
+    return folder
+
+
+def _tile_to_item(tile):
+    """Convert a DAZN rail tile dict to a slyguy plugin.Item."""
+    tile_type  = tile.get('Type') or tile.get('type') or ''
+    asset_id   = tile.get('AssetId') or tile.get('assetId') or tile.get('Id') or ''
+    title      = tile.get('Title') or tile.get('title') or asset_id
+    subtitle   = tile.get('Subtitle') or tile.get('subtitle') or ''
+    is_live    = tile.get('IsLive') or tile.get('isLive') or False
+
+    # Image: prefer a Landscape or Thumbnail image from the Images dict
+    images = tile.get('Images') or tile.get('images') or {}
+    thumb  = ''
+    for key in ('Landscape', 'Thumbnail', 'Poster', 'landscape', 'thumbnail', 'poster'):
+        img = images.get(key, {})
+        if isinstance(img, dict):
+            thumb = img.get('Uri') or img.get('uri') or img.get('url') or ''
+        elif isinstance(img, str):
+            thumb = img
+        if thumb:
+            break
+
+    plot = subtitle
+
+    if tile_type.lower() in ('rail', 'group', 'category', 'navigation'):
+        navigate_to = tile.get('NavigateTo') or tile.get('navigateTo') or ''
+        if navigate_to and asset_id:
+            # Genre tile — drill into multi-rails by content_id (no special chars in URL)
+            return plugin.Item(
+                label=title,
+                art={'thumb': thumb},
+                info={'plot': plot},
+                path=plugin.url_for(genre_rails, navigate_to=navigate_to,
+                                    content_id=asset_id, title=title),
+            )
+        sub_rail_id = tile.get('RailId') or tile.get('railId') or asset_id
+        return plugin.Item(
+            label=title,
+            art={'thumb': thumb},
+            info={'plot': plot},
+            path=plugin.url_for(rail, rail_id=sub_rail_id, title=title),
+        )
+
+    if asset_id:
+        return plugin.Item(
+            label=title,
+            art={'thumb': thumb},
+            info={'plot': plot, 'mediatype': 'video'},
+            path=plugin.url_for(play, id=asset_id, is_live='1' if is_live else '0'),
+            playable=True,
+        )
+
+    return None
+
+
+# ------------------------------------------------------------------
+# Search
+# ------------------------------------------------------------------
+
+@plugin.route()
+@plugin.login_required()
+def search(**kwargs):
+    query = gui.input(_.SEARCH_FOR, '').strip()
+    if not query:
+        return
+
+    folder = plugin.Folder(_(_.SEARCH_FOR, query=query))
+    try:
+        data = api.search(query)
+    except Exception as e:
+        folder.add_item(label=u'[Search error: {}]'.format(str(e)[:80]))
+        return folder
+
+    results = data.get('Results') or data.get('results') or []
+    for result in results:
+        item = _tile_to_item(result)
+        if item:
+            folder.add_items(item)
+
+    if not results:
+        folder.add_item(label=u'[No results for "{}"]'.format(query))
+
+    return folder
+
+
+# ------------------------------------------------------------------
+# Playback
+# ------------------------------------------------------------------
+
+@plugin.route()
+@plugin.login_required()
+def play_live(channel, **kwargs):
+    """Play a live channel by channel code.
+
+    Asks the relay to find the current live event's asset ID for this
+    channel and return stream details.  The relay queries the DAZN EPG
+    and looks up the Foxtel linear channel asset ID.
+    """
+    import requests as _req
+    try:
+        resp = _req.get(
+            get_relay_url() + '/foxtel/live',
+            params={'channel': channel},
+            headers={'ngrok-skip-browser-warning': 'true', 'User-Agent': UA_ANDROID},
+            timeout=20,
+        )
+        try:
+            data = resp.json()
+        except Exception:
+            resp.raise_for_status()
+            raise Exception(u'relay returned non-JSON response')
+        if resp.status_code != 200 or data.get('status') != 'success':
+            raise Exception(data.get('message', u'relay error {}'.format(resp.status_code)))
+        asset_id = data['asset_id']
+    except PluginError:
+        raise
+    except Exception as e:
+        raise PluginError(u'Could not get live stream for channel {}: {}'.format(channel, str(e)))
+
+    return _play_asset(asset_id, is_live=True)
+
+
+@plugin.route()
+@plugin.login_required()
+def play(id, is_live='0', **kwargs):
+    """Play a VOD or live asset by DAZN asset ID."""
+    return _play_asset(id, is_live=(is_live == '1'))
+
+
+def _play_asset(asset_id, is_live=False):
+    try:
+        stream = api.stream(asset_id, quality='4k', is_live=is_live)
+    except Exception as e:
+        raise PluginError(str(e))
+
+    # Relay's /foxtel/mpd_kodi proxies segments and handles CDN auth transparently.
+    # License URL comes from the relay (already includes DRM auth).
+    return plugin.Item(
+        path=stream['manifest_url'],
+        inputstream=inputstream.Widevine(
+            license_key=stream.get('license_url', ''),
+        ),
+        resume_from=LIVE_HEAD if is_live else 0,
+    )
+
+
+# ------------------------------------------------------------------
+# Playlist (for IPTV Manager / external playlist export)
+# ------------------------------------------------------------------
 
 @plugin.route()
 @plugin.merge()
 def playlist(output, **kwargs):
-    data = api.live_channels()
-    entitlements = _get_entitlements()
-
-    genres = {}
-    for genre in data['genres']['items'][1:]: #skip first "All channels" genre
-        channels = api.live_channels(_filter=genre['data'])['liveChannel']
-        for channel in channels:
-            genres[channel['channelCode']] = genre['title']
-
+    import codecs
+    epg_url = EPG_URL
+    channel_data = api.channel_data()
     with codecs.open(output, 'w', encoding='utf8') as f:
-        f.write(u'#EXTM3U x-tvg-url="{}"'.format(EPG_URL))
-
-        for elem in sorted(data['liveChannel'], key=lambda e: e['order']):
-            if entitlements and elem['channelCode'] not in entitlements:
-                continue
-
-            f.write(u'\n#EXTINF:-1 tvg-id="{id}" tvg-chno="{channel}" channel-id="{channel}" group-title="{group}" tvg-name="{name}" tvg-logo="{logo}",{name}\n{url}'.format(
-                id=elem['channelCode'], channel=elem['channelId'], logo=gui.get_art_url(_image('{id}:{site_id}:CHANNEL:IMAGE'.format(id=elem['id'], site_id=LIVE_SITEID), fragment=elem['title'])),
-                name=elem['title'], group=genres.get(elem['channelCode'], ''), url=plugin.url_for(play, media_type=TYPE_LIVE, id=elem['id'], _is_live=True)))
+        f.write(u'#EXTM3U x-tvg-url="{}"\n'.format(epg_url))
+        for ch_code, ch in sorted(channel_data.items(), key=lambda x: x[1].get('chno', 999)):
+            chno  = ch.get('chno', '')
+            logo  = ch.get('logo', '')
+            name  = ch.get('name', ch_code)
+            group = CHANNEL_GROUPS.get(ch_code, 'Foxtel')
+            play_url = plugin.url_for(play_live, channel=ch_code)
+            tvg_id   = ch_code
+            f.write(u'#EXTINF:-1 tvg-id="{}" tvg-chno="{}" tvg-logo="{}" group-title="{}",{}\n'.format(
+                tvg_id, chno, logo, group, name))
+            f.write(play_url + u'\n')
