@@ -107,6 +107,18 @@ def main():
         channel_events[tag] = evs
         print(f'{len(evs)} events')
 
+    # UHD mirror channels: K01-K06 copy EPG from their HD counterparts
+    # Foxtel doesn't publish UHD channels in the webepg API so we generate them.
+    UHD_MIRRORS = [
+        ('K01', 'Fox Sports UHD 1', 'FS1'),   # mirrors Fox Cricket
+        ('K02', 'Movies 4K UHD',    'SHO'),   # mirrors Movies Premiere
+        ('K03', 'Fox Sports UHD 2', 'FS3'),   # mirrors Fox Sports 503
+        ('K04', 'Fox Sports UHD 3', 'FSP'),   # mirrors Fox Sports 505
+        ('K05', 'Fox Sports UHD 4', 'SPS'),   # mirrors Fox Sports 506
+        ('K06', 'Fox Sports UHD 5', 'FSS'),   # mirrors Fox Sports 507
+    ]
+    _FOXTEL_LOGO = 'https://www.foxtel.com.au/content/dam/foxtel/shared/channel/{c}/{c}_425x243.png'
+
     # Build XMLTV
     print('  Building XMLTV...', end=' ', flush=True)
     parts = [
@@ -124,6 +136,13 @@ def main():
         parts.append(f'    <display-name>{name}</display-name>')
         if logo:
             parts.append(f'    <icon src="{logo}"/>')
+        parts.append('  </channel>')
+
+    for uhd_tag, uhd_name, _ in UHD_MIRRORS:
+        logo = _FOXTEL_LOGO.format(c=uhd_tag)
+        parts.append(f'  <channel id="{xml_escape(uhd_tag)}">')
+        parts.append(f'    <display-name>{xml_escape(uhd_name)}</display-name>')
+        parts.append(f'    <icon src="{xml_escape(logo)}"/>')
         parts.append('  </channel>')
 
     for ch in channels:
@@ -165,6 +184,33 @@ def main():
             if img:    parts.append(f'    <icon src="{xml_escape(img)}"/>')
             if rating: parts.append(f'    <rating system="AUS"><value>{xml_escape(rating)}</value></rating>')
             parts.append('  </programme>')
+    # Mirror UHD channels from their HD counterparts
+    for uhd_tag, _, src_tag in UHD_MIRRORS:
+        src_events = channel_events.get(src_tag, [])
+        if not src_events:
+            continue
+        ch_esc = xml_escape(uhd_tag)
+        for i, ev in enumerate(src_events):
+            sms = ev.get('scheduledDate')
+            if not sms:
+                continue
+            ems = src_events[i+1].get('scheduledDate', sms+1_800_000) if i+1 < len(src_events) else sms+1_800_000
+            title = xml_escape(ev.get('programTitle') or 'Unknown')
+            parts.append(f'  <programme start="{epoch_ms_to_xmltv(sms)}" stop="{epoch_ms_to_xmltv(ems)}" channel="{ch_esc}">')
+            parts.append(f'    <title lang="en">{title}</title>')
+            ep_t = ev.get('episodeTitle', '')
+            ep_n = ev.get('episodeNumber', '')
+            ser_n = ev.get('seriesNumber', '')
+            if ep_t:
+                parts.append(f'    <sub-title lang="en">{xml_escape(ep_t)}</sub-title>')
+            if ser_n and ep_n:
+                try:
+                    s, e = int(ser_n), int(ep_n)
+                    parts.append(f'    <episode-num system="onscreen">S{s:02d}E{e:02d}</episode-num>')
+                except (ValueError, TypeError):
+                    pass
+            parts.append('  </programme>')
+
     parts.append('</tv>')
 
     os.makedirs(OUT_DIR, exist_ok=True)
