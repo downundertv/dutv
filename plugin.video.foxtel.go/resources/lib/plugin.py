@@ -146,6 +146,7 @@ def live(**kwargs):
         return folder
 
     now = arrow.now()
+    uhd_plots = _uhd_now_next() if show_epg else {}
 
     for ch_code, ch in sorted(channel_data.items(), key=lambda x: x[1].get('chno', 999)):
         chno = ch.get('chno')
@@ -155,7 +156,7 @@ def live(**kwargs):
 
         label = u'[{}] {}'.format(chno, name) if chno else name
 
-        plot = u''
+        plot = uhd_plots.get(ch_code, u'')
         if show_epg and epg:
             count = 0
             for index, row in enumerate(epg):
@@ -306,6 +307,47 @@ def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwar
     return folder
 
 
+def _episodes_folder(folder, season_id):
+    data = api.rail('Episodes', raw_params=_build_rail_params('ShowDetail', 'Season', season_id))
+    for tile in _extract_tiles(data):
+        item = _tile_to_item(tile)
+        if item:
+            folder.add_items(item)
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def show(id, title='', **kwargs):
+    """List a show's seasons (or its episodes directly when there is only one season)."""
+    folder = plugin.Folder(title or id)
+    try:
+        data = api.rail('Seasons', raw_params=_build_rail_params('ShowDetail', 'Event', id))
+        seasons = [t for t in _extract_tiles(data) if t.get('AssetId')]
+        if len(seasons) == 1:
+            return _episodes_folder(folder, seasons[0]['AssetId'])
+        for t in seasons:
+            folder.add_item(
+                label=t.get('Title') or t['AssetId'],
+                art={'thumb': _extract_tile_image(t)},
+                path=plugin.url_for(season, id=t['AssetId'], title=t.get('Title') or ''),
+            )
+    except Exception as e:
+        folder.add_item(label=u'[Error: {}]'.format(str(e)[:80]))
+    return folder
+
+
+@plugin.route()
+@plugin.login_required()
+def season(id, title='', **kwargs):
+    folder = plugin.Folder(title or id)
+    try:
+        return _episodes_folder(folder, id)
+    except Exception as e:
+        folder.add_item(label=u'[Error: {}]'.format(str(e)[:80]))
+    return folder
+
+
 _tile_logged = False
 def _img_from_id(img_id, portrait=False):
     """Build a DAZN foxtelgnc image CDN URL from an image Id string."""
@@ -355,6 +397,10 @@ def _extract_tile_image(tile):
 
     # 4. Images dict (other DAZN brands / legacy format)
     images = tile.get('Images') or tile.get('images') or {}
+    if isinstance(images, list):
+        ids = [i.get('Id') for i in images if isinstance(i, dict) and i.get('Id')]
+        landscape = [i for i in ids if i.endswith('_16x9')] or [i for i in ids if '_' not in i] or ids
+        return _img_from_id(landscape[0]) if landscape else ''
     for key in ('Landscape', 'Tile', 'Thumbnail', 'Poster', 'Background', 'Hero',
                 'landscape', 'tile', 'thumbnail', 'poster', 'background', 'hero'):
         img2 = images.get(key)
@@ -376,6 +422,63 @@ def _extract_tile_image(tile):
     return ''
 
 
+def _uhd_now_next():
+    """Now/Next plots for Fox Sports UHD channels, keyed by Foxtel channel code (K01...)."""
+    try:
+        data = api.rail('LinearChannels', raw_params='PageType:sports;ContentType:sports')
+    except Exception:
+        return {}
+    plots = {}
+    for tile in _extract_tiles(data):
+        now_prog = (tile.get('LinearSchedule') or {}).get('Now') or {}
+        code = ((now_prog.get('AdditionalMetadata') or {}).get('tmsId') or '')[:3]
+        if code.startswith('K'):
+            plots[code] = _sport_info(tile).get('plot', u'')
+    return plots
+
+
+def _sport_info(tile):
+    """Kodi info for sports tiles (CatchUp, Live, Highlights, OnDemand)."""
+    import datetime
+    sched = tile.get('LinearSchedule') or {}
+    if sched and not sched.get('HideNowAndNext'):
+        lines = []
+        for key in ('Now', 'Next'):
+            prog = sched.get(key) or {}
+            if not prog.get('Title'):
+                continue
+            name = prog['Title']
+            if prog.get('EpisodeTitle') and prog['EpisodeTitle'] != name:
+                name += u' - ' + prog['EpisodeTitle']
+            try:
+                t = arrow.get(prog['Start']).to('local').format('h:mma')
+            except Exception:
+                t = ''
+            lines.append(u'[{}] {}'.format(t, name) if t else name)
+            if key == 'Now' and prog.get('Description'):
+                lines.append(prog['Description'] + u'\n')
+        if lines:
+            return {'plot': u'\n'.join(lines).strip()}
+    start = '' if tile.get('IsLinear') else (tile.get('Start') or tile.get('EventStartTime') or '')
+    when = ''
+    try:
+        dt = datetime.datetime.strptime(start[:19], '%Y-%m-%dT%H:%M:%S')
+        dt = dt.replace(tzinfo=datetime.timezone.utc).astimezone()
+        when = dt.strftime('%a %d %b %Y, %I:%M %p').replace(' 0', ' ')
+    except Exception:
+        pass
+    header = ' | '.join(x for x in (tile.get('Label'), when) if x)
+    desc = tile.get('Description') or ''
+    info = {
+        'plot':  u'[B]{}[/B]\n{}'.format(header, desc) if header else desc,
+        'genre': (tile.get('Sport') or {}).get('Title'),
+        'aired': start[:10],
+    }
+    if tile.get('DurationInMillis'):
+        info['duration'] = int(tile['DurationInMillis']) // 1000
+    return info
+
+
 def _tile_to_item(tile):
     """Convert a DAZN rail tile dict to a slyguy plugin.Item."""
     global _tile_logged
@@ -386,6 +489,8 @@ def _tile_to_item(tile):
     is_live    = tile.get('IsLive') or tile.get('isLive') or False
 
     thumb = _extract_tile_image(tile)
+    # Skin widgets (e.g. Aeon Nox landscape) read fanart/landscape, not thumb
+    art = {'thumb': thumb, 'fanart': thumb, 'landscape': thumb} if thumb else {}
 
     if not thumb and not _tile_logged:
         _tile_logged = True
@@ -395,7 +500,40 @@ def _tile_to_item(tile):
         except Exception:
             pass
 
-    plot = subtitle
+    plot = tile.get('LongSynopsis') or tile.get('Synopsis') or tile.get('ShortSynopsis') or subtitle
+    nav_params = _parse_rail_params(tile.get('NavParams') or '')
+
+    # Show/series tile: the AssetId is a series ID, not playable
+    if tile_type.lower() == 'show' and asset_id:
+        return plugin.Item(
+            label=title,
+            art=art,
+            info={'plot': plot, 'mediatype': 'tvshow'},
+            path=plugin.url_for(show, id=asset_id, title=title),
+        )
+
+    if nav_params.get('PageType') == 'ShowDetail' and nav_params.get('ContentType') == 'Season':
+        return plugin.Item(
+            label=title,
+            art=art,
+            path=plugin.url_for(season, id=nav_params.get('ContentId') or asset_id, title=title),
+        )
+
+    # Movie tiles: the playable ID is Article.Id; the tile's AssetId is a title ID
+    article = tile.get('Article') or {}
+    if tile_type.lower() == 'movie' and article.get('Id'):
+        return plugin.Item(
+            label=title,
+            art=art,
+            info={k: v for k, v in {
+                'plot': plot, 'mediatype': 'movie',
+                'year': int(tile['ReleaseYear']) if str(tile.get('ReleaseYear') or '').isdigit() else None,
+                'mpaa': tile.get('Classification'),
+                'genre': tile.get('Genres'),
+            }.items() if v},
+            path=plugin.url_for(play, id=article['Id'], is_live='0'),
+            playable=True,
+        )
 
     if tile_type.lower() in ('rail', 'group', 'category', 'navigation'):
         navigate_to = tile.get('NavigateTo') or tile.get('navigateTo') or ''
@@ -403,7 +541,7 @@ def _tile_to_item(tile):
             # Genre tile — drill into multi-rails by content_id (no special chars in URL)
             return plugin.Item(
                 label=title,
-                art={'thumb': thumb},
+                art=art,
                 info={'plot': plot},
                 path=plugin.url_for(genre_rails, navigate_to=navigate_to,
                                     content_id=asset_id, title=title),
@@ -411,16 +549,40 @@ def _tile_to_item(tile):
         sub_rail_id = tile.get('RailId') or tile.get('railId') or asset_id
         return plugin.Item(
             label=title,
-            art={'thumb': thumb},
+            art=art,
             info={'plot': plot},
             path=plugin.url_for(rail, rail_id=sub_rail_id, title=title),
         )
 
-    if asset_id:
+    if tile_type.lower() == 'episode':
+        ep = tile.get('Episode') or {}
+        sn = tile.get('Season') or {}
+        info = {
+            'plot':      ep.get('LongSynopsis') or ep.get('ShortSynopsis') or plot,
+            'mediatype': 'episode',
+            'episode':   ep.get('EpisodeNumber'),
+            'season':    sn.get('SeasonNumber'),
+            'mpaa':      ep.get('Classification'),
+            'aired':     (ep.get('OrigAirDate') or '')[:10],
+        }
+        if tile.get('DurationInMillis'):
+            info['duration'] = int(tile['DurationInMillis']) // 1000
         return plugin.Item(
             label=title,
-            art={'thumb': thumb},
-            info={'plot': plot, 'mediatype': 'video'},
+            art=art,
+            info={k: v for k, v in info.items() if v},
+            path=plugin.url_for(play, id=asset_id, is_live='0'),
+            playable=True,
+        )
+
+    if asset_id:
+        info = {'plot': plot, 'mediatype': 'video'}
+        if tile.get('Description') or tile.get('Label') or tile.get('LinearSchedule'):
+            info.update(_sport_info(tile))
+        return plugin.Item(
+            label=title,
+            art=art,
+            info={k: v for k, v in info.items() if v},
             path=plugin.url_for(play, id=asset_id, is_live='1' if is_live else '0'),
             playable=True,
         )
@@ -541,3 +703,10 @@ def playlist(output, **kwargs):
             f.write(u'#EXTINF:-1 tvg-id="{}" tvg-chno="{}" tvg-logo="{}" group-title="{}",{}\n'.format(
                 tvg_id, chno, logo, group, name))
             f.write(play_url + u'\n')
+
+
+@plugin.route()
+@plugin.merge()
+def epg(**kwargs):
+    """Guide for the Fox Sports UHD channels (main Foxtel guide comes from EPG_URL)."""
+    return get_relay_url() + '/foxtel/uhd_epg.xml'
