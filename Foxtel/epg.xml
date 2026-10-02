@@ -2728,14 +2728,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/bcrvh.jpg?maxheight=90&amp;limit=1fb11777e3834d792dd44ba649806b445b85b576"/>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
-  <programme start="20261002203023 +1000" stop="20261002210012 +1000" channel="HAR">
-    <title lang="en">Seinfeld</title>
-    <sub-title lang="en">The Tape</sub-title>
-    <episode-num system="onscreen">S03E08</episode-num>
-    <episode-num system="xmltv_ns">2.7.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/6qm67.jpg?maxheight=90&amp;limit=de6a13856c7a97de3af5c32a86230a2cf1bdcc7b"/>
-    <rating system="AUS"><value>PG</value></rating>
-  </programme>
   <programme start="20261002210012 +1000" stop="20261002213032 +1000" channel="HAR">
     <title lang="en">Seinfeld</title>
     <sub-title lang="en">The Nose Job</sub-title>
@@ -7940,12 +7932,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8i3e5.jpg?maxheight=90&amp;limit=24e4e1d16638fe22c94bb00c6f336af7e9546f12"/>
     <rating system="AUS"><value>M</value></rating>
   </programme>
-  <programme start="20261002203000 +1000" stop="20261002205500 +1000" channel="FHT">
-    <title lang="en">Fashion News</title>
-    <sub-title lang="en">Friday 2 October 2026, 20:30.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/7581483216636137809_169.jpeg?maxheight=90&amp;limit=fd76098409d029078cc0d5a35679a000fa3221e6"/>
-    <rating system="AUS"><value>MA</value></rating>
-  </programme>
   <programme start="20261002205500 +1000" stop="20261002210000 +1000" channel="FHT">
     <title lang="en">Fashion Week</title>
     <sub-title lang="en">Friday 2 October 2026, 20:55.</sub-title>
@@ -9821,14 +9807,6 @@
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/30/16398946755425782095_169.jpeg?maxheight=90&amp;limit=36cd158838213c3f70982881cf09656d5df637e4"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
-  <programme start="20261002194850 +1000" stop="20261002204210 +1000" channel="F12">
-    <title lang="en">Suits</title>
-    <sub-title lang="en">Undefeated</sub-title>
-    <episode-num system="onscreen">S01E09</episode-num>
-    <episode-num system="xmltv_ns">0.8.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/8h7ot.jpg?maxheight=90&amp;limit=a825e1ab8a6b9c204f2e66e0ed30b7c229a56866"/>
-    <rating system="AUS"><value>M</value></rating>
-  </programme>
   <programme start="20261002204210 +1000" stop="20261002213520 +1000" channel="F12">
     <title lang="en">Blue Bloods</title>
     <sub-title lang="en">In The Name Of The Father</sub-title>
@@ -10084,14 +10062,6 @@
     <episode-num system="xmltv_ns">7.2.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/jg0i27.jpg?maxheight=90&amp;limit=d534b12d8d481ee16e7bb28cf9edd1d58da5d223"/>
     <rating system="AUS"><value>M</value></rating>
-  </programme>
-  <programme start="20261002200332 +1000" stop="20261002204048 +1000" channel="UK2">
-    <title lang="en">Would I Lie To You?</title>
-    <sub-title lang="en">Episode 2</sub-title>
-    <episode-num system="onscreen">S16E02</episode-num>
-    <episode-num system="xmltv_ns">15.1.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/29/672a76b6e92e3769ec4a316e77536c5a.jpg?maxheight=90&amp;limit=c3c8c308ca87ce5f1d2a9a8ca6ada1d00e9b8976"/>
-    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261002204048 +1000" stop="20261002211514 +1000" channel="UK2">
     <title lang="en">Emmerdale Family Trees</title>
@@ -11691,14 +11661,6 @@
     <episode-num system="xmltv_ns">1.9.0/1</episode-num>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/rbpfl0.jpg?maxheight=90&amp;limit=f5f576eb410c24c6a5e1c37b6c12ecc2b6a82b61"/>
     <rating system="AUS"><value>MA</value></rating>
-  </programme>
-  <programme start="20261002203027 +1000" stop="20261002210015 +1000" channel="HI2">
-    <title lang="en">Married with Children: Honey, I Blew Up</title>
-    <sub-title lang="en">Honey, I Blew Up Myself</sub-title>
-    <episode-num system="onscreen">S08E15</episode-num>
-    <episode-num system="xmltv_ns">7.14.0/1</episode-num>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/km9m31.jpg?maxheight=90&amp;limit=97ec09d515800d00fd4c1c3c55fb342e0c06838d"/>
-    <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261002210015 +1000" stop="20261002213010 +1000" channel="HI2">
     <title lang="en">Frasier: Liar, Liar!</title>
@@ -16963,6 +16925,7 @@
   <programme start="20261002190000 +1000" stop="20261002210000 +1000" channel="ES2">
     <title lang="en">Afternoon College Football: ESPN's Thur</title>
     <sub-title lang="en">ESPN's Thurs Night College Football</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/&amp;limit=da39a3ee5e6b4b0d3255bfef95601890afd80709"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002210000 +1000" stop="20261002233000 +1000" channel="ES2">
@@ -18436,12 +18399,6 @@
   <programme start="20261004000000 +1000" stop="20261004003000 +1000" channel="SUK">
     <title lang="en">Live: Sky News</title>
     <sub-title lang="en">Sunday 4 October 2026, 00:00.</sub-title>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
-  <programme start="20261002204500 +1000" stop="20261002205500 +1000" channel="BBC">
-    <title lang="en">Live: BBC News</title>
-    <sub-title lang="en">02.10.2026 10:45.</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/3/be7rw.jpg?maxheight=90&amp;limit=78098c4cc2c577b67e700e7e4de5ae3067f834ca"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002205500 +1000" stop="20261002210000 +1000" channel="BBC">
@@ -20838,6 +20795,7 @@
   <programme start="20261002210000 +1000" stop="20261002212800 +1000" channel="NHK">
     <title lang="en">Newsroom Tokyo</title>
     <sub-title lang="en">Newsroom Tokyo</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/&amp;limit=da39a3ee5e6b4b0d3255bfef95601890afd80709"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002212800 +1000" stop="20261002214300 +1000" channel="NHK">
@@ -20863,6 +20821,7 @@
   <programme start="20261002220000 +1000" stop="20261002223000 +1000" channel="NHK">
     <title lang="en">Newsroom Tokyo</title>
     <sub-title lang="en">Newsroom Tokyo</sub-title>
+    <icon src="https://images1.resources.foxtel.com.au/&amp;limit=da39a3ee5e6b4b0d3255bfef95601890afd80709"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002223000 +1000" stop="20261002230000 +1000" channel="NHK">
@@ -21966,12 +21925,6 @@
     <title lang="en">Looped In</title>
     <sub-title lang="en">Saturday 3 October 2026</sub-title>
     <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/rp0j56.jpg?maxheight=90&amp;limit=aabd637110ade6953ea7cbfee8e7e7b4638cf910"/>
-    <rating system="AUS"><value>NC</value></rating>
-  </programme>
-  <programme start="20261002145800 +1000" stop="20261002205700 +1000" channel="NMU">
-    <title lang="en">Pop Takeover</title>
-    <sub-title lang="en">Friday 2 October 2026</sub-title>
-    <icon src="https://images1.resources.foxtel.com.au/store2/mount1/16/4/gqvgqm.jpg?maxheight=90&amp;limit=c9cd340477deabeba6f0c41e171d8a88d33364e3"/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261002205700 +1000" stop="20261003000000 +1000" channel="NMU">
