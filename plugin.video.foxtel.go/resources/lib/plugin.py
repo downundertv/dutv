@@ -307,35 +307,67 @@ def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwar
 
 
 _tile_logged = False
+_DAZN_IMG_BASE = 'https://image.discovery.indazn.com/jp/v3/jp'
+
+
+def _img_from_id(img_id):
+    """Build a DAZN image CDN URL from a foxtelgnc image Id string."""
+    if img_id and isinstance(img_id, str):
+        return '{}/image/{}'.format(_DAZN_IMG_BASE, img_id)
+    return ''
 
 
 def _extract_tile_image(tile):
-    """Try every common DAZN foxtelgnc image structure and return the first URL found."""
-    # 1. 'Image' / 'image' at tile root — either a direct URL string or a dict with a URL sub-key
-    v = tile.get('Image') or tile.get('image')
-    if isinstance(v, str) and v.startswith('http'):
-        return v.replace('${WIDTH}', '512')
-    if isinstance(v, dict):
-        url = (v.get('ImageUrl') or v.get('Url') or v.get('Uri') or
-               v.get('imageUrl') or v.get('url') or v.get('uri') or v.get('src') or '')
-        if url and url.startswith('http'):
-            return url.replace('${WIDTH}', '512')
+    """Extract a thumbnail URL from a DAZN foxtelgnc Rail tile.
 
-    # 2. 'Images' / 'images' dict with named sub-keys
+    foxtelgnc Rail tiles store image *IDs* (not URLs) in typed image objects.
+    The actual image is at DAZN_IMG_BASE/image/{Id}.
+    Priority: HeroImage.Landscape (16:9) → Image.Id → PortraitImage.Id
+    """
+    # 1. HeroImage.Landscape — 16:9 landscape ID, best for Kodi thumbnails
+    hero = tile.get('HeroImage') or {}
+    if isinstance(hero, dict):
+        url = _img_from_id(hero.get('Landscape') or hero.get('Id') or hero.get('id'))
+        if url:
+            return url
+
+    # 2. Image.Id (image-header type)
+    img = tile.get('Image') or tile.get('image') or {}
+    if isinstance(img, str) and img.startswith('http'):
+        return img
+    if isinstance(img, dict):
+        # Check for a direct URL sub-key first (other DAZN brands)
+        direct = (img.get('ImageUrl') or img.get('Url') or img.get('Uri') or
+                  img.get('imageUrl') or img.get('url') or img.get('uri') or '')
+        if direct and direct.startswith('http'):
+            return direct
+        # foxtelgnc: build URL from Id
+        url = _img_from_id(img.get('Id') or img.get('id'))
+        if url:
+            return url
+
+    # 3. PortraitImage.Id
+    portrait = tile.get('PortraitImage') or {}
+    if isinstance(portrait, dict):
+        url = _img_from_id(portrait.get('Id') or portrait.get('id'))
+        if url:
+            return url
+
+    # 4. Images dict (other DAZN brands / legacy format)
     images = tile.get('Images') or tile.get('images') or {}
     for key in ('Landscape', 'Tile', 'Thumbnail', 'Poster', 'Background', 'Hero',
                 'landscape', 'tile', 'thumbnail', 'poster', 'background', 'hero'):
-        img = images.get(key)
-        if img is None:
+        img2 = images.get(key)
+        if img2 is None:
             continue
-        if isinstance(img, str):
-            return img.replace('${WIDTH}', '512')
-        if isinstance(img, dict):
-            url = img.get('Uri') or img.get('uri') or img.get('url') or img.get('URL') or ''
-            if url:
-                return url.replace('${WIDTH}', '512')
+        if isinstance(img2, str):
+            return img2.replace('${WIDTH}', '512')
+        if isinstance(img2, dict):
+            u = img2.get('Uri') or img2.get('uri') or img2.get('url') or img2.get('URL') or ''
+            if u:
+                return u.replace('${WIDTH}', '512')
 
-    # 3. contentDisplay.images (DAZN discovery API format used by some brands)
+    # 5. contentDisplay.images (Kayo/DAZN discovery API format)
     for key in ('tile', 'Tile', 'landscape', 'Landscape', 'hero-default', 'hero'):
         v = tile.get('contentDisplay', {}).get('images', {}).get(key, '')
         if v:
