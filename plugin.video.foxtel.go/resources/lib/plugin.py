@@ -306,25 +306,57 @@ def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwar
     return folder
 
 
+_tile_logged = False
+
+
+def _extract_tile_image(tile):
+    """Try every common DAZN foxtelgnc image structure and return the first URL found."""
+    # 1. Direct string at tile root
+    v = tile.get('Image') or tile.get('image')
+    if isinstance(v, str) and v.startswith('http'):
+        return v.replace('${WIDTH}', '512')
+
+    # 2. 'Images' / 'images' dict with named sub-keys
+    images = tile.get('Images') or tile.get('images') or {}
+    for key in ('Landscape', 'Tile', 'Thumbnail', 'Poster', 'Background', 'Hero',
+                'landscape', 'tile', 'thumbnail', 'poster', 'background', 'hero'):
+        img = images.get(key)
+        if img is None:
+            continue
+        if isinstance(img, str):
+            return img.replace('${WIDTH}', '512')
+        if isinstance(img, dict):
+            url = img.get('Uri') or img.get('uri') or img.get('url') or img.get('URL') or ''
+            if url:
+                return url.replace('${WIDTH}', '512')
+
+    # 3. contentDisplay.images (DAZN discovery API format used by some brands)
+    for key in ('tile', 'Tile', 'landscape', 'Landscape', 'hero-default', 'hero'):
+        v = tile.get('contentDisplay', {}).get('images', {}).get(key, '')
+        if v:
+            return v.replace('${WIDTH}', '512')
+
+    return ''
+
+
 def _tile_to_item(tile):
     """Convert a DAZN rail tile dict to a slyguy plugin.Item."""
+    global _tile_logged
     tile_type  = tile.get('Type') or tile.get('type') or ''
     asset_id   = tile.get('AssetId') or tile.get('assetId') or tile.get('Id') or ''
     title      = tile.get('Title') or tile.get('title') or asset_id
     subtitle   = tile.get('Subtitle') or tile.get('subtitle') or ''
     is_live    = tile.get('IsLive') or tile.get('isLive') or False
 
-    # Image: prefer a Landscape or Thumbnail image from the Images dict
-    images = tile.get('Images') or tile.get('images') or {}
-    thumb  = ''
-    for key in ('Landscape', 'Thumbnail', 'Poster', 'landscape', 'thumbnail', 'poster'):
-        img = images.get(key, {})
-        if isinstance(img, dict):
-            thumb = img.get('Uri') or img.get('uri') or img.get('url') or ''
-        elif isinstance(img, str):
-            thumb = img
-        if thumb:
-            break
+    thumb = _extract_tile_image(tile)
+
+    if not thumb and not _tile_logged:
+        _tile_logged = True
+        try:
+            import json as _json, xbmc
+            xbmc.log('FoxtelGo tile structure (first): ' + _json.dumps(tile)[:600], xbmc.LOGINFO)
+        except Exception:
+            pass
 
     plot = subtitle
 
