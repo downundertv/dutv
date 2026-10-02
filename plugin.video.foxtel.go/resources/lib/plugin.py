@@ -311,10 +311,15 @@ _tile_logged = False
 
 def _extract_tile_image(tile):
     """Try every common DAZN foxtelgnc image structure and return the first URL found."""
-    # 1. Direct string at tile root
+    # 1. 'Image' / 'image' at tile root — either a direct URL string or a dict with a URL sub-key
     v = tile.get('Image') or tile.get('image')
     if isinstance(v, str) and v.startswith('http'):
         return v.replace('${WIDTH}', '512')
+    if isinstance(v, dict):
+        url = (v.get('ImageUrl') or v.get('Url') or v.get('Uri') or
+               v.get('imageUrl') or v.get('url') or v.get('uri') or v.get('src') or '')
+        if url and url.startswith('http'):
+            return url.replace('${WIDTH}', '512')
 
     # 2. 'Images' / 'images' dict with named sub-keys
     images = tile.get('Images') or tile.get('images') or {}
@@ -354,7 +359,7 @@ def _tile_to_item(tile):
         _tile_logged = True
         try:
             import json as _json, xbmc
-            xbmc.log('FoxtelGo tile structure (first): ' + _json.dumps(tile)[:600], xbmc.LOGINFO)
+            xbmc.log('FoxtelGo tile structure (first): ' + _json.dumps(tile)[:1500], xbmc.LOGINFO)
         except Exception:
             pass
 

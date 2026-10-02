@@ -236,11 +236,11 @@ CHANNEL_GROUPS = {
 }
 
 def channel_logo(code):
-    """Return the official Foxtel CDN logo URL for a channel code, or '' if none."""
+    """Return a logo URL for a channel code via the relay proxy (bypasses foxtel.com.au CDN 403)."""
     _NO_LOGO = {'K01', 'K02', 'K03', 'K04', 'K05', 'K06'}
     if code in _NO_LOGO:
         return ''
-    return 'https://www.foxtel.com.au/content/dam/foxtel/shared/channel/{c}/{c}_425x243.png'.format(c=code)
+    return get_relay_url() + '/foxtel/logo?code=' + code
 
 # Extra channels not present in mjh.nz data (e.g. UHD channels).
 # These are appended to the channel listing returned by api.channel_data().
