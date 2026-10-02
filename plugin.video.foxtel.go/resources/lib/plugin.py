@@ -307,13 +307,10 @@ def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwar
 
 
 _tile_logged = False
-_DAZN_IMG_BASE = 'https://image.discovery.indazn.com/jp/v3/jp'
-
-
 def _img_from_id(img_id):
     """Build a DAZN image CDN URL from a foxtelgnc image Id string."""
     if img_id and isinstance(img_id, str):
-        return '{}/image/{}'.format(_DAZN_IMG_BASE, img_id)
+        return 'https://image.discovery.indazn.com/jp/v3/jp/none/{}?imwidth=480'.format(img_id)
     return ''
 
 
