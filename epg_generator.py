@@ -131,7 +131,7 @@ def main():
         xid     = tag
         name    = xml_escape(ch.get('name', tag))
         imgs    = ch.get('channelImages', {})
-        logo    = xml_escape(imgs.get('hq') or imgs.get('medium') or '')
+        logo    = xml_escape(imgs.get('hq') or imgs.get('medium') or _FOXTEL_LOGO.format(c=tag))
         parts.append(f'  <channel id="{xml_escape(xid)}">')
         parts.append(f'    <display-name>{name}</display-name>')
         if logo:
@@ -187,34 +187,7 @@ def main():
             if img:    parts.append(f'    <icon src="{xml_escape(img)}"/>')
             if rating: parts.append(f'    <rating system="AUS"><value>{xml_escape(rating)}</value></rating>')
             parts.append('  </programme>')
-    # Mirror UHD channels from their HD counterparts (only ones not already in API)
-    for uhd_tag, _, src_tag in UHD_MIRRORS:
-        if uhd_tag in api_tags:
-            continue
-        src_events = channel_events.get(src_tag, [])
-        if not src_events:
-            continue
-        ch_esc = xml_escape(uhd_tag)
-        for i, ev in enumerate(src_events):
-            sms = ev.get('scheduledDate')
-            if not sms:
-                continue
-            ems = src_events[i+1].get('scheduledDate', sms+1_800_000) if i+1 < len(src_events) else sms+1_800_000
-            title = xml_escape(ev.get('programTitle') or 'Unknown')
-            parts.append(f'  <programme start="{epoch_ms_to_xmltv(sms)}" stop="{epoch_ms_to_xmltv(ems)}" channel="{ch_esc}">')
-            parts.append(f'    <title lang="en">{title}</title>')
-            ep_t = ev.get('episodeTitle', '')
-            ep_n = ev.get('episodeNumber', '')
-            ser_n = ev.get('seriesNumber', '')
-            if ep_t:
-                parts.append(f'    <sub-title lang="en">{xml_escape(ep_t)}</sub-title>')
-            if ser_n and ep_n:
-                try:
-                    s, e = int(ser_n), int(ep_n)
-                    parts.append(f'    <episode-num system="onscreen">S{s:02d}E{e:02d}</episode-num>')
-                except (ValueError, TypeError):
-                    pass
-            parts.append('  </programme>')
+    # UHD channels (K01-K06) have no EPG source — leave them as channel-only entries.
 
     parts.append('</tv>')
 
