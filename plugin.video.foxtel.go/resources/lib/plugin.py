@@ -307,10 +307,13 @@ def rail(rail_id, page_type='', content_type='', content_id='', title='', **kwar
 
 
 _tile_logged = False
-def _img_from_id(img_id):
-    """Build a DAZN image CDN URL from a foxtelgnc image Id string."""
+def _img_from_id(img_id, portrait=False):
+    """Build a DAZN foxtelgnc image CDN URL from an image Id string."""
     if img_id and isinstance(img_id, str):
-        return 'https://image.discovery.indazn.com/jp/v3/jp/none/{}?imwidth=480'.format(img_id)
+        w, h = (334, 501) if portrait else (480, 270)
+        return ('https://image.discovery.indazn.com/jp/v3/jp/none'
+                '/{}/fill/none/top/none/80/{}/{}/webp/image?brand=foxtelgnc'
+                .format(img_id, w, h))
     return ''
 
 
@@ -344,9 +347,9 @@ def _extract_tile_image(tile):
             return url
 
     # 3. PortraitImage.Id
-    portrait = tile.get('PortraitImage') or {}
-    if isinstance(portrait, dict):
-        url = _img_from_id(portrait.get('Id') or portrait.get('id'))
+    portrait_img = tile.get('PortraitImage') or {}
+    if isinstance(portrait_img, dict):
+        url = _img_from_id(portrait_img.get('Id') or portrait_img.get('id'), portrait=True)
         if url:
             return url
 
