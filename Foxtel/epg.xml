@@ -349,14 +349,12 @@
     <title lang="en">Destined to Ride</title>
     <desc lang="en">Lily, a young suburban teen, is reluctantly sent to her aunts horse ranch for the summer, where she meets Pistachio, a bucking, untamed colt.</desc>
     <category lang="en">Movie</category>
-    <category lang="en">Movie</category>
     <date>2018</date>
     <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261003153000 +0000" stop="20261003170500 +0000" channel="ACC">
     <title lang="en">An Interview With God</title>
     <desc lang="en">Upon returning home from the war in Afghanistan, Paul struggles to deal with the after-effects of his experiences, a failing marriage, and his dying faith.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2018</date>
     <rating system="AUS"><value>PG</value></rating>
@@ -1229,10 +1227,36 @@
     <date>2000</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="ACC">
+    <title lang="en">Joel Osteen</title>
+    <sub-title lang="en">Always In Blossom</sub-title>
+    <desc lang="en">Direct from Houston, Texas, USA; join Joel and Victoria Osteen and the team from Lakewood Church, for this program of powerful music and empowering preaching. Experience from the weekend church service of Lakewood Church.</desc>
+    <episode-num system="onscreen">E38</episode-num>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006173000 +0000" channel="ACC">
+    <title lang="en">In Touch 2026</title>
+    <sub-title lang="en">The Holy Spirit: Baptising the Believer/Victory Over Anger</sub-title>
+    <desc lang="en">The In Touch program reaches the world with the Gospel with messages that tackle such issues as parenting, finances, personal crises, emotions, and relationships. Dr. Stanley fervently believes the Bible to be the inerrant Word of God.</desc>
+    <episode-num system="onscreen">E40</episode-num>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="ACC">
+    <title lang="en">Elevation Experience</title>
+    <sub-title lang="en">Not Here</sub-title>
+    <desc lang="en">Join Pastor Steven in the Basin where he digs deep into scripture and breaks down the Word of God in these short conversational teachings.</desc>
+    <episode-num system="onscreen">E40</episode-num>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
   <programme start="20261003134400 +0000" stop="20261003155957 +0000" channel="ACS">
     <title lang="en">We Of The Never Never</title>
     <desc lang="en">Jeannie Gunn faced being the only civilized woman in an uncivilized land. A story of personal triumph about one woman who reached out in a hard, hostile, prejudiced world and managed to find love. (Angela Punch McGregor, Arthur Dignam)</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1982</date>
     <rating system="AUS"><value>G</value></rating>
@@ -1694,6 +1718,22 @@
     <category lang="en">Movie</category>
     <date>2011</date>
     <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006161500 +0000" stop="20261006174500 +0000" channel="ACS">
+    <title lang="en">Acolytes</title>
+    <desc lang="en">In this suspense thriller where almost everyone is a villain and no one can be trusted, two friends find a body in the woods and decide to blackmail the person they observed burying it.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2008</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006193500 +0000" channel="ACS">
+    <title lang="en">Dawn</title>
+    <desc lang="en">A look at the life and successful swimming career of Australian professional swimmer Dawn Fraser, winner of gold medals in the 1956, 1960 and 1964 Olympics.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>1979</date>
+    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="AJE">
     <title lang="en">Newshour</title>
@@ -2671,6 +2711,42 @@
     <date>2026</date>
     <rating system="AUS"><value>G</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="AJE">
+    <title lang="en">News Live</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:00.</sub-title>
+    <desc lang="en">Up-to-date news and analysis from around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="AJE">
+    <title lang="en">The Bottom Line with Dagen and Duffy</title>
+    <sub-title lang="en">Sunday 4 October 2026</sub-title>
+    <desc lang="en">Host Steve Clemons speaks with Alan Eyre, a former U.S. diplomat involved in previous nuclear talks with Iran.</desc>
+    <episode-num system="onscreen">E40</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2023</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="AJE">
+    <title lang="en">News Live</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:00.</sub-title>
+    <desc lang="en">Up-to-date news and analysis from around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="AJE">
+    <title lang="en">Inside Story</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:30.</sub-title>
+    <desc lang="en">Beyond the headlines to the heart of the news of the day. Al Jazeera gets the Inside Story from some of the best minds from around the globe.</desc>
+    <episode-num system="onscreen">E1462</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
   <programme start="20261003141000 +0000" stop="20261003160000 +0000" channel="ANI">
     <title lang="en">The Lost Kingdom Of The Yeti</title>
     <desc lang="en">In the high-altitude wilderness of Bhutan, new evidence hints that the mysterious yeti may exist. Mark Evans travels into the Himalayas to discover the truth.</desc>
@@ -2889,7 +2965,7 @@
   <programme start="20261004103000 +0000" stop="20261004113000 +0000" channel="ANI">
     <title lang="en">Edge Of Alaska</title>
     <sub-title lang="en">Spring Fever</sub-title>
-    <desc lang="en">Jeremy Keller learns shocking news as he finishes his barn. Jenny Rosenbaum gets stranded with her newborn and Mark Wacht and Livvi encounter a bear, so it's time for a McCarthy right of passage - Livvi must to learn to shoot.</desc>
+    <desc lang="en">As Jeremy rushes to finish his new barn, he learns shocking news. Jenny gets stranded with her newborn and must fight for their survival.</desc>
     <episode-num system="onscreen">S04E06</episode-num>
     <episode-num system="xmltv_ns">3.5.0/1</episode-num>
     <category lang="en">News and Documentaries</category>
@@ -2959,7 +3035,7 @@
   <programme start="20261004171000 +0000" stop="20261004180000 +0000" channel="ANI">
     <title lang="en">Edge Of Alaska</title>
     <sub-title lang="en">Spring Fever</sub-title>
-    <desc lang="en">Jeremy Keller learns shocking news as he finishes his barn. Jenny Rosenbaum gets stranded with her newborn and Mark Wacht and Livvi encounter a bear, so it's time for a McCarthy right of passage - Livvi must to learn to shoot.</desc>
+    <desc lang="en">As Jeremy rushes to finish his new barn, he learns shocking news. Jenny gets stranded with her newborn and must fight for their survival.</desc>
     <episode-num system="onscreen">S04E06</episode-num>
     <episode-num system="xmltv_ns">3.5.0/1</episode-num>
     <category lang="en">News and Documentaries</category>
@@ -3361,7 +3437,7 @@
   <programme start="20261006113000 +0000" stop="20261006123000 +0000" channel="ANI">
     <title lang="en">Mountain Monsters</title>
     <sub-title lang="en">Bigfoot of Ashe County: AIMS Under Attack</sub-title>
-    <desc lang="en">The AIMS team head to Ashe County in search of "The Cherokee Devil". When Buck has an encounter with the creature the team fights back.</desc>
+    <desc lang="en">The AIMS team head to Ashe County, North Carolina, in search of 'The Cherokee Devil'.</desc>
     <episode-num system="onscreen">S02E07</episode-num>
     <episode-num system="xmltv_ns">1.6.0/1</episode-num>
     <category lang="en">News and Documentaries</category>
@@ -3396,6 +3472,36 @@
     <episode-num system="xmltv_ns">1.14.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2022</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006152500 +0000" stop="20261006161500 +0000" channel="ANI">
+    <title lang="en">Fish Or Die</title>
+    <sub-title lang="en">Lair Of The River Wolf</sub-title>
+    <desc lang="en">The crew is in Mongolia in search of taimen: the largest, most ferocious member of the salmon family. To get there, they must navigate treacherous conditions.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006161500 +0000" stop="20261006171000 +0000" channel="ANI">
+    <title lang="en">Alaska: The Last Frontier Specials</title>
+    <sub-title lang="en">Alaska: The Last Frontier Special</sub-title>
+    <desc lang="en">From fashioning a bra for a cow to fending off relentless attacks from a porcupine, the family shares what could happen only on the homestead.</desc>
+    <episode-num system="onscreen">S04E01</episode-num>
+    <episode-num system="xmltv_ns">3.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2014</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006171000 +0000" stop="20261006180000 +0000" channel="ANI">
+    <title lang="en">Dr. Jeff: Rocky Mountain Vet</title>
+    <sub-title lang="en">A Lucky Break</sub-title>
+    <desc lang="en">Dr. Jeff helps a dog with a serious illness; Mel and her daughter rescue a baby squirrel; Dr. Jeff and Dr. Petra team up to save a beloved cat hit by a car; Dr. Baier gives a rabbit owner a surprise; a tiny dog with a big spirit needs a home.</desc>
+    <episode-num system="onscreen">S05E04</episode-num>
+    <episode-num system="xmltv_ns">4.3.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003142400 +0000" stop="20261003151023 +0000" channel="ARN">
@@ -4288,6 +4394,66 @@
     <date>2022</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006152000 +0000" stop="20261006154000 +0000" channel="ARN">
+    <title lang="en">Wheel Of Fortune</title>
+    <sub-title lang="en">Episode 142</sub-title>
+    <desc lang="en">Hosts Pat Sajak and Vanna White ask contestants to spin the Wheel, choose letters and guess the puzzles to win cash and prizes. Can you solve today's puzzles?</desc>
+    <episode-num system="onscreen">S40E142</episode-num>
+    <episode-num system="xmltv_ns">39.141.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2022</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006154000 +0000" stop="20261006160000 +0000" channel="ARN">
+    <title lang="en">Family Feud</title>
+    <sub-title lang="en">Episode 139</sub-title>
+    <desc lang="en">Steve Harvey assumes the hosting duties for this daytime game show in which five members of one family are pitted against five members of another family.</desc>
+    <episode-num system="onscreen">S22E139</episode-num>
+    <episode-num system="xmltv_ns">21.138.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2020</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006162000 +0000" channel="ARN">
+    <title lang="en">Family Feud</title>
+    <sub-title lang="en">Episode 140</sub-title>
+    <desc lang="en">Steve Harvey assumes the hosting duties for this daytime game show in which five members of one family are pitted against five members of another family.</desc>
+    <episode-num system="onscreen">S22E140</episode-num>
+    <episode-num system="xmltv_ns">21.139.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2020</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006162000 +0000" stop="20261006164500 +0000" channel="ARN">
+    <title lang="en">Family Feud</title>
+    <sub-title lang="en">Episode 48</sub-title>
+    <desc lang="en">Steve Harvey assumes the hosting duties for this daytime game show in which five members of one family are pitted against five members of another family.</desc>
+    <episode-num system="onscreen">S21E48</episode-num>
+    <episode-num system="xmltv_ns">20.47.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2024</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006173000 +0000" channel="ARN">
+    <title lang="en">The Real Housewives of Potomac</title>
+    <sub-title lang="en">Driving On Empty</sub-title>
+    <desc lang="en">As Colorado trip ends, ladies race clock for final outing, but plans derail when Angel takes wrong turn. Stacey's character is questioned again, this time by close ally.</desc>
+    <episode-num system="onscreen">S10E16</episode-num>
+    <episode-num system="xmltv_ns">9.15.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2025</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006181500 +0000" channel="ARN">
+    <title lang="en">Below Deck</title>
+    <sub-title lang="en">Fraz-Zzled</sub-title>
+    <desc lang="en">Captain Sandy becomes increasingly annoyed with the Interior and enlists Chef Rachel to help. Ross begs his way out of the doghouse once again and sparks fly as Tony reveals a hidden talent.</desc>
+    <episode-num system="onscreen">S10E11</episode-num>
+    <episode-num system="xmltv_ns">9.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2022</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003154500 +0000" channel="ASP">
     <title lang="en">The Media Show</title>
     <sub-title lang="en">Friday 2 October 2026</sub-title>
@@ -4610,6 +4776,22 @@
     <title lang="en">Sharri</title>
     <sub-title lang="en">Tuesday 6 October 2026</sub-title>
     <desc lang="en">Encore: Award-winning investigative reporter Sharri Markson with her take on the big news stories of the day.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="ASP">
+    <title lang="en">The Rita Panahi Show</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">Encore: Ritas reality check on this crazy world, with her unique take on the big issues facing us all.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="ASP">
+    <title lang="en">Paul Murray Live</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">Encore: Paul Murray provides the last line of defence for common sense.</desc>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -6859,10 +7041,73 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006154500 +0000" channel="BBC">
+    <title lang="en">Business Today</title>
+    <sub-title lang="en">06.10.2026 15:30.</sub-title>
+    <desc lang="en">Business Today. Bringing the latest business news and up-to-date informed analysis from London and around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006154500 +0000" stop="20261006155500 +0000" channel="BBC">
+    <title lang="en">Verified Live</title>
+    <sub-title lang="en">06.10.2026 15:45.</sub-title>
+    <desc lang="en">Matthew Amroliwala presents all the latest global and UK news, live from London.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006155500 +0000" stop="20261006160000 +0000" channel="BBC">
+    <title lang="en">Clive Myries Caribbean Adventure</title>
+    <sub-title lang="en">Episode 1</sub-title>
+    <desc lang="en">The sounds and soul of a vibrant and varied land. From surfing to souks, Clive journeys across an Africa rarely seen, immersing himself in its culture and uncovering family roots.</desc>
+    <episode-num system="onscreen">S01E01</episode-num>
+    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2024</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="BBC">
+    <title lang="en">Verified Live</title>
+    <sub-title lang="en">06.10.2026 16:00.</sub-title>
+    <desc lang="en">Matthew Amroliwala presents all the latest global and UK news, live from London.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="BBC">
+    <title lang="en">Focus on Africa</title>
+    <sub-title lang="en">06.10.2026 16:30.</sub-title>
+    <desc lang="en">The biggest African and international stories from the BBC.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="BBC">
+    <title lang="en">The World Today with Maryam Moshiri</title>
+    <sub-title lang="en">06.10.2026 17:00.</sub-title>
+    <desc lang="en">Watch the best of the BBC's journalism from around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="BBC">
+    <title lang="en">The World Today with Maryam Moshiri</title>
+    <sub-title lang="en">06.10.2026 17:30.</sub-title>
+    <desc lang="en">Watch the best of the BBC's journalism from around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003134900 +0000" stop="20261003155918 +0000" channel="BCS">
     <title lang="en">The Best Offer</title>
     <desc lang="en">Virgil Oldman is a world renowned antiques expert. One day he receives a phone call from the mysterious Claire who asks him to evaluate some family works of art. It will be the beginning of a relationship that will change his life forever.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2013</date>
     <rating system="AUS"><value>M</value></rating>
@@ -7202,6 +7447,14 @@
     <category lang="en">Movie</category>
     <date>2012</date>
     <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006163500 +0000" stop="20261006182000 +0000" channel="BCS">
+    <title lang="en">Suffragette</title>
+    <desc lang="en">Inspired by true events, Suffragette movingly explores the passion and heartbreak of those who risked all they had for women's right to vote - their jobs, their homes, their children, and even their lives.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2015</date>
+    <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003153000 +0000" channel="BLM">
     <title lang="en">The Mishal Husain Show</title>
@@ -7922,6 +8175,24 @@
     <title lang="en">Bloomberg Tech</title>
     <sub-title lang="en">Wednesday 7 October 2026</sub-title>
     <desc lang="en">The only daily live technology program with a focus on breaking news, market-moving reporting and analysis of global technology companies and stories.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="BLM">
+    <title lang="en">Bloomberg Crypto</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Bloomberg Crypto covers the people, transactions, and technology shaping decentralised finance. Your weekly source for the latest news, analysis and interviews with the most influential stakeholders.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="BLM">
+    <title lang="en">Bloomberg Markets: Balance of Power</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:00.</sub-title>
+    <desc lang="en">Bloomberg Balance of Power focuses on politics and policies on Capitol Hill, in President Trump's administration, the federal agencies and the courts.</desc>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <live/>
@@ -8776,6 +9047,46 @@
     <category lang="en">Entertainment</category>
     <date>2004</date>
     <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006152500 +0000" stop="20261006161000 +0000" channel="BXS">
+    <title lang="en">CSI: Miami</title>
+    <sub-title lang="en">Speed Kills</sub-title>
+    <desc lang="en">A 'Speed Dating' night for Miami singles turns deadly for one South Beach stud who finds himself on the wrong end of a tire iron.</desc>
+    <episode-num system="onscreen">S03E08</episode-num>
+    <episode-num system="xmltv_ns">2.7.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2004</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006161000 +0000" stop="20261006165500 +0000" channel="BXS">
+    <title lang="en">CSI: Miami</title>
+    <sub-title lang="en">Pirated</sub-title>
+    <desc lang="en">A string of dead bodies, found off the coast of Miami, turns out to be the work of modern-day pirates.</desc>
+    <episode-num system="onscreen">S03E09</episode-num>
+    <episode-num system="xmltv_ns">2.8.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2004</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006174000 +0000" channel="BXS">
+    <title lang="en">CSI: Miami</title>
+    <sub-title lang="en">After The Fall</sub-title>
+    <desc lang="en">An innocent man is killed when someone falls on him from a third floor balcony.</desc>
+    <episode-num system="onscreen">S03E10</episode-num>
+    <episode-num system="xmltv_ns">2.9.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2004</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006174000 +0000" stop="20261006182500 +0000" channel="BXS">
+    <title lang="en">CSI: Miami</title>
+    <sub-title lang="en">Addiction</sub-title>
+    <desc lang="en">A seemingly random car jacking turns out to be anything but when a young woman's gambling addiction becomes more than the family business can support.</desc>
+    <episode-num system="onscreen">S03E11</episode-num>
+    <episode-num system="xmltv_ns">2.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2002</date>
+    <rating system="AUS"><value>MA15+</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003153000 +0000" channel="CCC">
     <title lang="en">The World Today</title>
@@ -9936,6 +10247,32 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="CCC">
+    <title lang="en">The Vibe</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The Vibe is a 30-minute TV show that runs daily on weekdays on CGTN. The content focuses on exciting new trends, fashion, and cultural topics across a range of disciplines both in China and abroad.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2025</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="CCC">
+    <title lang="en">Global Business</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 00:00.</sub-title>
+    <desc lang="en">Global Business is the flagship business show of CGTN English Channel, bringing you the latest economic data, business trends and policies.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="CCC">
+    <title lang="en">Africa Live</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 01:00.</sub-title>
+    <desc lang="en">Africa Live is a news program that focuses on African issues and issues related to this diverse continent. CGTN's Nairobi-based broadcast center produces Africa Live.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003144500 +0000" stop="20261003151014 +0000" channel="CIN">
     <title lang="en">Cops Reloaded</title>
     <sub-title lang="en">Speed Racer</sub-title>
@@ -10820,6 +11157,56 @@
     <date>2008</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006152500 +0000" stop="20261006155000 +0000" channel="CIN">
+    <title lang="en">Forensic Files</title>
+    <sub-title lang="en">True Lies</sub-title>
+    <desc lang="en">In the summer of 1986, Kathleen Lipscomb's body was found on a deserted road outside of San Antonio.</desc>
+    <episode-num system="onscreen">S08E27</episode-num>
+    <episode-num system="xmltv_ns">7.26.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2000</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006155000 +0000" stop="20261006161500 +0000" channel="CIN">
+    <title lang="en">Forensic Files</title>
+    <sub-title lang="en">Toxic Environment</sub-title>
+    <desc lang="en">When a 23-year-old Marine collapses and dies, doctors initially believe a heart attack is to blame. But when arsenic is found in some of his organs, prosecutors charge his wife with murder.</desc>
+    <episode-num system="onscreen">S03E10</episode-num>
+    <episode-num system="xmltv_ns">2.9.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2022</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006161500 +0000" stop="20261006164000 +0000" channel="CIN">
+    <title lang="en">Forensic Files</title>
+    <sub-title lang="en">Til Death Do Us Part</sub-title>
+    <desc lang="en">Robert Curley was diagnosed with Guillain-Barre syndrome when he first came to the hospital with leg pains. Doctors became suspicious during Robert's second admission and tested him for poisoning.</desc>
+    <episode-num system="onscreen">S04E06</episode-num>
+    <episode-num system="xmltv_ns">3.5.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>1998</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006164000 +0000" stop="20261006173500 +0000" channel="CIN">
+    <title lang="en">Homicide Hunter</title>
+    <sub-title lang="en">Verne Cave / Donald Corbett</sub-title>
+    <desc lang="en">Kenda encounters one of the most horrendous crime scenes of his career. Later, a soldier dies from a bullet to the neck in an apparent suicide - but a powder burn spins the case in a new direction.</desc>
+    <episode-num system="onscreen">S04E03</episode-num>
+    <episode-num system="xmltv_ns">3.2.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2015</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006173500 +0000" stop="20261006183000 +0000" channel="CIN">
+    <title lang="en">Bloodline Detectives</title>
+    <sub-title lang="en">The Last Valentine</sub-title>
+    <desc lang="en">The 1985 murder of a college student went cold until advanced genetic genealogy matched crime scene DNA to a killer who died in a murder-suicide shortly after the attack.</desc>
+    <episode-num system="onscreen">S06E08</episode-num>
+    <episode-num system="xmltv_ns">5.7.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2025</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003115900 +0000" stop="20261003160000 +0000" channel="CMT">
     <title lang="en">All Rounder</title>
     <sub-title lang="en">Saturday 3 October 2026, 21:59.</sub-title>
@@ -10985,7 +11372,6 @@
     <title lang="en">Late Night with Seth Meyers</title>
     <sub-title lang="en">Rachel Maddow, Eric Idle, Danny Meyer</sub-title>
     <desc lang="en">Emmy Award-nominated Late Night with Seth Meyers, hosted by award-winning writer and performer Seth Meyers, is home to incisive humor, topical jokes and A-list celebrity guests.</desc>
-    <episode-num system="onscreen">E06</episode-num>
     <category lang="en">Entertainment</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -11968,10 +12354,49 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="CNB">
+    <title lang="en">Squawk On The Street</title>
+    <desc lang="en">Headquartered live on the floor of the New York Stock Exchange (NYSE) where the biggest companies in the world trade, Squawk On The Street tracks the action of every stock and gives you access to the treasury.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="CNB">
+    <title lang="en">Halftime Report</title>
+    <desc lang="en">"Halftime Report" is on the front lines of CNBC's market coverage. Host CNBCs Scott Wapner and the Street's top investors get to the heart of the action as it's happening and help set the agenda for the rest of the day</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="CNB">
+    <title lang="en">Halftime Report</title>
+    <desc lang="en">"Halftime Report" is on the front lines of CNBC's market coverage. Host CNBCs Scott Wapner and the Street's top investors get to the heart of the action as it's happening and help set the agenda for the rest of the day</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="CNB">
+    <title lang="en">The Exchange</title>
+    <desc lang="en">CNBCs The Exchange is the newsroom-based program for todays investor. The show focuses on in-depth reporting around the most important and interesting stories to todays markets and investors. CNBCs deep roster of skilled reporters.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="CNB">
+    <title lang="en">The Exchange</title>
+    <desc lang="en">CNBCs The Exchange is the newsroom-based program for todays Investor. The show focuses on in-depth reporting around the most important and interesting stories to todays markets and investors. CNBCs deep roster of skilled reporters.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="CNN">
     <title lang="en">The Amanpour Hour</title>
     <desc lang="en">Christiane Amanpour, CNN's chief international anchor, brings valuable insight to the biggest global and domestic news stories of the week.</desc>
-    <episode-num system="onscreen">E40</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -11979,7 +12404,6 @@
   <programme start="20261003160000 +0000" stop="20261003163000 +0000" channel="CNN">
     <title lang="en">World Sport</title>
     <desc lang="en">Daily sports show features major stories and issues making news in the world of sports.</desc>
-    <episode-num system="onscreen">E601</episode-num>
     <category lang="en">Sport</category>
     <date>2026</date>
     <live/>
@@ -11988,7 +12412,6 @@
   <programme start="20261003163000 +0000" stop="20261003164500 +0000" channel="CNN">
     <title lang="en">Marketplace Middle East</title>
     <desc lang="en">The war with Iran has sent shockwaves through one of the Middle Easts most important industries: tourism.</desc>
-    <episode-num system="onscreen">E57</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -11996,7 +12419,6 @@
   <programme start="20261003164500 +0000" stop="20261003170000 +0000" channel="CNN">
     <title lang="en">Marketplace Africa</title>
     <desc lang="en">New technology is being deployed in Namibia as a means of managing and conserving water.</desc>
-    <episode-num system="onscreen">E603</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -12865,6 +13287,35 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006164500 +0000" channel="CNN">
+    <title lang="en">One World</title>
+    <desc lang="en">Zain Asher and Bianna Golodryga cover the top global and national issues of the day.</desc>
+    <episode-num system="onscreen">S01E199</episode-num>
+    <episode-num system="xmltv_ns">0.198.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006170000 +0000" channel="CNN">
+    <title lang="en">African Voices</title>
+    <sub-title lang="en">Mai Atafo</sub-title>
+    <desc lang="en">Nigerian luxury fashion designer Mai Atafo is the go-to designer for many of the country's celebrities and politicians.</desc>
+    <episode-num system="onscreen">E34</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="CNN">
+    <title lang="en">Amanpour</title>
+    <desc lang="en">Christiane Amanpour provides her powerful interview skills and provocative analysis on global stories that matter to you.</desc>
+    <episode-num system="onscreen">S01E158</episode-num>
+    <episode-num system="xmltv_ns">0.157.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003150500 +0000" stop="20261003160000 +0000" channel="DID">
     <title lang="en">A Body In The Basement</title>
     <sub-title lang="en">Disappearing Act</sub-title>
@@ -13675,6 +14126,36 @@
     <date>2025</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006154000 +0000" stop="20261006163000 +0000" channel="DID">
+    <title lang="en">My Family's Deadly Secret</title>
+    <sub-title lang="en">Bloodland</sub-title>
+    <desc lang="en">On Valentine's Day, 2004, a family vanishes from their home in Vaughan, Mississippi. Michael Hargon, his wife Rebecca and their four-year-old son James Patrick are nowhere to be seen.</desc>
+    <episode-num system="onscreen">S01E02</episode-num>
+    <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2020</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006172000 +0000" channel="DID">
+    <title lang="en">Scorned: Love Kills</title>
+    <sub-title lang="en">The Virgin and the Bachelorette Party</sub-title>
+    <desc lang="en">Rebecca has hooked shy, wealthy software engineer Bruce. But a tawdry affair with a sultry stripper leads to cold-blooded murder.</desc>
+    <episode-num system="onscreen">S04E06</episode-num>
+    <episode-num system="xmltv_ns">3.5.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2014</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006181000 +0000" channel="DID">
+    <title lang="en">The Curious Case Of Natalia Grace</title>
+    <sub-title lang="en">The Hell Loop</sub-title>
+    <desc lang="en">Natalias moved in with the DePauls, but Cynthia and Antwon are still keeping her on a tight leash from afar. Having Natalia around is really putting the boot in to Nicole and Vinces relationship, driving a massive wedge between them.</desc>
+    <episode-num system="onscreen">S03E03</episode-num>
+    <episode-num system="xmltv_ns">2.2.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2025</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003150500 +0000" stop="20261003160000 +0000" channel="DIS">
     <title lang="en">Expedition Files</title>
     <sub-title lang="en">Who Done It?</sub-title>
@@ -14413,6 +14894,36 @@
     <episode-num system="xmltv_ns">2.1.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2020</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006154000 +0000" stop="20261006163000 +0000" channel="DIS">
+    <title lang="en">Expedition Unknown: Hunt For Extraterrestrials</title>
+    <sub-title lang="en">Ancient Visitors</sub-title>
+    <desc lang="en">Josh Gates and James Fox discuss whether extraterrestrial helped build Easter Island. Plus, are there any clues to real UFO encounters in famous works of art?</desc>
+    <episode-num system="onscreen">S01E02</episode-num>
+    <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2017</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006172000 +0000" channel="DIS">
+    <title lang="en">Expedition Files</title>
+    <sub-title lang="en">Larger Than Life</sub-title>
+    <desc lang="en">Josh investigates pirate Henry Every's $400m heist, the deadly coup against Ramesses III, and evidence that the legendary Amazon warriors were real.</desc>
+    <episode-num system="onscreen">S02E17</episode-num>
+    <episode-num system="xmltv_ns">1.16.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2025</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006181000 +0000" channel="DIS">
+    <title lang="en">Secrets Of The Underground</title>
+    <sub-title lang="en">Capone's Escape Tunnels</sub-title>
+    <desc lang="en">Rob Nelson investigates rumors of a secret, underground escape route used by the infamous gangster Al Capone in Louisville, KY. Also, the Mima mounds in Washington State are explored.</desc>
+    <episode-num system="onscreen">S01E01</episode-num>
+    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2017</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003150500 +0000" stop="20261003160000 +0000" channel="DIT">
@@ -15305,6 +15816,26 @@
     <date>2014</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006152000 +0000" stop="20261006154500 +0000" channel="DIT">
+    <title lang="en">Epic Drives</title>
+    <sub-title lang="en">Badder Than Bigfoot</sub-title>
+    <desc lang="en">Oregon's lush forests and laid-back cities shudder in the roar of quad exhausts when host Arthur St. Antoine arrives with the baddest Benz of them all: the new $300,000, 622-horsepower AMG SLS Black Series.</desc>
+    <episode-num system="onscreen">S02E08</episode-num>
+    <episode-num system="xmltv_ns">1.7.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2014</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006154500 +0000" stop="20261006181000 +0000" channel="DIT">
+    <title lang="en">Street Outlaws: America's List</title>
+    <sub-title lang="en">Lizzy In A Tizzy</sub-title>
+    <desc lang="en">Lizzy spends the whole night thrashing to get her car to the starting line. Meanwhile, Shawn must ask for time to get his car running.</desc>
+    <episode-num system="onscreen">S01E25</episode-num>
+    <episode-num system="xmltv_ns">0.24.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2021</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003144000 +0000" stop="20261003164437 +0000" channel="DPS">
     <title lang="en">Ken Burns: Baseball</title>
     <sub-title lang="en">Top Of The Tenth</sub-title>
@@ -15680,6 +16211,14 @@
     <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2014</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006183000 +0000" channel="DPS">
+    <title lang="en">I'm Carl Lewis!</title>
+    <desc lang="en">I'M CARL LEWIS! unpacks the extraordinary and often misunderstood life of nine-time Olympic gold medalist Carl Lewis - one of track and field's most dominant yet polarizing figures.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2025</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003150500 +0000" stop="20261003153000 +0000" channel="DRM">
@@ -17392,6 +17931,56 @@
     <date>2016</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="DRM">
+    <title lang="en">The Adventures Of Puss In Boots</title>
+    <sub-title lang="en">Before They Hatch</sub-title>
+    <desc lang="en">Orphan Esme's imaginary friend Sally turns out to be a very real gargoyle whose lost eggs must be recovered before her hatchlings endanger the town.</desc>
+    <episode-num system="onscreen">S05E06</episode-num>
+    <episode-num system="xmltv_ns">4.5.0/1</episode-num>
+    <category lang="en">Kids and Family</category>
+    <date>2016</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="DRM">
+    <title lang="en">Curses!</title>
+    <sub-title lang="en">The Olmec Babies</sub-title>
+    <desc lang="en">When three fertility statues come to life, its up to Russ, Pandora, and Sky to reunite them with their mother on display at the Paxton Museum.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">Kids and Family</category>
+    <date>2023</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="DRM">
+    <title lang="en">Curses!</title>
+    <sub-title lang="en">The Scryer Bowl</sub-title>
+    <desc lang="en">The Vanderhouvens discover a possible way to contact Alex. But chaos ensues-and Stanley gets caught in the center of it.</desc>
+    <episode-num system="onscreen">S01E05</episode-num>
+    <episode-num system="xmltv_ns">0.4.0/1</episode-num>
+    <category lang="en">Kids and Family</category>
+    <date>2023</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="DRM">
+    <title lang="en">Curses!</title>
+    <sub-title lang="en">The Japanese Painting</sub-title>
+    <desc lang="en">Russ, Sky, Stanley, and Larry navigate a new crisis after Pandora is sucked into a work of art and surrounded by sinister spirits.</desc>
+    <episode-num system="onscreen">S01E06</episode-num>
+    <episode-num system="xmltv_ns">0.5.0/1</episode-num>
+    <category lang="en">Kids and Family</category>
+    <date>2023</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="DRM">
+    <title lang="en">Turbo FAST</title>
+    <sub-title lang="en">Bumperdome / Broaches</sub-title>
+    <desc lang="en">Following a close call that nearly ends in an accident, Chet ups the adrenaline and takes on a dangerous pinball race; the taco stand comes under threat and Turbo must save it from a group of roaches who navigate the sewers by surfing.</desc>
+    <episode-num system="onscreen">S01E03</episode-num>
+    <episode-num system="xmltv_ns">0.2.0/1</episode-num>
+    <category lang="en">Kids and Family</category>
+    <date>2014</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003143000 +0000" stop="20261003151500 +0000" channel="DTA">
     <title lang="en">The Dead Files</title>
     <sub-title lang="en">Innocence Lost</sub-title>
@@ -17499,7 +18088,7 @@
     <episode-num system="onscreen">S01E06</episode-num>
     <episode-num system="xmltv_ns">0.5.0/1</episode-num>
     <category lang="en">Entertainment</category>
-    <date>2025</date>
+    <date>2026</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261004025500 +0000" stop="20261004035000 +0000" channel="DTA">
@@ -17545,7 +18134,7 @@
   <programme start="20261004063500 +0000" stop="20261004073500 +0000" channel="DTA">
     <title lang="en">1000-Lb Sisters</title>
     <sub-title lang="en">Another BBQ Bites the Dust</sub-title>
-    <desc lang="en">While the older siblings try to mend fences, Tammy is less forgiving. Tammy and Andrea do a double date with Amy and Brian, but Brian makes it awkward.</desc>
+    <desc lang="en">While the older siblings try to mend fences, Tammy is less forgiving. Tammy and Andrea do a double date with Amy and Brian. Amy makes a big decision.</desc>
     <episode-num system="onscreen">S07E04</episode-num>
     <episode-num system="xmltv_ns">6.3.0/1</episode-num>
     <category lang="en">Entertainment</category>
@@ -17615,7 +18204,7 @@
   <programme start="20261004140000 +0000" stop="20261004145000 +0000" channel="DTA">
     <title lang="en">1000-Lb Sisters</title>
     <sub-title lang="en">Another BBQ Bites the Dust</sub-title>
-    <desc lang="en">While the older siblings try to mend fences, Tammy is less forgiving. Tammy and Andrea do a double date with Amy and Brian, but Brian makes it awkward.</desc>
+    <desc lang="en">While the older siblings try to mend fences, Tammy is less forgiving. Tammy and Andrea do a double date with Amy and Brian. Amy makes a big decision.</desc>
     <episode-num system="onscreen">S07E04</episode-num>
     <episode-num system="xmltv_ns">6.3.0/1</episode-num>
     <category lang="en">Entertainment</category>
@@ -17795,7 +18384,7 @@
   <programme start="20261005093000 +0000" stop="20261005103000 +0000" channel="DTA">
     <title lang="en">1000-Lb Sisters</title>
     <sub-title lang="en">Amy Was Afraid, She Was Petrified</sub-title>
-    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Chris and Brittany get some answers on their first steps toward parenthood. Tammy and Andrea's relationship goes under the microscope while in therapy.</desc>
+    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Tammy and Andrea's relationship goes under the microscope at therapy.</desc>
     <episode-num system="onscreen">S07E05</episode-num>
     <episode-num system="xmltv_ns">6.4.0/1</episode-num>
     <category lang="en">Entertainment</category>
@@ -17865,7 +18454,7 @@
   <programme start="20261005154000 +0000" stop="20261005163000 +0000" channel="DTA">
     <title lang="en">1000-Lb Sisters</title>
     <sub-title lang="en">Amy Was Afraid, She Was Petrified</sub-title>
-    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Chris and Brittany get some answers on their first steps toward parenthood. Tammy and Andrea's relationship goes under the microscope while in therapy.</desc>
+    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Tammy and Andrea's relationship goes under the microscope at therapy.</desc>
     <episode-num system="onscreen">S07E05</episode-num>
     <episode-num system="xmltv_ns">6.4.0/1</episode-num>
     <category lang="en">Entertainment</category>
@@ -17964,10 +18553,10 @@
   </programme>
   <programme start="20261006010000 +0000" stop="20261006025500 +0000" channel="DTA">
     <title lang="en">My 600-Lb Life: Where Are They Now?</title>
-    <sub-title lang="en">John And Lonnie</sub-title>
+    <sub-title lang="en">John and Lonnie</sub-title>
     <desc lang="en">After a year of forced isolation due to COVID-19, brothers John and Lonnie return to see Dr. Now with a staggering collective weight loss that puts them in rare company as some of his most successful patients ever.</desc>
-    <episode-num system="onscreen">S06E12</episode-num>
-    <episode-num system="xmltv_ns">5.11.0/1</episode-num>
+    <episode-num system="onscreen">S08E01</episode-num>
+    <episode-num system="xmltv_ns">7.0.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2020</date>
     <rating system="AUS"><value>M</value></rating>
@@ -17995,7 +18584,7 @@
   <programme start="20261006044500 +0000" stop="20261006054000 +0000" channel="DTA">
     <title lang="en">1000-Lb Sisters</title>
     <sub-title lang="en">Amy Was Afraid, She Was Petrified</sub-title>
-    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Chris and Brittany get some answers on their first steps toward parenthood. Tammy and Andrea's relationship goes under the microscope while in therapy.</desc>
+    <desc lang="en">Amy finally steps into the recording studio, but life throws her a curveball. Tammy and Andrea's relationship goes under the microscope at therapy.</desc>
     <episode-num system="onscreen">S07E05</episode-num>
     <episode-num system="xmltv_ns">6.4.0/1</episode-num>
     <category lang="en">Entertainment</category>
@@ -18101,6 +18690,26 @@
     <category lang="en">Entertainment</category>
     <date>2025</date>
     <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006172000 +0000" channel="DTA">
+    <title lang="en">The Dead Files</title>
+    <sub-title lang="en">Darkness Rises</sub-title>
+    <desc lang="en">Steve and Amy investigate a frightened woman's claims that decades of paranormal activity in her Tonawanda, New York, home have now become dangerously violent.</desc>
+    <episode-num system="onscreen">S11E01</episode-num>
+    <episode-num system="xmltv_ns">10.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006181000 +0000" channel="DTA">
+    <title lang="en">Say Yes To The Dress: Lancashire</title>
+    <sub-title lang="en">A Snip And A Tuck</sub-title>
+    <desc lang="en">Kirsty wants to wear trousers on her big day, so Gok gets creative with his designs. Celise is worried her Mormon parents won't approve of her dress.</desc>
+    <episode-num system="onscreen">S02E14</episode-num>
+    <episode-num system="xmltv_ns">1.13.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
+    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003133000 +0000" stop="20261003160000 +0000" channel="ES2">
     <title lang="en">E60</title>
@@ -18492,6 +19101,14 @@
     <title lang="en">Get Up</title>
     <sub-title lang="en">Wednesday 7 October 2026</sub-title>
     <desc lang="en">Host Mike Greenberg brings fans up to speed every morning and a rotating panel of guests deliver expert analysis on all the latest from the world of sports.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006180000 +0000" channel="ES2">
+    <title lang="en">First Take</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Stephen A. Smith debates the hottest stories in sports with a rotating roster of analysts, insiders and celebrity guests.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -18952,6 +19569,15 @@
     <title lang="en">First Take</title>
     <sub-title lang="en">Wednesday 7 October 2026</sub-title>
     <desc lang="en">Stephen A. Smith debates the hottest stories in sports with a rotating roster of analysts, insiders and celebrity guests.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006180000 +0000" channel="ESP">
+    <title lang="en">The Pat McAfee Show</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Pat McAfee brings his humor and candor to the "progrum," where he and his cast of characters unpack the day's top stories and interview the biggest names in sports.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <live/>
@@ -19803,6 +20429,46 @@
     <desc lang="en">Harvey's former mentor (Gary Cole) turns to his protgee when his office comes under investigation. Elsewhere, Mike and Louis try to settle a mogul's estate in the midst of family clashes.</desc>
     <episode-num system="onscreen">S01E11</episode-num>
     <episode-num system="xmltv_ns">0.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2011</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006161500 +0000" channel="F1S">
+    <title lang="en">The Way Home</title>
+    <sub-title lang="en">Show Me The Way</sub-title>
+    <desc lang="en">Three generations of strong and independent women living together in the small farm town of Port Haven embark on an enlightening and surprising journey none of them could have imagined.</desc>
+    <episode-num system="onscreen">S04E01</episode-num>
+    <episode-num system="xmltv_ns">3.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2026</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006161500 +0000" stop="20261006170000 +0000" channel="F1S">
+    <title lang="en">Found</title>
+    <sub-title lang="en">Missing While Seeking Asylum</sub-title>
+    <desc lang="en">The search for missing undocumented children sheds light on secrets from decades ago as M&amp;A uncovers clues in their disappearances.</desc>
+    <episode-num system="onscreen">S02E15</episode-num>
+    <episode-num system="xmltv_ns">1.14.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2024</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006174500 +0000" channel="F1S">
+    <title lang="en">Hawaii Five-0</title>
+    <sub-title lang="en">Defender (Kupale)</sub-title>
+    <desc lang="en">Five-0 investigates the murder of a shipping businessman who was supposed to be participating in a historical Hawaiian battle reenactment.</desc>
+    <episode-num system="onscreen">S02E17</episode-num>
+    <episode-num system="xmltv_ns">1.16.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2011</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006183000 +0000" channel="F1S">
+    <title lang="en">Hawaii Five-0</title>
+    <sub-title lang="en">Radio (Lekio)</sub-title>
+    <desc lang="en">A retired New York police officer helps the team figure out who killed one of his close friends, a pirate radio disc jockey.</desc>
+    <episode-num system="onscreen">S02E18</episode-num>
+    <episode-num system="xmltv_ns">1.17.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2011</date>
     <rating system="AUS"><value>M</value></rating>
@@ -20662,6 +21328,22 @@
     <title lang="en">AFLW</title>
     <sub-title lang="en">Brisbane v Gold Coast</sub-title>
     <desc lang="en">Brisbane and Gold Coast meet in a big QClash at Brighton Homes Arena as the Queensland rivals battle for local bragging rights.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006173000 +0000" channel="FAF">
+    <title lang="en">AFLW</title>
+    <sub-title lang="en">Port Adelaide v Adelaide</sub-title>
+    <desc lang="en">Port Adelaide hosts cross-town rival Adelaide in a blockbuster Saturday night Showdown at Alberton Oval.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="FAF">
+    <title lang="en">Trading Day</title>
+    <sub-title lang="en">Day 2</sub-title>
+    <desc lang="en">Keep up to date with all the latest AFL player movement on Fox Footy.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -22721,6 +23403,76 @@
     <category lang="en">Entertainment</category>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006152500 +0000" stop="20261006153000 +0000" channel="FHT">
+    <title lang="en">Top Models</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 02:25.</sub-title>
+    <desc lang="en">Meet this seasons modeling stars and those who are on their way to international fashion stardom. Most in-demand girls from around the globe and their fascinating stories!</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006155500 +0000" channel="FHT">
+    <title lang="en">Top Models</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 02:30.</sub-title>
+    <desc lang="en">Meet this seasons modeling stars and those who are on their way to international fashion stardom. Most in-demand girls from around the globe and their fascinating stories!</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006155500 +0000" stop="20261006160000 +0000" channel="FHT">
+    <title lang="en">Top Models</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 02:55.</sub-title>
+    <desc lang="en">Meet this seasons modeling stars and those who are on their way to international fashion stardom. Most in-demand girls from around the globe and their fascinating stories!</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006162500 +0000" channel="FHT">
+    <title lang="en">Lingerie</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:00.</sub-title>
+    <desc lang="en">Dont miss the latest trends in the most sensual pieces of fashion, were talking about the latest lingerie collections presented on the world podiums! Sizzling hot looks from top lingerie designers.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006162500 +0000" stop="20261006163000 +0000" channel="FHT">
+    <title lang="en">Lingerie</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:25.</sub-title>
+    <desc lang="en">Dont miss the latest trends in the most sensual pieces of fashion, were talking about the latest lingerie collections presented on the world podiums! Sizzling hot looks from top lingerie designers.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006165500 +0000" channel="FHT">
+    <title lang="en">Lingerie</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:30.</sub-title>
+    <desc lang="en">Dont miss the latest trends in the most sensual pieces of fashion, were talking about the latest lingerie collections presented on the world podiums! Sizzling hot looks from top lingerie designers.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006170000 +0000" channel="FHT">
+    <title lang="en">Lingerie</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:55.</sub-title>
+    <desc lang="en">Dont miss the latest trends in the most sensual pieces of fashion, were talking about the latest lingerie collections presented on the world podiums! Sizzling hot looks from top lingerie designers.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006172500 +0000" channel="FHT">
+    <title lang="en">Swimwear</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:00.</sub-title>
+    <desc lang="en">Everyone needs a great swimsuit in their wardrobe, better to have more than one. Enjoy trendsetting collections to find a reliable, well-fitted, and stylish option for your poolside excellence.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006172500 +0000" stop="20261006173000 +0000" channel="FHT">
+    <title lang="en">Swimwear</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:25.</sub-title>
+    <desc lang="en">Everyone needs a great swimsuit in their wardrobe, better to have more than one. Enjoy trendsetting collections to find a reliable, well-fitted, and stylish option for your poolside excellence.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006175500 +0000" channel="FHT">
+    <title lang="en">Swimwear</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:30.</sub-title>
+    <desc lang="en">Everyone needs a great swimsuit in their wardrobe, better to have more than one. Enjoy trendsetting collections to find a reliable, well-fitted, and stylish option for your poolside excellence.</desc>
+    <category lang="en">Entertainment</category>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
   <programme start="20261003140800 +0000" stop="20261003150439 +0000" channel="FKC">
     <title lang="en">Mission: Impossible</title>
     <sub-title lang="en">Incarnate</sub-title>
@@ -23702,6 +24454,34 @@
     <date>1965</date>
     <rating system="AUS"><value>G</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="FKC">
+    <title lang="en">I Dream Of Jeannie</title>
+    <sub-title lang="en">Meet My Master's Mother</sub-title>
+    <desc lang="en">Tony's mother comes to visit and she is determined to marry him off much to Jeannie's annoyance.</desc>
+    <episode-num system="onscreen">S03E09</episode-num>
+    <episode-num system="xmltv_ns">2.8.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1967</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="FKC">
+    <title lang="en">Hogan's Heroes</title>
+    <sub-title lang="en">Klink vs. The Gonculator</sub-title>
+    <desc lang="en">Hogan leads Klink to believe a rabbit trap is a secret electronic device in order for Klink to bring an electronics expert who wants to defect to camp.</desc>
+    <episode-num system="onscreen">S04E02</episode-num>
+    <episode-num system="xmltv_ns">3.1.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1968</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006184000 +0000" channel="FKC">
+    <title lang="en">King Rat</title>
+    <desc lang="en">A fast-taking wheeler-dealer corporal in a Malaysian POW camp during WWII uses bribery and larceny to take de facto control of the camp from his senior officers.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>1965</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="FNC">
     <title lang="en">Saturday in America</title>
     <desc lang="en">A spotlight on breaking news in America features insight from politicians, weekly newsmakers and reporters from around the country.</desc>
@@ -24271,6 +25051,22 @@
     <title lang="en">The Faulkner Focus</title>
     <desc lang="en">Emmy-winning journalist Harris Faulkner provides the latest news with insightful analysis and interviews with top newsmakers.</desc>
     <category lang="en">News and Documentaries</category>
+    <date>2022</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="FNC">
+    <title lang="en">Outnumbered</title>
+    <desc lang="en">"Outnumbered" features four female panelists and a rotating male, discussing top news, pop culture, and relationship issues with insight and analysis.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2022</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="FNC">
+    <title lang="en">America Reports</title>
+    <desc lang="en">A look at the latest news and headlines with Sandra Smith and John Roberts.</desc>
+    <category lang="en">Sport</category>
     <date>2022</date>
     <live/>
     <rating system="AUS"><value>NC</value></rating>
@@ -25164,6 +25960,26 @@
     <category lang="en">Entertainment</category>
     <date>2018</date>
     <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006160500 +0000" stop="20261006170500 +0000" channel="FOD">
+    <title lang="en">Masterchef UK</title>
+    <sub-title lang="en">Episode 11</sub-title>
+    <desc lang="en">Amateur cooks duel it out for the right to be called the MasterChef UK Champion.</desc>
+    <episode-num system="onscreen">S21E11</episode-num>
+    <episode-num system="xmltv_ns">20.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2025</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006170500 +0000" stop="20261006181000 +0000" channel="FOD">
+    <title lang="en">The Great British Bake Off</title>
+    <sub-title lang="en">Cake</sub-title>
+    <desc lang="en">13 contestants battle it out to be named Britain's best amateur baker, facing tasks from judges Mary Berry and Paul Hollywood. They must first make a sandwich cake, before having to follow Mary's recipe for angel food cake.</desc>
+    <episode-num system="onscreen">S04E01</episode-num>
+    <episode-num system="xmltv_ns">3.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2013</date>
+    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003144500 +0000" stop="20261003150958 +0000" channel="FOX">
     <title lang="en">Hardcore Pawn</title>
@@ -26135,6 +26951,36 @@
     <date>2018</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006155000 +0000" stop="20261006163500 +0000" channel="FOX">
+    <title lang="en">Taskmaster</title>
+    <sub-title lang="en">The Mean Bean</sub-title>
+    <desc lang="en">Taskmaster Greg Davies returns with sidekick Alex Horne as five comics line up to attempt his mostly meaningless challenges. Today: clothes, construction and caravans.</desc>
+    <episode-num system="onscreen">S07E01</episode-num>
+    <episode-num system="xmltv_ns">6.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2018</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006163500 +0000" stop="20261006172500 +0000" channel="FOX">
+    <title lang="en">World's Most Dangerous Roads</title>
+    <sub-title lang="en">Bulgaria</sub-title>
+    <desc lang="en">Olga Koch and Thaniya Moore, friends from the comedy circuit are heading to Bulgaria. Their journey takes them across two epic mountain ranges.</desc>
+    <episode-num system="onscreen">S05E08</episode-num>
+    <episode-num system="xmltv_ns">4.7.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2024</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006172500 +0000" stop="20261006181000 +0000" channel="FOX">
+    <title lang="en">All American: Homecoming</title>
+    <sub-title lang="en">Ready Or Not</sub-title>
+    <desc lang="en">Simone wants to bring attention to issues at Bringston but things don't go as expected, and it puts Damon in a difficult position. Marcus seeks advice from an unlikely source.</desc>
+    <episode-num system="onscreen">S03E01</episode-num>
+    <episode-num system="xmltv_ns">2.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2024</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003082000 +0000" stop="20261003163000 +0000" channel="FS1">
     <title lang="en">ODI</title>
     <sub-title lang="en">India v West Indies G3</sub-title>
@@ -26786,6 +27632,14 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="FS1">
+    <title lang="en">Ashes Classic</title>
+    <sub-title lang="en">2002/03 1st Test</sub-title>
+    <desc lang="en">A relentless bowling attack from Glenn McGrath and Jason Gillespie, a stunning MCG Test double century for Justin Langer, and finally, an Australian legend gets his "Perfect Day."</desc>
+    <category lang="en">Sport</category>
+    <date>2023</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003110000 +0000" stop="20261003160000 +0000" channel="FS3">
     <title lang="en">DP World Tour</title>
     <sub-title lang="en">Dunhil Links Championship Round 3</sub-title>
@@ -27247,6 +28101,14 @@
     <title lang="en">DP World Tour</title>
     <sub-title lang="en">China Open Final Round</sub-title>
     <desc lang="en">Final round action of the China Open, live from Shanghai Enhance Anting Golf Club.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006190000 +0000" channel="FS3">
+    <title lang="en">DP World Tour</title>
+    <sub-title lang="en">Turkish Open Final Round</sub-title>
+    <desc lang="en">Final round action of the Turkish Open, live from The National Golf Club.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -28363,6 +29225,46 @@
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="FSN">
+    <title lang="en">FOX SPORTS News</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The latest highlights, reaction and analysis of the biggest sport stories from Australia and around the world.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="FSN">
+    <title lang="en">FOX SPORTS News</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The latest highlights, reaction and analysis of the biggest sport stories from Australia and around the world.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="FSN">
+    <title lang="en">FOX SPORTS News</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The latest highlights, reaction and analysis of the biggest sport stories from Australia and around the world.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="FSN">
+    <title lang="en">FOX SPORTS News</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The latest highlights, reaction and analysis of the biggest sport stories from Australia and around the world.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="FSN">
+    <title lang="en">FOX SPORTS News</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">The latest highlights, reaction and analysis of the biggest sport stories from Australia and around the world.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003143000 +0000" stop="20261003153000 +0000" channel="FSP">
     <title lang="en">America's Cup</title>
     <sub-title lang="en">Preliminary Regatta Day 2</sub-title>
@@ -28858,6 +29760,14 @@
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006180000 +0000" channel="FSP">
+    <title lang="en">Formula 1</title>
+    <sub-title lang="en">Bahrain Race</sub-title>
+    <desc lang="en">F1 heads to Sepang for the unique Bahrain Grand Prix in Malaysia. Mercedes hope to build on crucial momentum, deploying a major upgrade package to fend off mounting pressure from Red Bull.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003140000 +0000" stop="20261003160000 +0000" channel="FSS">
     <title lang="en">World Grand Prix</title>
     <sub-title lang="en">Darts World Grand Prix</sub-title>
@@ -29253,6 +30163,14 @@
     <title lang="en">World Grand Prix</title>
     <sub-title lang="en">Finale</sub-title>
     <desc lang="en">Luke Littler leads a stacked field as darts' best compete for a share of the 750,000 prize pool.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006183000 +0000" channel="FSS">
+    <title lang="en">SailGP</title>
+    <sub-title lang="en">Geneva Day 1</sub-title>
+    <desc lang="en">SailGP heads to Geneva as teams rally to try and claw back the lead of the Bond's Flying Roos.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -29855,6 +30773,36 @@
     <episode-num system="xmltv_ns">0.2.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2013</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006153500 +0000" stop="20261006170500 +0000" channel="FSU">
+    <title lang="en">Vera</title>
+    <sub-title lang="en">Dark Road</sub-title>
+    <desc lang="en">Vera investigates the murder of a 56-year-old woman discovered by a young girl on the wild and desolate Northumberland moors.</desc>
+    <episode-num system="onscreen">S06E01</episode-num>
+    <episode-num system="xmltv_ns">5.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2016</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006170500 +0000" stop="20261006173500 +0000" channel="FSU">
+    <title lang="en">Mr. Bean</title>
+    <sub-title lang="en">Hair By Mr. Bean Of London</sub-title>
+    <desc lang="en">Normally Mr Bean hates the hairdresser's, but on this occasion he has a wonderful time. At the train station Mr Bean learns that it is dark inside a mail bag and Moscow is surprisingly far away.</desc>
+    <episode-num system="onscreen">S01E14</episode-num>
+    <episode-num system="xmltv_ns">0.13.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1995</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006173500 +0000" stop="20261006183000 +0000" channel="FSU">
+    <title lang="en">Marlow Murder Club</title>
+    <sub-title lang="en">Episode 4</sub-title>
+    <desc lang="en">Judith reveals her past, Malik questions her promotion, Daisy suspects husband Elliot, and a deadly triangle of secrets begins to unfold.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2024</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003153000 +0000" channel="FXW">
@@ -30947,6 +31895,41 @@
     <category lang="en">News and Documentaries</category>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="FXW">
+    <title lang="en">Across Australia</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 02:30.</sub-title>
+    <desc lang="en">The fast, trusted, and informative weather news you can rely on for tonight, tomorrow and the days ahead.</desc>
+    <category lang="en">News and Documentaries</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="FXW">
+    <title lang="en">Across Australia</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:00.</sub-title>
+    <desc lang="en">The fast, trusted, and informative weather news you can rely on for tonight, tomorrow and the days ahead.</desc>
+    <category lang="en">News and Documentaries</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="FXW">
+    <title lang="en">Across Australia</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:30.</sub-title>
+    <desc lang="en">The fast, trusted, and informative weather news you can rely on for tonight, tomorrow and the days ahead.</desc>
+    <category lang="en">News and Documentaries</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="FXW">
+    <title lang="en">Across Australia</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:00.</sub-title>
+    <desc lang="en">The fast, trusted, and informative weather news you can rely on for tonight, tomorrow and the days ahead.</desc>
+    <category lang="en">News and Documentaries</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="FXW">
+    <title lang="en">Across Australia</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:30.</sub-title>
+    <desc lang="en">The fast, trusted, and informative weather news you can rely on for tonight, tomorrow and the days ahead.</desc>
+    <category lang="en">News and Documentaries</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003140000 +0000" stop="20261003170000 +0000" channel="GBN">
     <title lang="en">Nana Akua</title>
     <sub-title lang="en">Sunday 4 October 2026</sub-title>
@@ -31363,10 +32346,20 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="GBN">
+    <title lang="en">Dewbs &amp; Co</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Plain-speaking, straight-talking - Michelle delivers her individual take on the day's news.</desc>
+    <episode-num system="onscreen">S01E872</episode-num>
+    <episode-num system="xmltv_ns">0.871.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003142400 +0000" stop="20261003161006 +0000" channel="GRR">
     <title lang="en">Dante's Peak</title>
     <desc lang="en">Without warning day becomes night, air turns to fire and the ground runs with molten terror. Pierce Brosnan and Linda Hamilton star in a spectacular volcano disaster movie with heart-pounding suspense.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1997</date>
     <rating system="AUS"><value>M</value></rating>
@@ -31374,7 +32367,6 @@
   <programme start="20261003161000 +0000" stop="20261003174512 +0000" channel="GRR">
     <title lang="en">Barbarella</title>
     <desc lang="en">In the far future, in a time of way out, psychedelic spaceships and free love. Space agent Barbarella is assigned stopping the evil Durand-Durand and saving humanity.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1968</date>
     <rating system="AUS"><value>M</value></rating>
@@ -31657,6 +32649,22 @@
     <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1992</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006152000 +0000" stop="20261006170000 +0000" channel="GRR">
+    <title lang="en">The 'Burbs</title>
+    <desc lang="en">Suburbanite Ray Peterson's plan for a peaceful vacation is disturbed by a creepy new family on the block in this outrageous suspense-comedy directed by Joe Dante.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>1989</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006185500 +0000" channel="GRR">
+    <title lang="en">Kindergarten Cop</title>
+    <desc lang="en">A tough cop is given his most difficult assignment: masquerade as a kindergarten teacher in order to find a drug dealer.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>1990</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003143000 +0000" stop="20261003153000 +0000" channel="HAL">
@@ -32388,6 +33396,36 @@
     <category lang="en">Entertainment</category>
     <date>2023</date>
     <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006163000 +0000" channel="HAL">
+    <title lang="en">Law &amp; Order: Criminal Intent</title>
+    <sub-title lang="en">Dead</sub-title>
+    <desc lang="en">When a mortician is found murdered in ritualistic fashion, Detectives Goren and Eames first suspect cultists until they investigate a suspicious crematorium.</desc>
+    <episode-num system="onscreen">S02E01</episode-num>
+    <episode-num system="xmltv_ns">1.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2002</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006173000 +0000" channel="HAL">
+    <title lang="en">Chicago Fire</title>
+    <sub-title lang="en">Natural Born Firefighter</sub-title>
+    <desc lang="en">While Mouch makes a remarkable save, a mystery man is spotlighted after he helps save his neighbour; Casey questions his future at the CFD.</desc>
+    <episode-num system="onscreen">S09E12</episode-num>
+    <episode-num system="xmltv_ns">8.11.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2020</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006183000 +0000" channel="HAL">
+    <title lang="en">Transplant</title>
+    <sub-title lang="en">Baggage</sub-title>
+    <desc lang="en">Bash treats a man with a rare medical condition; Mags gets a visit from her parents, and goes above and beyond for a pregnant woman with an undiagnosed condition.</desc>
+    <episode-num system="onscreen">S03E02</episode-num>
+    <episode-num system="xmltv_ns">2.1.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2022</date>
+    <rating system="AUS"><value>MA15+</value></rating>
   </programme>
   <programme start="20261003145000 +0000" stop="20261003151455 +0000" channel="HAR">
     <title lang="en">Seinfeld</title>
@@ -33939,6 +34977,76 @@
     <date>1992</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006151500 +0000" stop="20261006154000 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Old Man</sub-title>
+    <desc lang="en">Good Samaritans Jerry, George and Elaine volunteer to comfort and assist senior citizens in their homes. Guest stars Tobin Bell.</desc>
+    <episode-num system="onscreen">S04E18</episode-num>
+    <episode-num system="xmltv_ns">3.17.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1993</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006154000 +0000" stop="20261006160500 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Implant</sub-title>
+    <desc lang="en">Jerry is shocked when Elaine claims that his new girlfriend has implants. Worried she might be right, Jerry asks Elaine to investigate.</desc>
+    <episode-num system="onscreen">S04E19</episode-num>
+    <episode-num system="xmltv_ns">3.18.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006160500 +0000" stop="20261006163000 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Junior Mint</sub-title>
+    <desc lang="en">When an artist Elaine stopped dating because of his weight is admitted for surgery, Elaine asks Jerry to pose as her new boyfriend. However, his is now thin and her romantic interest is rekindled.</desc>
+    <episode-num system="onscreen">S04E20</episode-num>
+    <episode-num system="xmltv_ns">3.19.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006165500 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Smelly Car</sub-title>
+    <desc lang="en">A valet's body odour haunts Jerry and Elaine, George discovers some surprising news about Susan.</desc>
+    <episode-num system="onscreen">S04E21</episode-num>
+    <episode-num system="xmltv_ns">3.20.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006172000 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Handicap Spot</sub-title>
+    <desc lang="en">Jerry and George narrowly avoid a public stoning after George parks his father's car in a handicapped spot.</desc>
+    <episode-num system="onscreen">S04E22</episode-num>
+    <episode-num system="xmltv_ns">3.21.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006174500 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Pilot - Part 1</sub-title>
+    <desc lang="en">While Jerry and George await news of the future of their pilot, Kramer lobbies to play himself in the show.</desc>
+    <episode-num system="onscreen">S04E23</episode-num>
+    <episode-num system="xmltv_ns">3.22.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1993</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006181000 +0000" channel="HAR">
+    <title lang="en">Seinfeld</title>
+    <sub-title lang="en">The Pilot - Part 2</sub-title>
+    <desc lang="en">As everyone arrives to watch the completed pilot episode on TV, Kramer announces his success in curing constipation. Guest star: Teri Hatcher.</desc>
+    <episode-num system="onscreen">S04E24</episode-num>
+    <episode-num system="xmltv_ns">3.23.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003145000 +0000" stop="20261003151456 +0000" channel="HIT">
     <title lang="en">Brooklyn Nine-Nine</title>
     <sub-title lang="en">Hitchcock &amp; Scully</sub-title>
@@ -35457,6 +36565,56 @@
     <date>2012</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006155500 +0000" stop="20261006162500 +0000" channel="HIT">
+    <title lang="en">Mad About You</title>
+    <sub-title lang="en">The Caper</sub-title>
+    <desc lang="en">Paul's birthday party turns into an event worthy of a detective mystery when Maggie and Hal suspect someone from the Buchman party has stolen a prestigious painting from their adjacent apartment.</desc>
+    <episode-num system="onscreen">S06E17</episode-num>
+    <episode-num system="xmltv_ns">5.16.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1997</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006162500 +0000" stop="20261006165500 +0000" channel="HIT">
+    <title lang="en">Mad About You</title>
+    <sub-title lang="en">The Baby Video</sub-title>
+    <desc lang="en">Paul, Jamie and Ira decide to make a kid's video using the character of the Sandman to teach children about sleep. Meanwhile, Paul's surprised to learn his parents have been supporting a boy in Thailand.</desc>
+    <episode-num system="onscreen">S06E18</episode-num>
+    <episode-num system="xmltv_ns">5.17.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1997</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006172000 +0000" channel="HIT">
+    <title lang="en">Arrested Development</title>
+    <sub-title lang="en">Motherboy Xxx</sub-title>
+    <desc lang="en">Lucille employs George Michael to take Buster's place at the yearly mother son dinner while Michael and Gob try and track down the seal that ate Buster's hand.</desc>
+    <episode-num system="onscreen">S02E13</episode-num>
+    <episode-num system="xmltv_ns">1.12.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2005</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006174500 +0000" channel="HIT">
+    <title lang="en">Arrested Development</title>
+    <sub-title lang="en">The Immaculate Election</sub-title>
+    <desc lang="en">George Michael decides to run for class president at his girlfriend's request, but finds competing with his rival, Steve Holt, is easier said than done.</desc>
+    <episode-num system="onscreen">S02E14</episode-num>
+    <episode-num system="xmltv_ns">1.13.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2005</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006181000 +0000" channel="HIT">
+    <title lang="en">Arrested Development</title>
+    <sub-title lang="en">Sword Of Destiny</sub-title>
+    <desc lang="en">Gob tries to get back in the Magician's Alliance by buying a sword from a Chinese shop. He contracts Buster as the main magician and makes himself the assistant.</desc>
+    <episode-num system="onscreen">S02E15</episode-num>
+    <episode-num system="xmltv_ns">1.14.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2005</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003142500 +0000" stop="20261003151307 +0000" channel="HST">
     <title lang="en">Hidden Beneath The Cities</title>
     <sub-title lang="en">Crystal Cathedrals And Buried Bunkers</sub-title>
@@ -36151,6 +37309,36 @@
     <episode-num system="xmltv_ns">4.3.0/1</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2006</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006165000 +0000" channel="HST">
+    <title lang="en">History Of Warfare</title>
+    <sub-title lang="en">The North Atlantic Battles</sub-title>
+    <desc lang="en">This is the story of the convoys across the Atlantic and the Arctic, and the never ending fight against the German U-Boats which cost 80,000 lives. More than 70 percent of all U-Boat crews were killed.</desc>
+    <episode-num system="onscreen">S01E51</episode-num>
+    <episode-num system="xmltv_ns">0.50.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2009</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006165000 +0000" stop="20261006174000 +0000" channel="HST">
+    <title lang="en">Time Team</title>
+    <sub-title lang="en">King John's Lost Palace, Clipstone</sub-title>
+    <desc lang="en">Residents of Clipstone believe ruins in a field relate to tales of Robin Hood and Bad King John.</desc>
+    <episode-num system="onscreen">S19E11</episode-num>
+    <episode-num system="xmltv_ns">18.10.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2012</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006174000 +0000" stop="20261006183000 +0000" channel="HST">
+    <title lang="en">Hidden Beneath The Cities</title>
+    <sub-title lang="en">Tunnels And Tombs</sub-title>
+    <desc lang="en">Uncovers the extraordinary worlds that exist beneath major urban centres, from the tombs and wartime shelters of Naples to the manmade Royston Cave in Hertfordshire, England.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003145200 +0000" stop="20261003153459 +0000" channel="IOI">
@@ -36993,6 +38181,46 @@
     <date>2021</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006152500 +0000" stop="20261006161000 +0000" channel="IOI">
+    <title lang="en">CSI: Crime Scene Investigation</title>
+    <sub-title lang="en">Crash and Burn</sub-title>
+    <desc lang="en">The CSI team is called to investigate when a car crashes into a restaurant and when a family member dies from carbon monoxide poisoning.</desc>
+    <episode-num system="onscreen">S03E17</episode-num>
+    <episode-num system="xmltv_ns">2.16.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2003</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006161000 +0000" stop="20261006165500 +0000" channel="IOI">
+    <title lang="en">CSI: Crime Scene Investigation</title>
+    <sub-title lang="en">Precious Metal</sub-title>
+    <desc lang="en">The CSI team delve into the world of robotic sports in their investigation of a murder victim and Greg works the field helping Warrick and Grissom solve a missing person's case.</desc>
+    <episode-num system="onscreen">S03E18</episode-num>
+    <episode-num system="xmltv_ns">2.17.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2002</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006174000 +0000" channel="IOI">
+    <title lang="en">NCIS: Los Angeles</title>
+    <sub-title lang="en">Till Death Do Us Part</sub-title>
+    <desc lang="en">After months of planning, the NCIS family celebrates the wedding of Kensi and Deeks. Also, an old acquaintance, Anatoli Kirkin, pays Deeks a surprise visit on his wedding day and he isn't alone.</desc>
+    <episode-num system="onscreen">S10E17</episode-num>
+    <episode-num system="xmltv_ns">9.16.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2018</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006174000 +0000" stop="20261006182500 +0000" channel="IOI">
+    <title lang="en">CSI: New York</title>
+    <sub-title lang="en">Dancing With The Fishes</sub-title>
+    <desc lang="en">Mac, Stella and Lindsay try to discover why a young dancer was thrown from a tram. As Hawkes and Danny wonder if a man's obsession with getting his son into an elite preschool leads to his own death.</desc>
+    <episode-num system="onscreen">S02E05</episode-num>
+    <episode-num system="xmltv_ns">1.4.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2005</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
   <programme start="20261003140000 +0000" stop="20261003190000 +0000" channel="K01">
     <title lang="en">More exciting UHD sport is on its way</title>
     <desc lang="en">Coming Soon Fox Sports UHD1</desc>
@@ -37074,7 +38302,6 @@
   <programme start="20261003142000 +0000" stop="20261003161459 +0000" channel="K02">
     <title lang="en">Marry Me</title>
     <desc lang="en">A heartbroken pop star spontaneously weds a stranger from the audience while live on stage, but their sham marriage turns into a real romance.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2022</date>
     <rating system="AUS"><value>PG</value></rating>
@@ -37359,6 +38586,22 @@
     <date>2001</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006152500 +0000" stop="20261006173500 +0000" channel="K02">
+    <title lang="en">Bullet Train</title>
+    <desc lang="en">Brad Pitt stars as a hitman whose latest mission puts him on a bullet train travelling from Tokyo to Morioka, alongside deadly adversaries from around the world. The question is: who will make it off the train alive at the final station?</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2022</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006173500 +0000" stop="20261006194000 +0000" channel="K02">
+    <title lang="en">Oblivion</title>
+    <desc lang="en">A security repairman stationed on a desolate future Earth rescues a beautiful stranger from a downed spacecraft. Her arrival will trigger a chain of events that will leave man's fate in his hands.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2013</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003140000 +0000" stop="20261003190000 +0000" channel="K03">
     <title lang="en">More exciting UHD sport is on its way</title>
     <desc lang="en">Coming Soon Fox Sports UHD2</desc>
@@ -37615,6 +38858,12 @@
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261006100000 +0000" stop="20261006160000 +0000" channel="K05">
+    <title lang="en">More exciting UHD sport is on its way</title>
+    <desc lang="en">Coming Soon Fox Sports UHD4</desc>
+    <category lang="en">Sport</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006220000 +0000" channel="K05">
     <title lang="en">More exciting UHD sport is on its way</title>
     <desc lang="en">Coming Soon Fox Sports UHD4</desc>
     <category lang="en">Sport</category>
@@ -38578,6 +39827,36 @@
     <date>2022</date>
     <rating system="AUS"><value>G</value></rating>
   </programme>
+  <programme start="20261006155000 +0000" stop="20261006164000 +0000" channel="LHO">
+    <title lang="en">Grand Designs Australia</title>
+    <sub-title lang="en">Forest Lodge Eco</sub-title>
+    <desc lang="en">Chris's building a sustainable house in Sydney's Inner West. With thermal heating and underground water tank, it will feature a roof garden he hopes will be a benchmark for contemporary design.</desc>
+    <episode-num system="onscreen">S04E06</episode-num>
+    <episode-num system="xmltv_ns">3.5.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2013</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006164000 +0000" stop="20261006173000 +0000" channel="LHO">
+    <title lang="en">Grand Designs Australia</title>
+    <sub-title lang="en">Ilford Sheep Station</sub-title>
+    <desc lang="en">Meredith and Matthew are building a new family homestead on their sheep station, sitting on an exposed spot of land and with a design that is reworked several times.</desc>
+    <episode-num system="onscreen">S04E07</episode-num>
+    <episode-num system="xmltv_ns">3.6.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2013</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006181500 +0000" channel="LHO">
+    <title lang="en">Property Brothers: Forever Home</title>
+    <sub-title lang="en">Chris And Stephanie</sub-title>
+    <desc lang="en">Stephanie and Chris love the charm of their big city home, but after 15 years they need Jonathan and Drew to rework the main floor, kitchen and living room.</desc>
+    <episode-num system="onscreen">S02E11</episode-num>
+    <episode-num system="xmltv_ns">1.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
   <programme start="20261003142800 +0000" stop="20261003152431 +0000" channel="LST">
     <title lang="en">Gogglebox UK</title>
     <sub-title lang="en">Episode 7</sub-title>
@@ -39375,10 +40654,39 @@
     <date>2025</date>
     <rating system="AUS"><value>G</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006162500 +0000" channel="LST">
+    <title lang="en">Antiques Road Trip</title>
+    <sub-title lang="en">A Fishy Dishy And A Right Royal Mugging</sub-title>
+    <desc lang="en">In a road trip first, Phil is so impressed, he pays more than the ticket price!</desc>
+    <episode-num system="onscreen">S30E03</episode-num>
+    <episode-num system="xmltv_ns">29.2.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2025</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006162500 +0000" stop="20261006172500 +0000" channel="LST">
+    <title lang="en">Antiques Roadshow</title>
+    <sub-title lang="en">Unseen Treasures 1</sub-title>
+    <desc lang="en">Experts from leading auction houses tour towns across the UK, valuing treasured items brought in by members of the public.</desc>
+    <episode-num system="onscreen">S48E17</episode-num>
+    <episode-num system="xmltv_ns">47.16.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2025</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006172500 +0000" stop="20261006181000 +0000" channel="LST">
+    <title lang="en">Bargain Hunt</title>
+    <sub-title lang="en">Belfast 23</sub-title>
+    <desc lang="en">Today, Anita Manning and the teams are in Greyabbey, Northern Ireland, doing battle on the High Street. Reds and blues go head to head with experts Ben Cooper and Charles Hanson.</desc>
+    <episode-num system="onscreen">S49E11</episode-num>
+    <episode-num system="xmltv_ns">48.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2018</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
   <programme start="20261003143400 +0000" stop="20261003162002 +0000" channel="MO6">
     <title lang="en">The Black Phone</title>
     <desc lang="en">After being abducted and locked in a basement, a boy starts receiving calls on a disconnected phone from the killer's previous victims.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2021</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -39662,6 +40970,22 @@
     <category lang="en">Movie</category>
     <date>2023</date>
     <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006151500 +0000" stop="20261006170000 +0000" channel="MO6">
+    <title lang="en">Promised Land</title>
+    <desc lang="en">A salesman for a natural gas company experiences life-changing events after arriving in a small town, where his corporation wants to tap into the available resources.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2012</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006182500 +0000" channel="MO6">
+    <title lang="en">Hailey Dean Mysteries: Death On Duty</title>
+    <desc lang="en">A psychologist and former prosecutor helps a detective investigate the murder of a former Marine.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2019</date>
+    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="MSN">
     <title lang="en">Velshi</title>
@@ -40187,6 +41511,15 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006180000 +0000" channel="MSN">
+    <title lang="en">On the Line with Alicia Menendez</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Alicia Menendez leads insightful conversations that bring us to a deeper understanding of the days headlines, focusing on whats at stake for our country and our communities.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003120100 +0000" stop="20261003155800 +0000" channel="MTC">
     <title lang="en">Vintage Vibes</title>
     <sub-title lang="en">Saturday 3 October 2026, 22:01.</sub-title>
@@ -40333,14 +41666,12 @@
     <title lang="en">The Other Guys</title>
     <desc lang="en">Two mismatched New York City detectives finally get a chance to prove themselves like the officers they idolise. But when their investigation spirals into chaos, they must fix the mess or risk losing their place on the force.</desc>
     <category lang="en">Movie</category>
-    <category lang="en">Movie</category>
     <date>2010</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003154000 +0000" stop="20261003171432 +0000" channel="MVS">
     <title lang="en">Daddy's Home</title>
     <desc lang="en">After trying hard to get his stepchildren to love him and call him Dad, Brad's plans turn upside down when the biological father, Dusty Mayron, returns.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2015</date>
     <rating system="AUS"><value>PG</value></rating>
@@ -40671,6 +42002,22 @@
     <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2002</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006153700 +0000" stop="20261006160500 +0000" channel="MVS">
+    <title lang="en">Generations: The Evolution Of Spider-Man</title>
+    <desc lang="en">Three Peters. Two decades. One legendary hero. Swing through 20 years of Spider-Man history - from Tobey Maguire and Andrew Garfield to Tom Holland.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2026</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006160500 +0000" stop="20261006181800 +0000" channel="MVS">
+    <title lang="en">The Amazing Spider-Man</title>
+    <desc lang="en">After Peter Parker is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the machinations of a mysterious reptilian foe.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2012</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003135800 +0000" stop="20261003185900 +0000" channel="NAP">
@@ -41616,6 +42963,36 @@
     <date>2015</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006155100 +0000" stop="20261006164549 +0000" channel="NAT">
+    <title lang="en">Wonders of Nature</title>
+    <sub-title lang="en">Competition</sub-title>
+    <desc lang="en">Take a closer look at the rivalries that shape animal life in the Serengeti.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2021</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006173951 +0000" channel="NAT">
+    <title lang="en">Wonders of Nature</title>
+    <sub-title lang="en">On The Move</sub-title>
+    <desc lang="en">The episode explores what is at stake for animals that have no permanent home, relying entirely on the ground they stand on for survival.</desc>
+    <episode-num system="onscreen">S01E05</episode-num>
+    <episode-num system="xmltv_ns">0.4.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2021</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006174000 +0000" stop="20261006183404 +0000" channel="NAT">
+    <title lang="en">Nomads Of The Serengeti</title>
+    <sub-title lang="en">Short Grass Plains</sub-title>
+    <desc lang="en">Join the Great Migration's incredible circular journey, including its treacherous and drama-filled crossing of the Mara River.</desc>
+    <episode-num system="onscreen">S01E01</episode-num>
+    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2015</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003151000 +0000" channel="NHK">
     <title lang="en">NHK Newsline</title>
     <sub-title lang="en">Nhk Newsline</sub-title>
@@ -41674,7 +43051,6 @@
     <title lang="en">BOSAI: Science that Can Save Your Life</title>
     <sub-title lang="en">Landslides</sub-title>
     <desc lang="en">Each year in mountainous Japan, about 1,000 landslides including land slips, debris flows, and falling rocks occur, often causing major damage. We'll look at their causes and latest countermeasures.</desc>
-    <episode-num system="onscreen">E26</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2020</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -42817,6 +44193,7 @@
     <title lang="en">Dive In Tokyo</title>
     <sub-title lang="en">Shibuya - The Labyrinth Nestled Within a Valley</sub-title>
     <desc lang="en">Shibuya is nestled at the bottom of a valley shaped by rivers. Join us as we trace how its unique topography gave rise to a multi-level transportation hub and ever-evolving arts and culture.</desc>
+    <episode-num system="onscreen">E217</episode-num>
     <category lang="en">News and Documentaries</category>
     <date>2022</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -43398,6 +44775,61 @@
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="NHK">
+    <title lang="en">Journeys in Japan</title>
+    <sub-title lang="en">Enku's 120,000 Smiles over Gifu</sub-title>
+    <desc lang="en">Jonathan Senior explores Gifu Prefecture through the work of master carver-monk Enku. He visits places where Enku created some of his 120,000 statues and practiced mountain spiritual training.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2010</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="NHK">
+    <title lang="en">NHK Newsline</title>
+    <sub-title lang="en">Nhk Newsline</sub-title>
+    <desc lang="en">NHK NEWSLINE brings you up to date with the latest from Japan, Asia and around the world. Our team covers breaking news and major developments, with trusted anchors to tie it all together.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006164500 +0000" channel="NHK">
+    <title lang="en">Activate Your Japanese!</title>
+    <sub-title lang="en">An unexpected task</sub-title>
+    <desc lang="en">Learn how to make the most of your Japanese skills. Watch our drama that features useful communication strategies, our snappy videos about onomatopoeia, and our documentaries on "senpai" in Japan.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2022</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006165500 +0000" channel="NHK">
+    <title lang="en">Dig More Japan</title>
+    <sub-title lang="en">Autumnal Delights</sub-title>
+    <desc lang="en">Autumn is harvest season in Japan, and delicious delights abound. Dig a little deeper into this truly tasty time of year, meeting the people who make it happen.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2020</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006170000 +0000" channel="NHK">
+    <title lang="en">Dining with the Chef mini</title>
+    <sub-title lang="en">Omu-rice</sub-title>
+    <desc lang="en">Learn about easy, delicious, and healthy cooking with Chef Rika in five minutes! In this episode, the featured recipe is: omu-rice.</desc>
+    <category lang="en">Entertainment</category>
+    <date>2025</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="NHK">
+    <title lang="en">NHK Newsline</title>
+    <sub-title lang="en">Nhk Newsline</sub-title>
+    <desc lang="en">NHK NEWSLINE brings you up to date with the latest from Japan, Asia and around the world. Our team covers breaking news and major developments, with trusted anchors to tie it all together.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006180000 +0000" channel="NHK">
+    <title lang="en">Dining With The Chef</title>
+    <desc lang="en">Host Yu Hayami introduces Americans to the techniques, ingredients and harmony of preparing Japanese cuisine, cooking alongside masters and the occasional guest chefs, presenting easy-to-prepare Japanese dishes that can be made at home.</desc>
+    <category lang="en">Entertainment</category>
+    <date>2012</date>
+    <rating system="AUS"><value>G</value></rating>
   </programme>
   <programme start="20261003140100 +0000" stop="20261003190000 +0000" channel="NMU">
     <title lang="en">Night Owl</title>
@@ -44161,6 +45593,26 @@
     <live/>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="NNN">
+    <title lang="en">NBC News Daily with Morgan Radford and Vicky Nguyen</title>
+    <desc lang="en">NBC News provides viewers with the latest national and international news; Consumer, health and personal finance reporting; up-to-the-minute local news.</desc>
+    <episode-num system="onscreen">S05E397</episode-num>
+    <episode-num system="xmltv_ns">4.396.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="NNN">
+    <title lang="en">NBC News Daily with Morgan Radford and Vicky Nguyen</title>
+    <desc lang="en">NBC News provides viewers with the latest national and international news; Consumer, health and personal finance reporting; up-to-the-minute local news.</desc>
+    <episode-num system="onscreen">S05E398</episode-num>
+    <episode-num system="xmltv_ns">4.397.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003140000 +0000" stop="20261003175700 +0000" channel="NRW">
     <title lang="en">Moon Dance</title>
     <sub-title lang="en">Sunday 4 October 2026</sub-title>
@@ -44287,14 +45739,12 @@
     <title lang="en">Puppet Master</title>
     <desc lang="en">After being contacted by their mysterious former colleague, four psychics arrive at a secluded hotel where they are stalked by a group of murderous puppets.</desc>
     <category lang="en">Movie</category>
-    <category lang="en">Movie</category>
     <date>1989</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003153500 +0000" stop="20261003164046 +0000" channel="PUH">
     <title lang="en">Doll Man Vs Demonic Toys</title>
     <desc lang="en">Judith Grey teams with Brick Bardo (Dollman) and his girlfriend Ginger to face the evil Demonic Toys for one final battle.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1993</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -44603,6 +46053,14 @@
     <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2023</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006193500 +0000" channel="PUH">
+    <title lang="en">Noroi: The Curse</title>
+    <desc lang="en">A paranormal journalist named Kobayashi goes missing shortly after completing a documentary. What begins as an investigation into strange noises soon evolves into the chilling mystery of a demonic entity.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2005</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
   <programme start="20261003150100 +0000" stop="20261003152135 +0000" channel="RLS">
@@ -45925,6 +47383,66 @@
     <date>2011</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006152500 +0000" stop="20261006155000 +0000" channel="RLS">
+    <title lang="en">Judge Judy</title>
+    <sub-title lang="en">Episode 140</sub-title>
+    <desc lang="en">Judge Judy Sheindlin tackles real-life small claims cases with her no nonsense attitude.</desc>
+    <episode-num system="onscreen">S16E140</episode-num>
+    <episode-num system="xmltv_ns">15.139.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2011</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006155000 +0000" stop="20261006161000 +0000" channel="RLS">
+    <title lang="en">Judge Judy</title>
+    <sub-title lang="en">Episode 146</sub-title>
+    <desc lang="en">A former New York family court judge, Judge Judy acts as a true moral compass for people seeking guidance, resolution and a little common sense.</desc>
+    <episode-num system="onscreen">S18E146</episode-num>
+    <episode-num system="xmltv_ns">17.145.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2014</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006161000 +0000" stop="20261006163000 +0000" channel="RLS">
+    <title lang="en">Judge Judy</title>
+    <sub-title lang="en">Episode 147</sub-title>
+    <desc lang="en">A man accused of lying about his ownership of two cars defends his dry throat by blaming it on the alcohol he had the night before, not his guilty conscience; a woman sues her ex-husband and his boss, claiming they sold her a lemon.</desc>
+    <episode-num system="onscreen">S18E147</episode-num>
+    <episode-num system="xmltv_ns">17.146.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2014</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006172000 +0000" channel="RLS">
+    <title lang="en">Police Interceptors</title>
+    <sub-title lang="en">Episode 10</sub-title>
+    <desc lang="en">Paul takes the lead in a dangerous high-speed pursuit, tearing through the streets of Stockton-on-Tees to catch a reckless rule-breaker.</desc>
+    <episode-num system="onscreen">S13E10</episode-num>
+    <episode-num system="xmltv_ns">12.9.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2017</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006174500 +0000" channel="RLS">
+    <title lang="en">Cops</title>
+    <sub-title lang="en">Sleight Of Hand</sub-title>
+    <desc lang="en">A DUI suspect makes poor choices, a quarrelling couple turns toxic, and police stop a man convinced his passenger set him up.</desc>
+    <episode-num system="onscreen">S30E29</episode-num>
+    <episode-num system="xmltv_ns">29.28.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2017</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006181000 +0000" channel="RLS">
+    <title lang="en">Police Ten 7</title>
+    <sub-title lang="en">Episode 8</sub-title>
+    <desc lang="en">Join Rob Lemoto for a closer look at the dramatic working lives of New Zealand's police force and the Kiwis who end up on the wrong side of the law.</desc>
+    <episode-num system="onscreen">S12E08</episode-num>
+    <episode-num system="xmltv_ns">11.7.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2020</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003130000 +0000" stop="20261003171500 +0000" channel="RTV">
     <title lang="en">The Triple Trio</title>
     <desc lang="en">Jason Richardson, racing analyst Clint Hutchison and former champion jockey Shane Dye bring together leading experts and personalities to discuss the hugely popular sport of horse racing in Hong Kong.</desc>
@@ -46571,10 +48089,50 @@
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006160000 +0000" channel="RTV">
+    <title lang="en">Racing Review</title>
+    <sub-title lang="en">Pakenham</sub-title>
+    <desc lang="en">A full recap of racing from Pakenham - Monday, 5 October 2026</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006163000 +0000" channel="RTV">
+    <title lang="en">The Emergencies</title>
+    <desc lang="en">Join Michael Felgate, Troy Corstens and Felix Von Hofe, alongside special guests, blending racing chat, entertaining personal stories and light-hearted competition. The show delivers plenty of laughs, opinions and unexpected moments.</desc>
+    <category lang="en">Sport</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006170000 +0000" channel="RTV">
+    <title lang="en">Famous Five: Caulfield Guineas</title>
+    <desc lang="en">Sam Doran hosts a look back at five famous editions of the Caulfield Guineas.</desc>
+    <category lang="en">Sport</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006173000 +0000" channel="RTV">
+    <title lang="en">Racing To Win</title>
+    <desc lang="en">Trackwork analysis and form discussion from leading trainers and jockeys throughout Hong Kong with expert race selections for today's race card.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006174500 +0000" channel="RTV">
+    <title lang="en">From the Trainers' Tower</title>
+    <desc lang="en">Hear the latest word from trainers about their key runners ahead of the weekend's feature racing.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006184500 +0000" channel="RTV">
+    <title lang="en">Classic Racedays</title>
+    <desc lang="en">2012 Caulfield Guineas: Re-live all the great moments from a 'Classic Raceday', all the races from the day in full, with comments from trainer and jockeys.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003140100 +0000" stop="20261003160759 +0000" channel="SHA">
     <title lang="en">Pain &amp; Gain</title>
     <desc lang="en">Based on the unbelievable true story: a group of personal trainers in 1990s Miami, who in pursuit of the American dream, get caught up in a criminal enterprise that goes horribly wrong.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2013</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -46582,7 +48140,6 @@
   <programme start="20261003160800 +0000" stop="20261003174325 +0000" channel="SHA">
     <title lang="en">Roger Corman's Death Race 2050</title>
     <desc lang="en">Five long decades after Death Race 2000 (1975), in the overpopulated United Corporations of America, the annual Death Race is about to begin.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2017</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -46873,6 +48430,22 @@
     <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2001</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006152000 +0000" stop="20261006172500 +0000" channel="SHA">
+    <title lang="en">Bullet Train</title>
+    <desc lang="en">Brad Pitt stars as a hitman whose latest mission puts him on a bullet train travelling from Tokyo to Morioka, alongside deadly adversaries from around the world. The question is: who will make it off the train alive at the final station?</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2022</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006172500 +0000" stop="20261006191500 +0000" channel="SHA">
+    <title lang="en">The Invitation</title>
+    <desc lang="en">An unknown cousin invites Evie to a lavish wedding in the countryside. Soon she realises a conspiracy is afoot and must fight for survival as she uncovers secrets in her family's history.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2022</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
   <programme start="20261003143500 +0000" stop="20261003152101 +0000" channel="SHC">
@@ -47795,10 +49368,29 @@
     <date>2013</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="SHC">
+    <title lang="en">Justified</title>
+    <sub-title lang="en">Restitution</sub-title>
+    <desc lang="en">Raylan has one last shot at taking down Art's would-be assassin, while cartel killers have Boyd's back against the wall.</desc>
+    <episode-num system="onscreen">S05E13</episode-num>
+    <episode-num system="xmltv_ns">4.12.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2013</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="SHC">
+    <title lang="en">Paris Murders</title>
+    <sub-title lang="en">One For All</sub-title>
+    <desc lang="en">Chloe is taking important steps in her new life. The investigation of a brutal murder leads to a mysterious father figure who becomes the key suspect.</desc>
+    <episode-num system="onscreen">S04E01</episode-num>
+    <episode-num system="xmltv_ns">3.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2014</date>
+    <rating system="AUS"><value>MA15+</value></rating>
+  </programme>
   <programme start="20261003135100 +0000" stop="20261003155629 +0000" channel="SHD">
     <title lang="en">A League Of Their Own</title>
     <desc lang="en">The story of an All-American Girls' Professional Baseball League formed in 1943 when the men were away at war.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1992</date>
     <rating system="AUS"><value>PG</value></rating>
@@ -47806,7 +49398,6 @@
   <programme start="20261003155700 +0000" stop="20261003174041 +0000" channel="SHD">
     <title lang="en">Fifty Shades Freed</title>
     <desc lang="en">Anastasia and Christian have settled into a life together, but lingering demons from Christian's past threaten to disrupt their happily ever after.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2018</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -48115,10 +49706,17 @@
     <date>1990</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006170800 +0000" stop="20261006185943 +0000" channel="SHD">
+    <title lang="en">Catch And Release</title>
+    <desc lang="en">In this romantic comedy, a young woman whose fiance suddenly dies finds comfort with his caring friends, but catches herself falling for the irresponsible playboy of the group.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2006</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003144300 +0000" stop="20261003160327 +0000" channel="SHF">
     <title lang="en">Little Amelie Or The Character Of Rain</title>
     <desc lang="en">In Japan, young Belgian girl Amelie navigates childhood alongside trusted companion Nishio-san, until her third birthday sets off a chain of events that forever changes her world.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2025</date>
     <rating system="AUS"><value>PG</value></rating>
@@ -48126,7 +49724,6 @@
   <programme start="20261003160300 +0000" stop="20261003171215 +0000" channel="SHF">
     <title lang="en">Sylvanian Families The Movie</title>
     <desc lang="en">In Sylvanian village, everyone awaits the Festival of the Stars, but rabbit girl Freya worries as she must find the Tree of the Year for the main event.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2023</date>
     <rating system="AUS"><value>G</value></rating>
@@ -48467,10 +50064,17 @@
     <date>2000</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006161000 +0000" stop="20261006180000 +0000" channel="SHF">
+    <title lang="en">Prancer: A Christmas Tale</title>
+    <desc lang="en">The tiny town of Brightridge is in for a surprise this Christmas as a mysterious reindeer and a plucky young girl work together to help her grandfather save his beloved store.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2022</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003140700 +0000" stop="20261003154936 +0000" channel="SHO">
     <title lang="en">Savage Mountain</title>
     <desc lang="en">Kristin Harila risked everything to summit the world's 14 highest peaks at record speed. When her final ascent sparked backlash, her greatest triumph became a reckoning.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2026</date>
     <rating system="AUS"><value>M</value></rating>
@@ -48478,7 +50082,6 @@
   <programme start="20261003155000 +0000" stop="20261003172830 +0000" channel="SHO">
     <title lang="en">Him</title>
     <desc lang="en">A young athlete's dream turns nightmarish when training with a legendary champion whose charm slowly twists into something dark and terrifying.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>2025</date>
     <rating system="AUS"><value>MA15+</value></rating>
@@ -48787,6 +50390,22 @@
     <date>2025</date>
     <rating system="AUS"><value>MA15+</value></rating>
   </programme>
+  <programme start="20261006163200 +0000" stop="20261006174000 +0000" channel="SHO">
+    <title lang="en">Nick Cave's Veiled World</title>
+    <desc lang="en">Through reflections from close collaborators and noted artists, this documentary explores Nick Cave’s creative world, his influence and the shadowy, mythic stories behind his music</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2025</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006174000 +0000" stop="20261006192000 +0000" channel="SHO">
+    <title lang="en">My Mother's Wedding</title>
+    <desc lang="en">Three sisters return home for their mother's third wedding, forcing the family to face old wounds and look ahead with the help of some unexpected and colourful wedding guests.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2023</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003133800 +0000" stop="20261003150927 +0000" channel="SHY">
     <title lang="en">Pitch Perfect 3</title>
     <desc lang="en">After the highs of winning the World Champs, the Bellas found themselves split apart and jobless. But when they get their chance for one last tour, they come together again.</desc>
@@ -48797,7 +50416,6 @@
   <programme start="20261003151000 +0000" stop="20261003164016 +0000" channel="SHY">
     <title lang="en">Billy Madison</title>
     <desc lang="en">A 27-year-old spoiled brat must repeat all 12 grades of school - in just 24 weeks - to earn his father's respect and prove he can run the family's multimillion-dollar empire.</desc>
-    <category lang="en">Movie</category>
     <category lang="en">Movie</category>
     <date>1995</date>
     <rating system="AUS"><value>M</value></rating>
@@ -49129,6 +50747,22 @@
     <category lang="en">Movie</category>
     <date>1997</date>
     <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006155500 +0000" stop="20261006173000 +0000" channel="SHY">
+    <title lang="en">Year One</title>
+    <desc lang="en">Two caveman slackers who are banished from their tribe embark on a journey through the ancient biblical world.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006191000 +0000" channel="SHY">
+    <title lang="en">Land Of The Lost</title>
+    <desc lang="en">A has-been scientist with no weapons, no skills and no idea at all, lands in an alternative universe of marauding dinosaurs and fantastic creatures.</desc>
+    <category lang="en">Movie</category>
+    <category lang="en">Movie</category>
+    <date>2009</date>
+    <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="SKY">
     <title lang="en">Late Edition</title>
@@ -49867,6 +51501,22 @@
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="SKY">
+    <title lang="en">Paul Murray Live</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">Encore: Paul Murray provides the last line of defence for common sense.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="SKY">
+    <title lang="en">The Late Debate</title>
+    <sub-title lang="en">Tuesday 6 October 2026</sub-title>
+    <desc lang="en">Encore: Get three sides to every story &amp; your first look at tomorrows papers, with James Macpherson, Caleb Bond and Danica De Giorgio.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="SP2">
     <title lang="en">Finals Footy with Matty Johns</title>
     <sub-title lang="en">Grand Final Edition</sub-title>
@@ -50538,6 +52188,22 @@
     <title lang="en">NRL</title>
     <sub-title lang="en">Dolphins v Roosters PF</sub-title>
     <desc lang="en">A place in the Grand Final up for grabs &amp; box office match-ups galore in an Origin-like atmosphere at Suncorp Stadium.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="SP2">
+    <title lang="en">NRL</title>
+    <sub-title lang="en">Panthers v Knights PF</sub-title>
+    <desc lang="en">A classic David &amp; Goliath game, with the Panthers in their seventh straight Prelim, while the Knights try to extend their rise from 2025 wooden spooners.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="SP2">
+    <title lang="en">NRL</title>
+    <sub-title lang="en">Roosters v Knights Grand Final</sub-title>
+    <desc lang="en">The Roosters are after their fourth title in 14 years &amp; the Knights are in their first GF since 2001 with three upset wins. Enjoy the Fox League comms.</desc>
     <category lang="en">Sport</category>
     <date>2026</date>
     <rating system="AUS"><value>NC</value></rating>
@@ -51226,6 +52892,37 @@
     <desc lang="en">Holden was an iconic part of the Bathurst 1000. After 36 victories, 2022 marked the end of an era for the mighty Commodore. We pay homage to 5 of the best Holden performances from the Mountain.</desc>
     <category lang="en">Sport</category>
     <date>2023</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006154500 +0000" channel="SPS">
+    <title lang="en">Supercars</title>
+    <sub-title lang="en">2025 Bathurst 1000 Recap</sub-title>
+    <desc lang="en">Matt Payne, David Reynolds, James Golding and Cooper Murray relive the chaotic final 20 laps of the 2025 race at Mount Panorama.</desc>
+    <category lang="en">Sport</category>
+    <date>2026</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006154500 +0000" stop="20261006164500 +0000" channel="SPS">
+    <title lang="en">Fox Theatre</title>
+    <desc lang="en">Matt Payne and Garth Tander and joined by Jess Yates to rewatch last year's great win at the Repco Bathurst 1000.</desc>
+    <category lang="en">Sport</category>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006164500 +0000" stop="20261006174500 +0000" channel="SPS">
+    <title lang="en">SUPERCARS SPECIALS</title>
+    <sub-title lang="en">20 Greatest Bathurst Laps</sub-title>
+    <desc lang="en">Jess Yates counts down the 20 most insane laps at the Bathurst 1000 from the last 20 years.</desc>
+    <episode-num system="onscreen">S2022E01</episode-num>
+    <episode-num system="xmltv_ns">2021.0.0/1</episode-num>
+    <category lang="en">Sport</category>
+    <date>2022</date>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006184500 +0000" channel="SPS">
+    <title lang="en">Bathurst Classics</title>
+    <sub-title lang="en">2019</sub-title>
+    <desc lang="en">A look back at some of greatest Bathurst races as some of the best drivers battle it out on the Mountain.</desc>
+    <category lang="en">Sport</category>
     <rating system="AUS"><value>NC</value></rating>
   </programme>
   <programme start="20261003140000 +0000" stop="20261003180000 +0000" channel="SR2">
@@ -52323,6 +54020,15 @@
     <category lang="en">Sport</category>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006180000 +0000" channel="SRW">
+    <title lang="en">Luck On Sunday</title>
+    <desc lang="en">Nick Luck is live with the best interviews from expert guests in our unmissable weekly show..</desc>
+    <episode-num system="onscreen">S26E35</episode-num>
+    <episode-num system="xmltv_ns">25.34.0/1</episode-num>
+    <category lang="en">Sport</category>
+    <date>2025</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003150000 +0000" stop="20261003160000 +0000" channel="SUK">
     <title lang="en">Sky News</title>
     <sub-title lang="en">Sunday 4 October 2026, 01:00.</sub-title>
@@ -52974,6 +54680,24 @@
   <programme start="20261006150000 +0000" stop="20261006160000 +0000" channel="SUK">
     <title lang="en">Sky News</title>
     <sub-title lang="en">Wednesday 7 October 2026, 02:00.</sub-title>
+    <desc lang="en">News reports on the big stories from the UK and around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006160000 +0000" stop="20261006170000 +0000" channel="SUK">
+    <title lang="en">Sky News</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 03:00.</sub-title>
+    <desc lang="en">News reports on the big stories from the UK and around the world.</desc>
+    <category lang="en">News and Documentaries</category>
+    <date>2026</date>
+    <live/>
+    <rating system="AUS"><value>NC</value></rating>
+  </programme>
+  <programme start="20261006170000 +0000" stop="20261006180000 +0000" channel="SUK">
+    <title lang="en">Sky News</title>
+    <sub-title lang="en">Wednesday 7 October 2026, 04:00.</sub-title>
     <desc lang="en">News reports on the big stories from the UK and around the world.</desc>
     <category lang="en">News and Documentaries</category>
     <date>2026</date>
@@ -55137,6 +56861,36 @@
     <date>1992</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006153000 +0000" stop="20261006162000 +0000" channel="TRS">
+    <title lang="en">Murder, She Wrote</title>
+    <sub-title lang="en">Double Jeopardy</sub-title>
+    <desc lang="en">A not-guilty verdict in the murder of a community activist leads to threats of violence while Jessica is teaching a mystery writing class at a Catholic church in an ethnically mixed neighbourhood.</desc>
+    <episode-num system="onscreen">S09E12</episode-num>
+    <episode-num system="xmltv_ns">8.11.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006162000 +0000" stop="20261006171000 +0000" channel="TRS">
+    <title lang="en">Murder, She Wrote</title>
+    <sub-title lang="en">Dead Eye</sub-title>
+    <desc lang="en">Murder, missing persons, and the Kennedy assassination are all part of the mysteries Jessica must face to solve her current case.</desc>
+    <episode-num system="onscreen">S09E13</episode-num>
+    <episode-num system="xmltv_ns">8.12.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006171000 +0000" stop="20261006180000 +0000" channel="TRS">
+    <title lang="en">Murder, She Wrote</title>
+    <sub-title lang="en">Killer Radio</sub-title>
+    <desc lang="en">While on a book tour, Jessica agrees to guest on a local radio talk show that has feuding co-owners. When a murder takes place Jessica helps sort out the tangled webs of confusion to bring the killer to justice.</desc>
+    <episode-num system="onscreen">S09E14</episode-num>
+    <episode-num system="xmltv_ns">8.13.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1992</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
   <programme start="20261003143000 +0000" stop="20261003153000 +0000" channel="TVS">
     <title lang="en">Peony Floral Affair</title>
     <sub-title lang="en">Sunday 4 October 2026</sub-title>
@@ -55757,6 +57511,30 @@
     <title lang="en">Founders Formula Skincare</title>
     <sub-title lang="en">Wednesday 7 October 2026</sub-title>
     <desc lang="en">Discover Founders Formula Skincare, where science meets nature. Explore targeted formulas featuring powerful ingredients designed to nourish, hydrate and support healthy, radiant-looking skin.</desc>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006153000 +0000" stop="20261006163000 +0000" channel="TVS">
+    <title lang="en">Carla Oates The Beauty Chef</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Whipping up certified organic and naturally fermented superfood blends - a powerhouse of nutrients and healthy bacteria. Beauty begins in the belly for radiant skin.</desc>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006173000 +0000" channel="TVS">
+    <title lang="en">Glitter Gold</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Plenty of sparkle and wonder in today's show featuring highlights from TVSN. Indulge in pieces showcasing the world's most precious metal. This is the royal treatment for your jewellery box.</desc>
+    <category lang="en">Special Interest</category>
+    <date>2026</date>
+    <rating system="AUS"><value>G</value></rating>
+  </programme>
+  <programme start="20261006173000 +0000" stop="20261006183000 +0000" channel="TVS">
+    <title lang="en">Nina Leonard Fashion</title>
+    <sub-title lang="en">Wednesday 7 October 2026</sub-title>
+    <desc lang="en">Effortless Style with Nina Leonard. Mix and match chic pieces for work or weekend. Nina Leonard's refined collection offers endless outfit possibilities. Look sharp and confident from today.</desc>
     <category lang="en">Special Interest</category>
     <date>2026</date>
     <rating system="AUS"><value>G</value></rating>
@@ -56419,6 +58197,56 @@
     <episode-num system="xmltv_ns">21.3.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2025</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006152000 +0000" stop="20261006155000 +0000" channel="UKT">
+    <title lang="en">The Vicar Of Dibley</title>
+    <sub-title lang="en">The Arrival</sub-title>
+    <desc lang="en">When the elderly vicar of St Barnabus's, Dibley dies, the villagers eagerly await his replacement. To their shock, the vicar turns out to be a woman.</desc>
+    <episode-num system="onscreen">S01E01</episode-num>
+    <episode-num system="xmltv_ns">0.0.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1994</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006155000 +0000" stop="20261006162000 +0000" channel="UKT">
+    <title lang="en">The Vicar Of Dibley</title>
+    <sub-title lang="en">Songs Of Praise</sub-title>
+    <desc lang="en">The BBC religious series, Songs of Praise, sends a production team to Dibley to film in St Barnabus' Church. Geraldine and David have misgivings about this, until Geraldine develops a crush on producer.</desc>
+    <episode-num system="onscreen">S01E02</episode-num>
+    <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1994</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006162000 +0000" stop="20261006165000 +0000" channel="UKT">
+    <title lang="en">The Vicar Of Dibley</title>
+    <sub-title lang="en">Community Spirit</sub-title>
+    <desc lang="en">It's the annual Dibley Fete and Geraldine is determined to raise funds for the parish. However they will need to secure a big name celebrity guest.</desc>
+    <episode-num system="onscreen">S01E03</episode-num>
+    <episode-num system="xmltv_ns">0.2.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1994</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006165000 +0000" stop="20261006172000 +0000" channel="UKT">
+    <title lang="en">The Vicar Of Dibley</title>
+    <sub-title lang="en">The Window And The Weather</sub-title>
+    <desc lang="en">When Dibley is hit by a hurricane that blows out the stained glass window of the church, Geraldine approaches one of David's rich friends to try to persuade him to donate the money to repair it.</desc>
+    <episode-num system="onscreen">S01E04</episode-num>
+    <episode-num system="xmltv_ns">0.3.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1994</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006175000 +0000" channel="UKT">
+    <title lang="en">The Vicar Of Dibley</title>
+    <sub-title lang="en">Election</sub-title>
+    <desc lang="en">Geraldine clashes with David in the Dibley district council elections over the issue of local bus service and finds herself an opposing candidate.</desc>
+    <episode-num system="onscreen">S01E05</episode-num>
+    <episode-num system="xmltv_ns">0.4.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>1994</date>
     <rating system="AUS"><value>PG</value></rating>
   </programme>
   <programme start="20261003144500 +0000" stop="20261003151000 +0000" channel="UP2">
@@ -57959,6 +59787,76 @@
     <episode-num system="xmltv_ns">4.1.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2011</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006151500 +0000" stop="20261006154000 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Dealbreakers Talk Show #0001</sub-title>
+    <desc lang="en">The start of Dealbreakers gives Liz a crash course in what it's like to be a performer, while Jack feels the heat from Devin Banks to make it a hit.</desc>
+    <episode-num system="onscreen">S04E07</episode-num>
+    <episode-num system="xmltv_ns">3.6.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006154000 +0000" stop="20261006160500 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Secret Santa</sub-title>
+    <desc lang="en">Jack hooks up with an old crush who found him on a social networking site, and the writers invent a religion to get out of playing Secret Santa with Kenneth.</desc>
+    <episode-num system="onscreen">S04E08</episode-num>
+    <episode-num system="xmltv_ns">3.7.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006160500 +0000" stop="20261006163000 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Klaus And Greta</sub-title>
+    <desc lang="en">Jack tries to erase an embarrassing drunk phone message he left for Nancy on New Year's Eve, and Jenna agrees to date James Franco for publicity.</desc>
+    <episode-num system="onscreen">S04E09</episode-num>
+    <episode-num system="xmltv_ns">3.8.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006163000 +0000" stop="20261006165500 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Black Light Attack!</sub-title>
+    <desc lang="en">When Liz and Danny further their relationship, Jack becomes jealous and plans to break them apart. Meanwhile, Jenna lands an audition for a role on Gossip Girl.</desc>
+    <episode-num system="onscreen">S04E10</episode-num>
+    <episode-num system="xmltv_ns">3.9.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006165500 +0000" stop="20261006172000 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Winter Madness</sub-title>
+    <desc lang="en">Liz proposes a TGS episode to be done on location in Miami, in the dead of winter, to boost morale, but Jack changes the locale to Boston so that he can be close to Nancy.</desc>
+    <episode-num system="onscreen">S04E11</episode-num>
+    <episode-num system="xmltv_ns">3.10.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006172000 +0000" stop="20261006174500 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Verna</sub-title>
+    <desc lang="en">Liz takes Frank in as a roommate, and is pleasantly surprised when the two make a pact to help each other kick their bad habits.</desc>
+    <episode-num system="onscreen">S04E12</episode-num>
+    <episode-num system="xmltv_ns">3.11.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
+    <rating system="AUS"><value>M</value></rating>
+  </programme>
+  <programme start="20261006174500 +0000" stop="20261006181000 +0000" channel="UP2">
+    <title lang="en">30 Rock</title>
+    <sub-title lang="en">Anna Howard Shaw Day</sub-title>
+    <desc lang="en">Liz hopes a Valentine's Day root canal will make her feel better about being alone. Jack goes after an attractive CNBC host. Jenna is crushed when a stalker stops stalking her.</desc>
+    <episode-num system="onscreen">S04E13</episode-num>
+    <episode-num system="xmltv_ns">3.12.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2009</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
   <programme start="20261003120100 +0000" stop="20261003155900 +0000" channel="VH1">
