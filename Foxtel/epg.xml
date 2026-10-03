@@ -36143,6 +36143,16 @@
     <date>2009</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
+  <programme start="20261006151000 +0000" stop="20261006160000 +0000" channel="HST">
+    <title lang="en">Scorched Earth</title>
+    <sub-title lang="en">Stalemate In Italy</sub-title>
+    <desc lang="en">The Allied invasion of Italy in 1943 remains one of the most controversial of all the operations of WWII. We feature illuminating interviews with battle experts, who shed light on the campaign.</desc>
+    <episode-num system="onscreen">S05E04</episode-num>
+    <episode-num system="xmltv_ns">4.3.0/1</episode-num>
+    <category lang="en">News and Documentaries</category>
+    <date>2006</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
   <programme start="20261003145200 +0000" stop="20261003153459 +0000" channel="IOI">
     <title lang="en">CSI: Crime Scene Investigation</title>
     <sub-title lang="en">Bad Blood</sub-title>
@@ -48781,7 +48791,6 @@
     <title lang="en">Pitch Perfect 3</title>
     <desc lang="en">After the highs of winning the World Champs, the Bellas found themselves split apart and jobless. But when they get their chance for one last tour, they come together again.</desc>
     <category lang="en">Movie</category>
-    <category lang="en">Movie</category>
     <date>2017</date>
     <rating system="AUS"><value>M</value></rating>
   </programme>
@@ -54197,6 +54206,16 @@
     <desc lang="en">Chef Leysath heads to Alabama to hunt swamp bunnies and raccoons-where the skilled dogs are just as much the stars of the show as the game itself.</desc>
     <episode-num system="onscreen">S01E02</episode-num>
     <episode-num system="xmltv_ns">0.1.0/1</episode-num>
+    <category lang="en">Entertainment</category>
+    <date>2019</date>
+    <rating system="AUS"><value>PG</value></rating>
+  </programme>
+  <programme start="20261006151000 +0000" stop="20261006153500 +0000" channel="TDR">
+    <title lang="en">Dead Meat</title>
+    <sub-title lang="en">Big Island Invaders</sub-title>
+    <desc lang="en">Join Scott Leysath, one of America's premier wild game chef, as his journey reveals how others harvest and cook some of the country's least desirable creatures with fur, fins, feathers, spines and slime.</desc>
+    <episode-num system="onscreen">S01E03</episode-num>
+    <episode-num system="xmltv_ns">0.2.0/1</episode-num>
     <category lang="en">Entertainment</category>
     <date>2019</date>
     <rating system="AUS"><value>PG</value></rating>
